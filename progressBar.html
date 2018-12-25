@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+
+</head>
+<body>
+    <form action="#" id="form" method="post" enctype="multipart/form-data">
+            <input type="text" name="password"><br>
+            <input type="file" id="file" name="apk_file" class="file"><br>
+    </form>
+    <input type="button" value="ajax" id="ajax">
+
+</body>
+    <script>
+
+
+    document.getElementById('file').addEventListener('change', function (e) {
+        var xhr = getXhr();
+        // 通过formData 获得参数 this.File
+        var data=new FormData(document.getElementById("form"))
+        // 监控 progress事件
+        xhr.addEventListener('progress', function (e) {
+            var done = e.position || e.loaded, total = e.totalSize || e.total;
+            console.log(done,total)
+            console.log('xhr progress: ' + (Math.floor(done / total * 1000) / 10) + '%');
+        }, false);
+
+        xhr.onreadystatechange = function (e) {
+            if (4 == this.readyState) {
+                console.log(['xhr upload complete', e]);
+            }
+        };
+        xhr.open('post', '01.php', true);///这里写上url~
+        xhr.send(data);
+    }, false);
+       
+    function getXhr(){
+        // 声明XMLHttpRequest对象
+        var xhr;
+        // 根据不同浏览器创建
+        if(window.XMLHttpRequest){
+            // 其他浏览器
+            xhr = new XMLHttpRequest();
+        }else{
+            // IE浏览器(8及之前)
+            xhr = new ActiveXObject("Microsoft.XMLHttp");
+        }
+        // 返回XMLHttpRequest对象
+        return xhr;
+    }
+    </script>
+</html>

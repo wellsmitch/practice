@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+	<TITLE> ZTREE DEMO - one click</TITLE>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<!--<link rel="stylesheet" href="css/demo.css" type="text/css">-->
+	<link rel="stylesheet" href="css/zTreeStyle/zTreeStyle.css" type="text/css">
+	<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+	<script type="text/javascript" src="js/jquery.ztree.core.js"></script>
+	<!--显示勾选框的出现-->
+	<script type="text/javascript" src="js/jquery.ztree.excheck.js"></script>
+	
+	<!--  <script type="text/javascript" src="../../../js/jquery.ztree.excheck.js"></script>
+	  <script type="text/javascript" src="../../../js/jquery.ztree.exedit.js"></script>-->
+	<SCRIPT type="text/javascript">
+		<!--
+		var setting = {
+			check:{
+				//控制显示勾选框
+				enable:true,
+//				chkStyle:'radio',
+				chkStyle:'checkbox',
+//				nocheckInherit: true,
+				autoCheckTrigger:false
+			},
+			view: {
+				dblClickExpand: false,
+				//是否显示虚线
+				showLine: true,
+				//是否显示文件图标
+				showIcon:true
+			},
+			data: {
+				simpleData: {
+					enable: true
+				}
+			},
+			callback: {
+				onClick: onClick
+			}
+		};
+
+		var zNodes =[
+			{ id:1, pId:0, name:"根 Root", open:true,iconOpen:'css/zTreeStyle/img/diy/1_open.png',iconClose:'css/zTreeStyle/img/diy/1_close.png'},
+			{ id:11, pId:1, name:"父节点 1-1", open:true},
+			{ id:111, pId:11, name:"叶子节点 1-1-1"},
+			{ id:112, pId:11, name:"叶子节点 1-1-2"},
+			{ id:113, pId:11, name:"叶子节点 1-1-3"},
+			{ id:114, pId:11, name:"叶子节点 1-1-4"},
+			{ id:12, pId:1, name:"父节点 1-2", open:true},
+			{ id:121, pId:12, name:"叶子节点 1-2-1"},
+			{ id:122, pId:12, name:"叶子节点 1-2-2"},
+			{ id:123, pId:12, name:"叶子节点 1-2-3"},
+			{ id:124, pId:12, name:"叶子节点 1-2-4"},
+			{ id:13, pId:1, name:"父节点 1-3", open:true},
+			{ id:131, pId:13, name:"叶子节点 1-3-1"},
+			{ id:132, pId:13, name:"叶子节点 1-3-2"},
+			{ id:133, pId:13, name:"叶子节点 1-3-3"},
+			{ id:134, pId:13, name:"叶子节点 1-3-4"}
+		];
+
+		function onClick(e,treeId, treeNode) {
+			var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+			console.log(e)
+			zTree.expandNode(treeNode);
+		}
+
+		$(document).ready(function(){
+			$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+		});
+		//-->
+	</SCRIPT>
+	<!--<style type="text/css">
+.ztree li button.switch {visibility:hidden; width:1px;}
+.ztree li button.switch.roots_docu {visibility:visible; width:16px;}
+.ztree li button.switch.center_docu {visibility:visible; width:16px;}
+.ztree li button.switch.bottom_docu {visibility:visible; width:16px;}
+	</style>-->
+ </HEAD>
+
+<BODY>
+	<div class="zTreeDemoBackground left">
+		<ul id="treeDemo" class="ztree"></ul>
+	</div>
+
+</BODY>
+</HTML>

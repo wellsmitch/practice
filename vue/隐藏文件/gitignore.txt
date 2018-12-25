@@ -1,0 +1,68 @@
+.gitignore 文件也是存放在根目录的下面，，主要是用来配置不需要加入版本管理的文件
+
+其实从名字就能够看出来这个就是使用git的时候使用的可以忽略我们一个文件来保护代码的安全
+
+配置的一些规则
+
+ 所有的空行或者以#开头的都会被git忽略
+
+可以使用标准的golb模式比配
+
+匹配的时候后面的/表示   忽略的是目录
+
+如果前面有   ”!“  表示的就是不忽略匹配到的文件或者目录
+
+"  *  " 表示通配多个字符 所有的
+
+" ? "  表示通配单个字符
+
+"  [] "  包含单个字符的匹配列表
+
+git 对于.gitignore 文件是从上到下进行规制匹配的 说明如果前面的匹配规则过大的话，那么后面的将不会生效
+
+
+
+/*   忽略全部的内容
+
+!/ll/llll/   不忽略根目录下的/ll/llll/
+
+  llll/*  忽略目录llll下的全部内容  注意不管是根目录还是 其他的子目录都会被忽略  
+
+/llll/*  忽略根目录llll下的全部内容  
+
+*.html  忽略所有.html结尾的文件
+
+!lib.htmml 除了lib.htmml除外
+
+/TODO   仅仅忽略根目录下的TODO文件 不包括lllll/TODO
+
+doc/*.html 忽略doc/ddd.html文件  但是不包括doc/longd/lll.html文件
+
+
+
+例如
+
+
+
+.DS_Store
+node_modules/
+dist/
+npm-debug.log
+.idea/
+
+
+
+.DS_Store
+node_modules/
+/dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln

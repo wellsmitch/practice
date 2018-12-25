@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button class="a1">弹出模态框</button>
+		<div class="a2" style="display: none;">i am show!</div>
+	</body>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script type="text/javascript">
+	    //通过点击事件控制模态框出现隐藏
+	    function show(main,follow){
+	    	main.click(function () {
+		        if(follow.css('display')=='block'){
+		            follow.css({'display':'none'})
+		        }else if(follow.css('display')=='none'){
+		            follow.css({'display':'block'})
+		        }
+		    });
+	    }
+	  show($('.a1'),$('.a2'))
+	</script>
+</html>

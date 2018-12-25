@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			var i = 0;
+			for(var j = 1000; j <= 2000; j++) {
+
+				if((j % 4 == 0 && j % 100 != 0) || j % 400 == 0) {
+					i++;
+					document.write(j + '&nbsp;&nbsp;')
+					if(i % 4 == 0) {
+						var i = 0;
+						for(var j = 1000; j <= 2000; j++) {
+							if((j % 4 == 0 && j % 100 != 0) || j % 400 == 0) {
+								i++;
+								document.write(j + '&nbsp;&nbsp;') if(i % 4 == 0) {
+									document.write('<br />')
+								}
+							}
+						}
+						document.write('<br />')
+
+					}
+				}
+
+			}
+		</script>
+	</body>
+
+</html>

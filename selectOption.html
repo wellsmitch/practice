@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<select id="a">
+			<option value="1">1111</option>
+			<option value="2">2222</option>
+			<option value="3">3333</option>
+			<option value="4">44444</option>
+		</select>
+		<script type="text/javascript">
+			$('#a').on('change',function(){
+				var options=document.querySelector('#a')
+				console.log(options.selectedIndex)
+				console.log(options.value)
+				console.log(options[options.selectedIndex].text)
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			class person {
+			 	constructor(x,y){
+			 		this.x = x;
+			 		this.y = y;
+			 		this.toString_()
+			 	}
+			 	toString_(){
+			 		console.log(this.x,this.y,111111111111)
+			 	}
+			}
+			
+			class child extends person {
+				constructor(x,y,color){
+					super(x,y);
+					this.color = color;
+					this.fn()
+				}
+				fn(){
+//					console.log(666)
+				console.log(this.color) 
+				}
+			}
+			
+			var child_1 = new child(111,222,'red')
+		</script>
+	</body>
+</html>

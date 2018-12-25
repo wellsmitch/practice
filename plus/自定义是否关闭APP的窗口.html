@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+    <style type="text/css">
+    	span{
+    		display: block;
+    	}
+    	html,body{
+    		width: 100%;
+    		height: 100%;
+    	}
+    	.block{
+    		display: block;
+    	}
+    	.none{
+    		display: none;
+    	}
+    </style>
+</head>
+<body style="position: relative;">
+	<div id="box">
+		1312
+	</div>
+	<div class="gg none" style="position: absolute;top: 50%;"> 
+		<p>1345679</p>
+		<a class="yes">yes</a>
+		<a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		<a class="no">no</a>
+	</div>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script type="text/javascript">
+      document.addEventListener('plusready', ()=>{
+        plus.key.addEventListener('backbutton', ()=>{
+          let webview = plus.webview.currentWebview();
+          let webview_list = plus.webview.all();
+          if (webview_list.indexOf(webview) == webview_list.length-1){
+            webview.canBack((e)=>{
+              if(e.canBack) {
+                webview.back();
+              } else {
+              
+              	if($('.gg').css('display') == 'block'){
+              		$('.gg').css({display:'none'})
+              	}else{
+              		$('.gg').css({display:'block'})
+              	}
+              		//可以在此处封装自定义的是否关闭APP的自定义窗口
+//            	window.confirm('999999')
+//              plus.nativeUI.confirm('确认退出？', (event)=>{
+//                if (0 == event.index) {
+//                  plus.runtime.quit();
+//                }
+//              }, '提示', ["确定", "取消"]);
+              }
+            })
+          }else {
+            webview_list[webview_list.length-1].canBack((e)=>{
+              if(e.canBack) {
+                webview_list[webview_list.length-1].back();
+              } else {
+                webview_list[webview_list.length-1].close();
+              }
+            })
+          }
+        });
+      });
+	</script>
+
+		
+		
+		
+	
+
+	
+</body>
+</html>

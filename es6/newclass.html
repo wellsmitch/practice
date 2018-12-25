@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			class Point{			
+				//构造函数，被自动调用
+				constructor(x,y){
+					console.log('Point  构造函数被调用')
+					this.x = x;
+					this.y = y;			 
+				}
+				//新增方法
+				toString(){
+					return `(${this.x},${this.y})`;
+				}			
+			}
+		
+//			var p1 =new Point(1,2);
+//			
+//			console.log(p1.toString());	
+
+			class ColorPoint extends Point{
+				constructor(x,y,color){
+					console.log('ColorPoint 的构造函数被调用')		
+					super(x,y);//super是父类的构造函数
+					this.color = color;	
+					this.toString()
+				}
+				//重写父类的方法
+				toString(){
+					console.log(666666)
+					return `(${this.x},${this.y}),${this.color}`
+				}			
+//				toString(){
+//					////super 父类构造函数创建出来的对象
+//					return super.toString()+','+this.color;
+//				}				
+		}			
+			var c1 = new ColorPoint(1,2,'red');			
+			//子类就拥有了父类的属性和方法
+			console.log(c1.x,c1.y,c1.color);
+			console.log(c1)
+
+		</script>
+	</body>
+</html>

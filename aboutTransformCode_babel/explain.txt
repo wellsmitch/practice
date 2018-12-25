@@ -1,0 +1,19 @@
+安装node.js
+npm i babel-cli -g
+
+整个目录转码
+babel src -d dist
+
+单个文件转码
+babel js_1 -o js_2.js
+
+npm i babel-preset-es2015 -D 
+
+
+创建文件.babelrc 文件内容为
+
+{
+	'preset':[
+		'es2015'
+	]
+}
