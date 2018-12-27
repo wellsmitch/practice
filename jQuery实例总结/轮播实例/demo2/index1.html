@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="jquery.bscslider.css"/>
+		<script src="js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="jquery.easing.js"></script>-->
+		<script src="jquery.bscslider.js"></script>
+		<style type="text/css">
+			div{
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div class="slider">
+			<img src="imgs/img1.jpg"/>
+			<img src="imgs/img2.jpg"/>
+			<img src="imgs/img3.jpg"/>
+			<img src="imgs/img4.jpg"/>
+			<img src="imgs/img5.jpg"/>
+			<p class="circle">
+				<em></em>
+				<em></em>
+				<em></em>
+				<em></em>
+				<em></em>
+			</p>
+		</div>
+		<script type="text/javascript">
+			$(function(){
+				$('.circle').css({'position':'absolute','z-index':10});
+					$('.circle em').css({
+						'display':'block',
+						'float':'left',
+						'background':'red',
+						'width':20,
+						'height':20,'margin':2,
+						'border-radius':'50%'
+						
+						});
+				$('.slider').bscSlider({
+				  autoplay        : true,
+				  navigation      : true,
+				  duration        : 2000,
+				  effect          : 7,
+				  effect_speed    : 750,
+				  easing          : 'swing',
+				  height          : 300
+				}); 
+			}())
+			
+//		var url = 'http://jx.xuzhixiang.top/ap/api/bannerlist.php';
+//			$.getJSON(url,function(res){
+//				console.log(res)
+//				var html1='';
+//				var html2='';
+//				var que = 0
+//				res.data.forEach(function(ele){
+//					que++;
+//					console.log(ele)
+//					html1+= `<img src=${ele.banner_img_url} />`
+//					html2+= `<em>${que}</em>`
+//				})
+////					console.log(ele.banner_img_url)
+//					$('.slider').html(`${html1}<p class="circle">${html2}</p>`);
+//					$('.circle').css({'position':'absolute','z-index':10});
+//					$('.circle em').css({
+//						'display':'block',
+//						'float':'left',
+//						'background':'red',
+//						'width':20,
+//						'height':20,'margin':2,
+//						'border-radius':'50%'
+//						
+//						});
+//				
+//				$('.slider').bscSlider({
+//				  autoplay        : true,
+//				  navigation      : true,
+//				  duration        : 2000,
+//				  effect          : 7,
+//				  effect_speed    : 750,
+//				  easing          : 'swing',
+//				  height          : 300
+//				}); 
+//				
+//			})
+			
+			
+		</script>
+	</body>
+</html>

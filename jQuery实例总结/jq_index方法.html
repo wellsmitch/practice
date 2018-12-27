@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<ul>
+			<li id="foo">foo</li>
+			<li id="bar">bar</li>
+			<li id="baz">baz</li>
+		</ul>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			console.log($('li').index($('#bar')))
+			console.log($('li').index(document.getElementById("bar")))
+			console.log($('#bar').index('li'))
+			console.log($('#bar').index())
+		</script>
+	</body>
+
+</html>

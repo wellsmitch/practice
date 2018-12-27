@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<h2>wer</h2>
+		<p>Hello</p>
+		<div><span>Hello Again</span></div>
+		<p class="selected">And Again</p>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			//兄弟元素。注意此处包括script
+			console.log($('div').siblings())
+			console.log($("div").siblings(".selected"))
+		</script>
+	</body>
+
+</html>

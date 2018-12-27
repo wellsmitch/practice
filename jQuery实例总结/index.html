@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			#box{
+				position: relative;
+			}
+			div{
+				padding:5px;
+				background: red;
+				border: 1px solid #000;
+			}
+			#ipt{
+				height: 20px;
+			}
+			p{
+				position: absolute;
+				left: 5px;
+			}
+			#move{
+				display: none;
+			}
+			#window{
+				display: none;
+				width: 100px;
+				height: 50px;
+				background: saddlebrown;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="box" class="m1">
+		         	<h2>fewa
+			
+			
+			</h2>
+		</div>
+		<div id="" class="m1" j='p'>
+			hgf
+		</div>
+		<div id="move">
+			qwertyuk
+		</div>
+		
+		
+		<input type="text" name="ipt" id="ipt" value="kjhg" />
+		<textarea id="area"></textarea>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			//查询
+			console.log($('#box'))			
+			console.log($('div'))
+			
+			//替换
+//			console.log($('#box').attr('class','qwe'))			
+//			console.log($('div').attr('class','m2'))	
+			//删除属性
+			$('div').removeAttr('j')
+			
+			//更换类名时注意不要将前面的类名覆盖  否则无法获取到
+			$('.m1').addClass('m22')
+			$('.m22').addClass('m23')
+			
+			console.log($('.m1').removeClass('m23'))
+			
+			//只会获取类名为m1的第一个元素
+			console.log($('.m1').css('height'))
+			//将所有类名为m1的元素高度设为100,100px也生效
+			console.log($('.m1').css('height','100px'))
+			
+			//获取html内容包括空白节点及其回车
+			console.log($('#box').html())
+			//设置元素的html内容  多次设置后面的会对前面的添加内容进行覆盖
+			console.log($('#box').html('12dfsa'))
+			console.log($('#box').html())
+			var a='1vsegreg';
+			console.log($('#box').html(`<p>12fhd678${a}</p>`))
+			//获取html文本内容包括空白节点及其回车
+			console.log($('#box').text())
+			
+			//val()：获取或者设置输入框的内容
+			console.log($('#ipt').val())
+			//更改输入框里面的内容
+			console.log($('#ipt').val('gw'))
+			
+			//textarea 利用更改输入框内容 和  text方式更改内容效果一致
+			console.log($('#area').text('gw'))
+			
+			//height([val])：取得匹配元素当前计算的高度值（没有带px）。注意此处的值为文本内的值不包括边框及padding
+			console.log($('#box').height())
+			console.log($('#area').height())
+			console.log($('#ipt').height())
+			//获取第一个匹配元素内部区域高度（包括补白、不包括边框）。此方法对可见和隐藏元素均有效
+			console.log($('#box').innerHeight())
+			//获取第一个匹配元素内部区域高度（包括补白、边框）。此方法对可见和隐藏元素均有效
+			console.log($('#box').outerHeight())
+			
+			//获取匹配元素在当前视口的相对偏移。返回的对象包含两个整型属性：top 和 left，以像素计。方法只对可见元素有效。
+			console.log($('#box').offset())
+			//获取匹配元素相对父元素的偏移。返回的对象包含两个整型属性：top 和 left。此方法只对可见元素有效。
+			console.log($('p').position())
+			
+			
+
+			
+			
+			
+		</script>
+	</body>
+</html>

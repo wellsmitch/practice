@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#window{
+				float: left;
+				display: none;
+				width: 100px;
+				height: 50px;
+				background: saddlebrown;
+			}
+			#window1{
+				float: left;
+				display: block;
+				width: 100px;
+				height: 50px;
+				background: saddlebrown;
+			}
+		</style>
+	</head>
+	<body>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<div id="window">
+			
+		</div>
+		<div id="window1">
+			
+		</div>
+		<script type="text/javascript">
+			$('#window').slideDown(2000,'linear',function(){
+				console.log('动画结束')
+			})
+			
+			$('#window1').slideUp(2000,'linear',function(){
+				console.log('动画结束')
+			})
+		</script>
+	</body>
+</html>

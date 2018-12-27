@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<ul id="list">
+			
+		</ul>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			$('#list li').css('float','left')
+			var url1 = 'https://api.readhub.me/topic?lastCursor=57111&pageSize=20'
+			$.ajax({
+				type:"get",
+				url:url1,
+				async:true,
+				success:function(res){
+					console.log(res);
+					$.each(res.data, function(index,ele) {
+						$('#list').html($('#list').html()+'<li>'+ele.createdAt+'</li>')	
+						$('#list li').on('click',function(){
+							location.href = 'https://www.baidu.com/'
+						})
+					});
+				},
+				error:function(res){
+					console.log(res);
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="list">
+			
+		</ul>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+//			var url1 = 'https://api.readhub.me/topic?lastCursor=57111&pageSize=20'
+//			$.ajax({
+//				type:"get",
+//				url:url1,
+//				async:true,
+//				success:function(res){
+//					console.log(res);
+//					for (var i=0;i<res.data.length;i++) {
+//						console.log(res.data[i].createdAt)
+//					}
+//				},
+//				error:function(res){
+//					console.log(res);
+//				}
+//			});
+//			var url2 = 'https://api.readhub.me/topic';
+			$.ajax({
+				type:"get",
+				url:'https://api.readhub.me/topic',
+				data:{
+					lastCursor:'57111',
+					pageSize:10
+				},
+				async:true,
+				success:function(res){
+					console.log(res);
+//					for (var i=0;i<res.data.length;i++) {
+//						console.log(res.data[i].createdAt)
+//					}
+				},
+				error:function(res){
+					console.log(res);
+				}
+			});
+			
+			$.ajax({
+				type:"post",
+				url:'https://api.readhub.me/topic',
+				data:{
+					lastCursor:'',
+					pageSize:10
+				},
+				async:true,
+				success:function(res){
+					console.log(res);
+//					for (var i=0;i<res.data.length;i++) {
+//						console.log(res.data[i].createdAt)
+//					}
+				},
+				error:function(res){
+					console.log(res);
+				}
+			});
+			
+			$.ajax({
+				//回调函数不需要写是百度自动生成
+				url:"https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=ew&json=1&p=3&sid=1434_26433_21116_22075&req=2&csor=2&pwd=e",
+				
+				dataType:"jsonp",
+				jsonp:'cb',
+				success:function(res){
+					console.log(res)
+				}
+			});
+			
+			//快速获取json数据
+			var url3='https://api.readhub.me/topic';
+			var data = {lastCursor:'',pageSize:10};
+			$.getJSON(url3,data,function(res){
+				console.log(res)
+			})
+			
+			//jsonp快速获取数据
+			var url5="https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=ew&json=1&p=3&sid=1434_26433_21116_22075&req=2&csor=2&pwd=e&cb=?"
+			$.getJSON(url5,function(res){
+				console.log(res)
+			})
+		</script>
+	</body>
+</html>

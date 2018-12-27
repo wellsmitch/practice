@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			12345
+		</div>
+		<div id="box1">
+			qwer
+		</div>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			//创建
+			$p = $('<p>124567</p>')
+			//内部插入
+			$('#box').append($p)//文本后加入
+			$('#box').append("<b>Hello</b>")//文本后加入
+			//prepend(content)：向元素内部文本前面添加内容。
+			$('#box').prepend("<h3>Hello</h3>")
+			
+			$('<p/>').appendTo($('#box1'))//文本后
+			$('<p>12345678</p>').appendTo($('#box1'))//文本后
+			
+			//after
+			$('div').after('<b>Hello</b>')//after(content)：在每个匹配的元素之后插入内容。
+			//before(content)：在每个匹配的元素之前插入内容
+			$("div").before("<b>poiuy</b>");
+		</script>
+	</body>
+</html>
