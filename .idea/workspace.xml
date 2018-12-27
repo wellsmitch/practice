@@ -1,7 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="75008c38-6efb-4cdf-9d6d-4df4838985d7" name="Default Changelist" comment="" />
+    <list default="true" id="75008c38-6efb-4cdf-9d6d-4df4838985d7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/gulp/Gulp.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gulp/about_gulp.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gulp/gulp总结.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jQuery实例总结/jquery1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jQuery实例总结/jquery2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jQuery实例总结/jquery3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/php/php.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/.project" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/animateBak.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/img/01.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/img/02.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/img/03.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/img/04.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/img/05.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/img/06.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/img/07.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/img/08.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/jq透明轮播.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/test_.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/位移轮播_.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/多个敏感词留言过滤.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/正则/常用的正则表达式.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/正则/正则.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -17,11 +44,76 @@
         <counts>
           <entry key="project.closed" value="2" />
           <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.28" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="html" value="5" />
+          <entry key="js" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="HTML" value="5" />
+          <entry key="JavaScript" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="txt" value="7" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PLAIN_TEXT" value="7" />
         </counts>
       </usages-collector>
     </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jQuery实例总结/js/jquery.log.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="2" lean-forward="true" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jQuery实例总结/jquery1.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/正则/常用的正则表达式.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/正则/正则.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/php.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="32" lean-forward="true" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/多个敏感词留言过滤.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -33,9 +125,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="186" />
-    <option name="y" value="55" />
-    <option name="width" value="1498" />
+    <option name="x" value="280" />
+    <option name="y" value="101" />
+    <option name="width" value="1300" />
     <option name="height" value="894" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -63,6 +155,15 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Desktop\practice" />
+      <recent name="C:\Users\Administrator\Desktop\practice\gulp" />
+      <recent name="C:\Users\Administrator\Desktop\practice\php" />
+      <recent name="C:\Users\Administrator\Desktop\practice\正则" />
+      <recent name="C:\Users\Administrator\Desktop\practice\jQuery实例总结" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -87,18 +188,28 @@
       <updated>1545700067121</updated>
       <workItem from="1545700068580" duration="584000" />
       <workItem from="1545823095233" duration="669000" />
+      <workItem from="1545870673873" duration="1621000" />
     </task>
+    <task id="LOCAL-00001" summary="jquery">
+      <created>1545870879708</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1545870879708</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1253000" />
+    <option name="totallyTimeSpent" value="2874000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="212" y="115" width="1498" height="894" extended-state="0" />
+    <frame x="321" y="377" width="1300" height="894" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25752774" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" weight="0.32894737" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -108,7 +219,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.33026317" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32894737" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -120,5 +231,37 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="jquery" />
+    <option name="LAST_COMMIT_MESSAGE" value="jquery" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/jQuery实例总结/js/jquery.log.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="2" lean-forward="true" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jQuery实例总结/jquery1.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/正则/常用的正则表达式.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/正则/正则.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/php.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="32" lean-forward="true" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/多个敏感词留言过滤.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
   </component>
 </project>

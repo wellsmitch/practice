@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<input type="text" name="ipt" id="ipt" value="" />
+		<input type="button" name="btn" id="btn" value="点击" />
+		<script type="text/javascript">
+//			ipt.valueOf()是什么意思
+			
+			var arr = ['sb','mmp']	
+			btn.onclick = function(){
+							
+				var str = ipt.value
+				console.log(arr)
+				for (var i=0;i<arr.length;i++) {
+					console.log(ipt.value)
+					
+					console.log(typeof arr[i])
+					var reg = new RegExp(arr[i],'ig')
+					 str= str.replace(reg,'**')	
+				}
+				console.log(str)
+			}
+//			console.log('sb'.replace('sb','**'))
+			
+
+		</script>
+	</body>
+</html>
