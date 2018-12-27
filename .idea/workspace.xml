@@ -2,31 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75008c38-6efb-4cdf-9d6d-4df4838985d7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/gulp/Gulp.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gulp/about_gulp.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gulp/gulp总结.doc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jQuery实例总结/jquery1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jQuery实例总结/jquery2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jQuery实例总结/jquery3.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/php/php.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/.project" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/animateBak.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/img/01.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/img/02.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/img/03.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/img/04.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/img/05.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/img/06.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/img/07.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/img/08.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/jq透明轮播.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/test_.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/包含放大镜 轮播图/位移轮播_.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/多个敏感词留言过滤.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/正则/常用的正则表达式.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/正则/正则.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/03-右键菜单.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/importES6/cart.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/importES6/es6模块化/ES6模块化.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/importES6/es6模块化/dog.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/importES6/es6模块化/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/importES6/es6模块化/profile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/importES6/es6模块化开发.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpackDemo/Webpack.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpackDemo/dist/js/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpackDemo/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpackDemo/src/css/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpackDemo/src/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpackDemo/src/js/a.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpackDemo/src/js/ajax.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpackDemo/src/js/cookie.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpackDemo/src/js/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpackDemo/src/scss/index.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webpackDemo/webpack.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/音频/.project" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/音频/audio/Echosmith - Bright.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/音频/audio/aa.qsv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/音频/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/鼠标指针.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -51,14 +49,16 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="5" />
-          <entry key="js" value="1" />
+          <entry key="html" value="9" />
+          <entry key="js" value="2" />
+          <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="5" />
-          <entry key="JavaScript" value="1" />
+          <entry key="HTML" value="9" />
+          <entry key="JavaScript" value="2" />
+          <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -76,40 +76,22 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jQuery实例总结/js/jquery.log.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="2" lean-forward="true" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jQuery实例总结/jquery1.html">
+        <entry file="file://$PROJECT_DIR$/03-右键菜单.html">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/正则/常用的正则表达式.html">
+        <entry file="file://$PROJECT_DIR$/webpackDemo/Webpack.html">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/正则/正则.html">
+        <entry file="file://$PROJECT_DIR$/鼠标指针.html">
           <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/php.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="32" lean-forward="true" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
-            </state>
-          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/多个敏感词留言过滤.html">
+        <entry file="file://$PROJECT_DIR$/知识点整理/js/弹窗/三种弹框.html">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
@@ -124,9 +106,14 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/webpackDemo/package.json" />
+    </packageJsonPaths>
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="280" />
-    <option name="y" value="101" />
+    <option name="x" value="285" />
+    <option name="y" value="100" />
     <option name="width" value="1300" />
     <option name="height" value="894" />
   </component>
@@ -143,6 +130,28 @@
               <item name="practice" type="b2602c69:ProjectViewProjectNode" />
               <item name="practice" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="practice" type="462c0819:PsiDirectoryNode" />
+              <item name="知识点整理" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="practice" type="462c0819:PsiDirectoryNode" />
+              <item name="知识点整理" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="practice" type="462c0819:PsiDirectoryNode" />
+              <item name="音频" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="practice" type="462c0819:PsiDirectoryNode" />
+              <item name="音频" type="462c0819:PsiDirectoryNode" />
+              <item name="audio" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -158,10 +167,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Administrator\Desktop\practice" />
+      <recent name="C:\Users\Administrator\Desktop\practice\webpackDemo" />
       <recent name="C:\Users\Administrator\Desktop\practice\gulp" />
       <recent name="C:\Users\Administrator\Desktop\practice\php" />
       <recent name="C:\Users\Administrator\Desktop\practice\正则" />
-      <recent name="C:\Users\Administrator\Desktop\practice\jQuery实例总结" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -188,7 +197,7 @@
       <updated>1545700067121</updated>
       <workItem from="1545700068580" duration="584000" />
       <workItem from="1545823095233" duration="669000" />
-      <workItem from="1545870673873" duration="1621000" />
+      <workItem from="1545870673873" duration="2877000" />
     </task>
     <task id="LOCAL-00001" summary="jquery">
       <created>1545870879708</created>
@@ -197,14 +206,21 @@
       <option name="project" value="LOCAL" />
       <updated>1545870879708</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="jquery">
+      <created>1545872370753</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1545872370753</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2874000" />
+    <option name="totallyTimeSpent" value="4130000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="321" y="377" width="1300" height="894" extended-state="0" />
+    <frame x="285" y="100" width="1300" height="894" extended-state="0" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25752774" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -237,20 +253,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="jquery" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/jQuery实例总结/js/jquery.log.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="2" lean-forward="true" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jQuery实例总结/jquery1.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/正则/常用的正则表达式.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/正则/正则.html">
+    <entry file="file://$PROJECT_DIR$/多个敏感词留言过滤.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/php/php.html">
@@ -260,7 +263,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/多个敏感词留言过滤.html">
+    <entry file="file://$PROJECT_DIR$/正则/正则.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/正则/常用的正则表达式.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jQuery实例总结/jquery1.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jQuery实例总结/js/jquery.log.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="2" lean-forward="true" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/importES6/.idea/misc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="10" lean-forward="true" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpackDemo/src/js/a.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="18" lean-forward="true" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03-右键菜单.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpackDemo/Webpack.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/鼠标指针.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/知识点整理/js/弹窗/三种弹框.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>

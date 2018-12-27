@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script src="index.js" type="module" charset="utf-8"></script>
+		<!--type="module"   让脚本 支持 es6 模块化开发-->
+		<script type="module">
+			
+			//导入export模块 时候，必须得知道模块的名字
+			import {firstName,lastName,desc,Dog} from './profile.js';
+			
+			console.log(firstName);
+			desc();
+			console.log(Dog)
+			
+		</script>
+	</body>
+</html>
