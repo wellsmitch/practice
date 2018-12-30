@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="box" width="200"  height="200"></canvas>
+<script type="text/javascript">
+    var cvs	= document.getElementById('box');
+    var ctx = cvs.getContext('2d');
+    var Img = new Image();
+    Img.src = 'sevenCenter.png';
+    Img.onload = function () {
+        draw(this);
+
+    };
+    function draw(obj) {
+        ctx.drawImage(obj,0,0,200,200)//起点  终点 宽  高
+    }
+
+    </script>
+</body>
+</html>
