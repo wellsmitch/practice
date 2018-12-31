@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="box" width="500"  height="500"></canvas>
+<script type="text/javascript">
+		var cvs	= document.getElementById('box');
+		var ctx = cvs.getContext('2d');
+		// var lg = ctx.createLinearGradient(100,100,300,200);
+		var lg = ctx.createRadialGradient(200,200,20,200,200,100);
+        lg.addColorStop(0.1,'red');
+        lg.addColorStop(0.5,'yellow');
+        lg.addColorStop(0.7,'pink');
+        lg.addColorStop(1,'blue');
+
+        // ctx.beginPath();
+        // ctx.rect(100,100,200,100);
+        // ctx.fillStyle = lg;
+        // ctx.fill();
+        // ctx.closePath();
+
+        ctx.beginPath();
+        ctx.arc(200,200,100,0,2*Math.PI,true);
+        ctx.fillStyle = lg;
+        ctx.fill();
+        ctx.closePath();
+
+</script>
+
+</body>
+</html>
