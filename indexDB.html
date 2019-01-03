@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+//			var request = window.indexedDB.open(user1, version)
+//			request.onsuccess = function(event) {
+//				db = request.result;
+//				console.log('数据库打开完成')
+//			};
+//			request.onupgradeneeded = function(event) {
+//				db = event.target.result;
+//				var objectStore = db.createObjectStore('person', {
+//					keyPath: 'id'
+//				});
+//			}
+var arr = [1,22,0,13,0,56]
+arr.reduce(function(a,b){
+	 b == 0 ? '' : b
+	 console.log(a,b)
+	 return b
+})
+console.log(arr)
+$.ajax({
+	type:"post",
+	url:"http://localhost:3000/users/login",
+	async:true,
+	data:{
+		name: 'songyubin',
+		pw: 123456
+	},
+	success:function(data){
+		console.log(data)
+	}
+});
+		</script>
+	</body>
+</html>

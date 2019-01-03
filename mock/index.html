@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--生成随机数据    拦截ajax请求-->
+		<script src="mock.js"></script>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			//get  模拟
+//			var data = Mock.mock('www://baidu.com/api',{
+//			    // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
+//			    'list|1-10': [{
+//			        // 属性 id 是一个自增数，起始值为 1，每次增 1 cname中文名字   name  英文名字
+//			        'id|+1': 1,
+//			        'name':'@cname',
+//			        'textttt':'@cparagraph',
+//			        'time':'@datetime()',
+//			        'num':'@natural(10,20)'
+//			    }]
+//			})
+
+//post  模拟
+			var data = Mock.mock({
+			    // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
+			    'list|1-10': [{
+			        // 属性 id 是一个自增数，起始值为 1，每次增 1 cname中文名字   name  英文名字
+			        'id|+1': 1,
+			        'name':'@cname',
+			        'textttt':'@cparagraph',
+			        'time':'@datetime()',
+			        'num':'@natural(10,20)'
+			    }]
+			})
+			Mock.mock('www://baidu.com/api1','post',function(req){
+				console.log(req.body)
+				return data
+			})
+			// 输出结果
+//			console.log(JSON.stringify(data, null, 4))
+			$.ajax({
+				type:"post",
+				url:"www://baidu.com/api1",
+				data:{
+					id:1
+				},
+				async:true,
+				dataType:'json',
+				success:function(data){
+					console.log(data.list)
+				}
+			});
+		</script>
+	</body>
+</html>
