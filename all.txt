@@ -1,0 +1,9 @@
+.fixed-table-body{overflow-x:'auto',overflow-y:'auto',height:'100%'}
+
+<router-view v-if="$route.meta.noNeedKeep"></router-view>
+    <keep-alive>
+      <router-view v-if="$route.meta.noNeedKeep==undefined"></router-view>
+    </keep-alive>
+    路由缓存
+    
+vux   UI框架
