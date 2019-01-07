@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<script>
+
+    var bw = (document.documentElement.clientWidth/7.5)+"px";
+    var htmlTag = document.getElementsByTagName("html")[0];
+    htmlTag.style.fontSize=bw;
+
+</script>
 <body>
 <canvas id="box" width="200"  height="200"></canvas>
 <script type="text/javascript">
+
 		var cvs	= document.getElementById('box');
 		var ctx = cvs.getContext('2d');
 
