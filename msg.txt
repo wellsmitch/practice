@@ -1,0 +1,25 @@
+react-native
+链接: https://pan.baidu.com/s/19NbqcWgJJl1UvP0ZyXxNww 密码: 4tfp
+
+
+NgInx反向代理
+链接: https://pan.baidu.com/s/16WoZh0NHUzZFiQKtGai0cw 密码: 62sh
+
+
+AngularJs
+链接: https://pan.baidu.com/s/1kMkQt6QFP6jiB3OYjH1Fkw 密码: 6y49
+
+
+D3.js大数据可视化
+链接: https://pan.baidu.com/s/1BzgE4CAx_bJekdBHRG_Imw 密码: rv9w
+
+
+企业课
+链接:https://pan.baidu.com/s/1yI41PX0fxtXmWs5KnC8upQ 密码:szgx
+
+http://127.0.0.1:8888/YCouldMannager/login/main
+E>Tomcat8.5.13
+
+亚新区域选择功能实现
+报警工单侧边栏引线实现
+电梯页面的响应式适配优化实现
