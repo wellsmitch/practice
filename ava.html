@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			img{
+				width: 6.4rem;
+				height: 6rem
+			}
+		</style>
+	</head>
+
+	<body>
+		<script>
+			var bw = (document.documentElement.clientWidth / 7.5) + "px";
+			var htmlTag = document.getElementsByTagName("html")[0];
+			htmlTag.style.fontSize = bw;
+			//132 114   284  196
+		</script>
+		<img id="box" src="33.jpeg" alt="" />
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			console.log(document.documentElement.clientWidth,$('img').width())
+			$('#box').click(function(e) {
+				console.log(e.offsetX, e.offsetY)
+				var f = function (a){
+					return	a * document.documentElement.clientWidth / 350
+				}
+				if(e.offsetX >= f(66) && e.offsetX <= f(141) && e.offsetY >= f(56) && e.offsetY <= f(97)){
+					console.log('休闲区')
+				}
+			})
+			//132  334   300 506
+			$('#box').click(function(e) {
+				console.log(e.offsetX, e.offsetY)
+				var f = function (a){
+					return	a * document.documentElement.clientWidth / 350
+				}
+				if(e.offsetX >= f(66) && e.offsetX <= f(150) && e.offsetY >= f(167) && e.offsetY <= f(253)){
+					console.log('附卧室')
+				}
+			})
+		</script>
+	</body>
+
+</html>
