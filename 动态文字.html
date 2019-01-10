@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Canvas 文本</title>
+    <style type="text/css">
+        .canvasDiv {
+            width: 490px;
+            height: 150px;
+            background-color: #999999;
+            display: inline-block;
+            margin-left: 20px;
+        }
+    </style>
+
+    <!-- JQuery CDN-->
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script type="module">
+
+        /**
+         * 绘制文本
+         */
+        let fillText1 = function () {
+            /**
+             * 获取画布,同时为画布设置宽高等于父容器的宽高
+             * 获取父容器尺寸这里用的是 JQuery 的方法获取，它获取的值是不带单位的
+             * @type {Element}
+             */
+            let canvas = document.getElementById("myCanvas1");
+            canvas.width = $(canvas).parent().width();
+            canvas.height = $(canvas).parent().height();
+
+            /**获取画布上下文环境*/
+
+            let ctx = canvas.getContext("2d");
+            /**
+             * fillStyle：设置或返回用于填充绘画的颜色、渐变或模式
+             * font：设置或返回画布上文本内容的当前字体属性，如下所示 字号 字体
+             * @type {CanvasGradient}
+             */
+            ctx.font = "30px Verdana";
+            ctx.fillStyle = "#fff";
+
+            /**
+             * 相对画布开始绘制文本的 X 坐标为 0，即从最左侧开始
+             * 相对画布开始绘制文本的 Y 坐标为画布高度的一般，即从中间开始
+             * 最后如果绘制的文本过长，又想它全部显示出来，则设置允许的最大文本宽度，以像素计
+             * 默认如果没有限制，则超过的文本内容，不会显示出来
+             */
+            ctx.fillText("2018 the Great Wall(万里长城)", 0, canvas.height / 2, canvas.width);
+
+            /**下面没有添加内容最大长度限制时，当文本长度超过画布宽度时，超过的部分不会再显示*/
+            /*ctx.fillText("2018 the Great Wall(万里长城)", 0, canvas.height / 2);*/
+
+        }
+
+        /**
+         * 绘制文本----动画版
+         * 只需要将一段文本，每次绘制的长度多一点就可以达到动画的效果
+         * canvas、ctx 不需要每次都重复获取，所以作为参数传入即可
+         * text：每次绘制的文本
+         */
+        let fillText2 = function (canvas, ctx, text) {
+            /** 这里通过为画布设置尺寸，则画布每次会先清除掉原来的像素，重新进行绘制*/
+            canvas.width = $(canvas).parent().width();
+            canvas.height = $(canvas).parent().height();
+
+            /**
+             * fillStyle：设置或返回用于填充绘画的颜色、渐变或模式
+             * font：设置或返回画布上文本内容的当前字体属性，如下所示 字号 字体
+             * @type {CanvasGradient}
+             */
+            ctx.font = "30px Verdana";
+            ctx.fillStyle = "#fff";
+
+            /**
+             * 相对画布开始绘制文本的 X 坐标为 0，即从最左侧开始
+             * 相对画布开始绘制文本的 Y 坐标为画布高度的一般，即从中间开始
+             * 最后如果绘制的文本过长，又想它全部显示出来，则设置允许的最大文本宽度，以像素计,这里就是画布的宽度
+             * 默认如果没有限制，则超过的文本内容，不会显示出来
+             */
+            ctx.fillText(text, 0, canvas.height / 2, canvas.width);
+        }
+
+        $(function () {
+            fillText1();
+
+            /**
+             * 获取画布,同时为画布设置宽高等于父容器的宽高
+             * 获取父容器尺寸这里用的是 JQuery 的方法获取，它获取的值是不带单位的
+             * @type {Element}
+             */
+            let canvas = document.getElementById("myCanvas2");
+            /**获取画布上下文环境*/
+            let ctx = canvas.getContext("2d");
+
+            let text = "2018 the Great Wall(万里长城)";
+            let index = 1;
+
+            /**
+             * 使用定时器，每隔 50 毫秒就绘制一次文本
+             * 每次绘制的文本都多一个字符
+             */
+            setInterval(function () {
+                if (index <= text.length) {
+                    fillText2(canvas, ctx, text.substring(0, index++));
+                } else {
+                    index = 1;
+                }
+            }, 50);
+
+        });
+    </script>
+
+</head>
+<body>
+<div class="canvasDiv">
+    <canvas id="myCanvas1">浏览器不支持 Canvas</canvas>
+</div>
+
+<div class="canvasDiv">
+    <canvas id="myCanvas2">浏览器不支持 Canvas</canvas>
+</div>
+
+</body>
+</html>
