@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="75008c38-6efb-4cdf-9d6d-4df4838985d7" name="Default Changelist" comment="lou  kong wen zi">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svg/svg.html" beforeDir="false" afterPath="$PROJECT_DIR$/svg/svg.html" afterDir="false" />
-    </list>
+    <list default="true" id="75008c38-6efb-4cdf-9d6d-4df4838985d7" name="Default Changelist" comment="lou  kong wen zi" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -166,7 +163,7 @@
       <path value="$PROJECT_DIR$/webpackDemo/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="55" />
     <option name="y" value="70" />
     <option name="width" value="1245" />
@@ -241,7 +238,7 @@
       <workItem from="1546594995862" duration="1811000" />
       <workItem from="1546907742321" duration="7596000" />
       <workItem from="1547092241798" duration="6535000" />
-      <workItem from="1547166595858" duration="3151000" />
+      <workItem from="1547166595858" duration="3639000" />
     </task>
     <task id="LOCAL-00001" summary="jquery">
       <created>1545870879708</created>
@@ -310,10 +307,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40377000" />
+    <option name="totallyTimeSpent" value="40865000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="55" y="70" width="1245" height="883" extended-state="0" />
+    <frame x="55" y="70" width="1245" height="883" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14498757" />
