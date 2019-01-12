@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0}
+    svg{
+        border: 1px seagreen solid;
+        position: relative;
+    }
+
+    </style>
+</head>
+<body>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<!--<button id="btn">anniu</button>-->
+    <svg id="box" width='500' height='500' >
+
+    </svg>
+    <script>
+
+    $('#box').mousedown(function (e) {
+        if(e.button == 0){
+            var p1 = new Date();
+            p1 = document.createElementNS("http://www.w3.org/2000/svg",'path');
+            $(this).append(p1);
+            $(p1).attr('fill','red');
+            $(p1).attr('stroke','#000');
+            $(p1).attr('stroke-width','1px');
+            box.onmousemove = function(ev){
+                $(p1).attr('d','M'+e.offsetX+','+ e.offsetY+ ' ' + ev.offsetX+','+e.offsetY+' ' +  ev.offsetX+','+ev.offsetY + ' ' + e.offsetX+','+ ev.offsetY +' '+e.offsetX+','+ e.offsetY);
+            };
+
+            $('#box').mouseup(function () {
+                tt();
+                box.onmousemove = null;
+            })
+        }
+    });
+    function tt(){
+        $('#box').children().mousedown(function (en) {
+            console.log(en);
+            en.stopPropagation();
+            en.cancelBubble=true;
+        })
+    }
+
+
+    </script>
+</body>
+</html>

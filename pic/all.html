@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        svg {
+            border: 1px seagreen solid;
+            position: relative;
+        }
+
+    </style>
+</head>
+<body>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<!--<button id="btn">anniu</button>-->
+<svg id="box" width='500' height='500'>
+    <text x="100" y="100" style="border:1px solid cornflowerblue">ferg</text>
+</svg>
+<script>
+    var mark = 2;
+    $('#box').mousedown(function (e) {
+        console.log(e);
+        /////////////////////////
+//         $('#box').mouseup(function () {
+//
+//             var p2_line1 = [];
+//             var p2_line1_0 = [];
+//             var a, b, o;
+//             var box = document.querySelector('#box');
+//             var clickOdd = 0;
+//             var p2 = new Date();
+//
+//             if(p2 != '' && clickOdd == 0){
+//                 clickOdd++;
+//                 p2 = document.createElementNS("http://www.w3.org/2000/svg", 'polyline');
+//             }
+//             if (e.button == 0 && p2 != '') {
+//                 $(this).append(p2);
+//                 $(p2).attr('fill', 'none');
+//                 $(p2).attr('stroke', '#000');
+//                 $(p2).attr('stroke-width', '1px');
+//                 p2_line1.push(e.offsetX + ',' + e.offsetY);
+//                 p2_line1_0 = p2_line1.join(' ');
+//                 $(p2).attr('points', p2_line1_0);
+//             }else if (e.button == 2 && p2 != '') {
+//                 clickOdd = 0;
+//                 sel = 1;
+//                 p2 = new Date();
+//                 p2_line1 =[];
+//                 document.onmousemove = null;
+//                 a = '';
+//                 o = '';
+//                 b = '';
+//                 $(p2).attr('points', p2_line1_0);
+//             }
+// //         $(p1).mouseenter(function () {
+// //             console.log('进来了')
+// //         });
+//
+//                 box.onmousemove = function (ev) {
+//                     a = ev.offsetX;
+//                     o = ',';
+//                     b = ev.offsetY;
+//                     $(p2).attr('points', p2_line1_0 + ' ' + a + o + b);
+//                 };
+//
+//         });
+
+
+        ////////////////////////////////
+
+
+        if (e.button == 0 && mark == 2) {
+            //画矩形
+            var p1 = new Date();
+            p1 = document.createElementNS("http://www.w3.org/2000/svg", 'path');
+            $(this).append(p1);
+            $(p1).attr('fill', 'none');
+            $(p1).attr('stroke', '#000');
+            $(p1).attr('stroke-width', '1px');
+            box.onmousemove = function (ev) {
+                $(p1).attr('d', 'M' + e.offsetX + ',' + e.offsetY + ' ' + ev.offsetX + ',' + e.offsetY + ' ' + ev.offsetX + ',' + ev.offsetY + ' ' + e.offsetX + ',' + ev.offsetY + ' ' + e.offsetX + ',' + e.offsetY);
+            };
+            $('#box').mouseup(function () {
+                box.onmousemove = null;
+
+            })
+        }
+
+    });
+    //划线
+
+    // $('#box').mouseup(function (e) {
+    document.querySelector('#box').onmouseup = function () {
+        if (mark == 1) {
+
+            if (p2 != '' && clickOdd == 0) {
+                clickOdd++;
+                p2 = document.createElementNS("http://www.w3.org/2000/svg", 'polygon');
+            }
+            if (e.button == 0 && p2 != '') {
+                $(this).append(p2);
+                $(p2).attr('fill', 'none');
+                $(p2).attr('stroke', '#000');
+                $(p2).attr('stroke-width', '1px');
+                p2_line1.push(e.offsetX + ',' + e.offsetY);
+                p2_line1_0 = p2_line1.join(' ');
+                $(p2).attr('points', p2_line1_0);
+            } else if (e.button == 2 && p2 != '') {
+                clickOdd = 0;
+                mark = 2;
+                p2 = new Date();
+                p2_line1 = [];
+                document.onmousemove = null;
+                a = '';
+                o = '';
+                b = '';
+                $(p2).attr('points', p2_line1_0);
+            }
+//         $(p1).mouseenter(function () {
+//             console.log('进来了')
+//         });
+            box.onmousemove = function (ev) {
+                a = ev.offsetX;
+                o = ',';
+                b = ev.offsetY;
+                $(p2).attr('points', p2_line1_0 + ' ' + a + o + b);
+            };
+
+        }
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        svg {
+            border: 1px seagreen solid;
+            position: relative;
+        }
+ul li:hover{
+    color:blue
+}
+    </style>
+</head>
+<body>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<!--<button id="btn">anniu</button>-->
+<div title="453">caergraegerg</div>
+<ul id="Ul" style="display: none;position: absolute;z-index: 10">
+    <li>卧室</li>
+    <li>卧室 </li>
+    <li>客厅</li>
+    <li>洗手间</li>
+    <li>阳台</li>
+    <li>取消</li>
+
+</ul>
+<div id="boxContainer" style="position: relative;">
+    <svg id="box" width='500' height='500'>
+        <!--<polyline points='220,10 300,210 170,250 123,234' fill='none' stroke='#000' stroke-width='1'></polyline>-->
+        <text x= '100' y= '100' fill="red" text-anchor="start" dominant-baseline="hanging" >I study SVG</text>
+
+    </svg>
+</div>
+<button id="moreLine">多边形</button>
+<button id="rect">正方形</button>
+
+<script>
+
+    var p2_line1 = [];
+    var p2_line1_0 = [];
+    var a, b, o;
+    var box = document.querySelector('#box');
+    var clickOdd = 0;//用于限制多边形画点
+    var p2 = new Date();
+
+   // 添加多边形文本
+//    function panduan(){
+// //        $('#box').children().mouseup(function (e) {
+// // console.log(e)
+//            if($(this).attr('points') && e.button == 2){
+//                var textLastArr = [];
+//                var textArr = $(this).attr('points').split(' ');
+//                textArr.forEach(function (ele,i) {
+//                    textLastArr.push(ele.split(','))
+//                });
+//                console.log(textLastArr);
+//                var x_per = 0;
+//                var y_per = 0;
+//                textLastArr.forEach(function (ele,i) {
+//                    x_per += ele[0] / textLastArr.length;
+//                    y_per += ele[0] / textLastArr.length;
+//                });
+//                var pText = document.createElementNS("http://www.w3.org/2000/svg", 'text');
+//                // var pText=svgDocument.createElement("text");
+//                // pText.appendChild(svgDocument.createTextNode("你好"));//文本内容"你好"
+//                // pText.setAttribute("x",100);
+//                // pText.setAttribute("y",100);
+//                // pText.style.setProperty("font-family","simsun");//字体为宋体
+//                // pText.style.setProperty("font-size","15");
+//                // document.querySelector('#box').appendChild(pText);
+//
+//                $(pText).attr('fill', 'red');
+//                $(pText).attr('x', x_per);
+//                $(pText).attr('y', y_per);
+//                $(pText).attr('text-anchor', 'start');
+//                $(pText).attr('dominant-baseline', 'hanging');
+//                $('#box').append(pText);//文本内容"你好"
+//
+//            }
+//            //  //阻止冒泡
+//            // e.stopPropagation();
+//            // e.cancelBubble=true
+//        // })
+//     }
+
+
+   function lineHua(lineBolean){
+       if(lineBolean){return}
+       $('#box').mouseup(function (e) {
+           // console.log(66666);
+           if(p2 != '' && clickOdd == 0){
+               console.log(123546);
+               clickOdd++;
+               p2 = document.createElementNS("http://www.w3.org/2000/svg", 'polygon');
+           }
+           if (e.button == 0 && p2 != '') {
+               $(this).append(p2);
+               $(p2).attr('fill', 'none');
+               $(p2).attr('stroke', '#000');
+               $(p2).attr('stroke-width', '1px');
+               $(p2).attr('fill', 'rgba(197,255,171,.2)');
+               $(p2).attr('aa', 'woshi');
+               p2_line1.push(e.offsetX + ',' + e.offsetY);
+               p2_line1_0 = p2_line1.join(' ');
+               $(p2).attr('points', p2_line1_0);
+           }else if (e.button == 2 && p2 != '') {
+               $(p2).text($(p2).attr('aa'));
+               $(p2).attr('data-tips','fsergfr');
+               clickOdd = 0;
+               p2 = new Date();
+               p2_line1 =[];
+               a = '';
+               o = '';
+               b = '';
+               $(p2).attr('points', p2_line1_0);
+               document.onmousemove = null;
+               // panduan();
+               // stopBubble();
+               $('#box').children().mouseup(function (ea) {
+                   ea.stopPropagation();
+                   ea.cancelBubble=true
+               });
+
+               pickMenu(e.target);
+               hoverDom(e.target);
+               markup = 1
+           }
+//         $(p1).mouseenter(function () {
+//             console.log('进来了')
+//         });
+           box.onmousemove = function (ev) {
+               a = ev.offsetX;
+               o = ',';
+               b = ev.offsetY;
+               $(p2).attr('points', p2_line1_0 + ' ' + a + o + b);
+           };
+       });
+   }
+
+   var markup = 0;
+   // function stopBubble() {
+
+   // }
+
+    // $('#box').mouseup(function () {
+    //     console.log(1111);
+    //     document.onmousemove = null;
+    // })
+    function hoverDom() {
+        $('#box').children().hover(function (e) {
+            var that = this;
+            var domHover = document.createElement('div');
+            $(domHover).attr('class','hoverMark');
+            $(domHover).css({
+                'zIndex':'20',
+                'position':'absolute',
+                'left':e.offsetX,
+                'top':e.offsetY,
+            });
+            $(domHover).text($(that).attr('markText'));
+            $('#boxContainer').append($(domHover));
+            $('#box').children().mousemove(function (evm) {
+                $(domHover).css({
+                    'zIndex':'20',
+                    'position':'absolute',
+                    'left':evm.offsetX+5,
+                    'top':evm.offsetY+5,
+                });
+            })
+
+        },function () {
+            $('.hoverMark').remove()
+        });
+
+    }
+
+    //创建自定义菜单
+    function pickMenu(self) {
+        console.log('fn');
+        // $('#box').children().oncontextmenu = function (evt) {
+        for(var i = 0; i < $('#box').children().length; i++){
+
+            $('#box').children()[i].oncontextmenu = function (evt) {
+                var that = this;
+
+
+                var e = evt || window.event;
+                if (window.event) {
+                    e.returnValue = false;
+                } else if (e == evt) {
+                    box.style.background = 'green';
+                    e.preventDefault();
+                }
+                Ul.style.left = e.offsetX + 'px';
+                Ul.style.top = e.offsetY + 'px';
+                Ul.style.display = 'block';
+
+
+                Ul.onmouseup = function (eb) {
+                    Ul.style.display = 'none';
+                    eb.stopPropagation();
+                    eb.cancelBubble=true
+                };
+                $('#Ul li').mouseup(function (eve) {
+                    if($(this).index() != 5 && $(that).attr('markText') == undefined){
+                        console.log(that,88888);
+                        $(that).attr('markText',$(this).text());
+                        Ul.style.display = 'none';
+                    }else{
+                        Ul.style.display = 'none';
+                    }
+                    eve.stopPropagation();
+                    eve.cancelBubble=true
+                });
+                document.onmouseup = function () {
+                    Ul.style.display = 'none'//点击时消失
+                }
+            }
+        }
+
+    }
+
+////////////////////矩形////////////////////////
+    function rectFn(rectBolean){
+        if(rectBolean){return}
+        $('#box').mousedown(function (e) {
+            if(e.button == 0){
+                var p1 = new Date();
+                p1 = document.createElementNS("http://www.w3.org/2000/svg",'path');
+                $(this).append(p1);
+                $(p1).attr('fill','rgba(197,255,171,.2)');
+                $(p1).attr('stroke','#000');
+                $(p1).attr('stroke-width','1px');
+                box.onmousemove = function(ev){
+                    $(p1).attr('d','M'+e.offsetX+','+ e.offsetY+ ' ' + ev.offsetX+','+e.offsetY+' ' +  ev.offsetX+','+ev.offsetY + ' ' + e.offsetX+','+ ev.offsetY +' '+e.offsetX+','+ e.offsetY);
+                };
+                $('#box').mouseup(function () {
+                    $('#box').children().mousedown(function (en) {
+                        pickMenu(en.target);
+                        hoverDom(a);
+                        en.stopPropagation();
+                        en.cancelBubble=true;
+                    });
+                    box.onmousemove = null;
+                })
+            }
+
+        })
+    }
+
+// $('#moreLine').click(function () {
+//     rectFn(true);
+//     lineHua(false)
+// });
+
+// $('#rect').click(function () {
+    rectFn(false);
+    lineHua(true)
+// })
+</script>
+</body>
+</html>
