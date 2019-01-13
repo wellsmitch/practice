@@ -1,0 +1,36 @@
+body,ul,li,dl,dt,dd,p,ol,h1,h2,h3,h4,h5,h6,form,img,table,fieldset,legend{margin:0; padding:0;}
+ul,li,ol{list-style:none;}
+img,fieldset{border:0; }
+img{display:block;}
+a{text-decoration:none; color:#333;}
+h1,h2,h3,h4,h5,h6{font-weight:100;}
+body{ font-family:"微软雅黑";}
+input,a{outline:none;}
+
+form{margin:50px auto;
+	width: 534px;height: 520px;background: #f0e8db;
+	padding: 36px 0 0 94px;
+	border: 13px solid fuchsia;
+	border-image:url(../img/border_.gif) 13 13 12 14 round;
+}
+/*name*/
+
+#name legend{font: 22px/38px "微软雅黑";color: #4d4b60;}
+.name_text{
+	width: 448px;height: 38px;background: #fff;
+	border:2px solid #d6d2c9;
+}
+#mation legend{width:448px;height: auto;
+		font: 22px/38px "微软雅黑";color: #4d4b60;
+}
+.message{height: 105px;}
+.sub{margin-left: 82px;margin-top: 20px;
+	background: #f8faf5;
+	font: 22px/36px "微软雅黑";color: #3a3c53;
+	width: 90px;height: 36px;border: none;
+	
+	}
+.reset{margin-right: 82px;}
+
+
+
