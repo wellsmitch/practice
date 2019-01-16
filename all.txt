@@ -1,4 +1,4 @@
-.fixed-table-body{overflow-x:'auto',overflow-y:'auto',height:'100%'}
+﻿.fixed-table-body{overflow-x:'auto',overflow-y:'auto',height:'100%'}
 
 <router-view v-if="$route.meta.noNeedKeep"></router-view>
     <keep-alive>
@@ -7,3 +7,5 @@
     路由缓存
     
 vux   UI框架
+
+touch.js https://blog.csdn.net/github_37360787/article/details/54837798

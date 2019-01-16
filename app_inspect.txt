@@ -1,0 +1,2 @@
+chrome://inspect/#devices   首次调试需要进行翻墙
+或者使用hbuilder的inspect   此种方式不需要翻墙
