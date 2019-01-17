@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn1">按钮1</button>
+<button id="btn2">按钮2</button>
+<script type="text/javascript">
+//自加载
+// $(document).ready(function() {
+// });
+
+
+    var btn1 = document.getElementById('btn1');
+    var btn2 = document.getElementById('btn2');
+		btn1.onclick = function () {
+            var btn1_ = new Event('click');
+            btn2.dispatchEvent(btn1_)
+        };
+        btn2.onclick = function () {
+            alert('ok')
+        }
+</script>
+
+</body>
+</html>
