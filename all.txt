@@ -5,7 +5,11 @@
       <router-view v-if="$route.meta.noNeedKeep==undefined"></router-view>
     </keep-alive>
     路由缓存
-    
+
 vux   UI框架
 
 touch.js https://blog.csdn.net/github_37360787/article/details/54837798
+
+//web技术文档
+//https://developer.mozilla.org/zh-CN/docs/Web
+
