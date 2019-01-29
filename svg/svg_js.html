@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="drawing"></div>
+<script type="text/javascript" src="svg.js"></script>
+<script type="text/javascript">
+    var draw = SVG('drawing').size(500, 500);
+    var path = draw.path('M0 0 A50 50 0 0 1 50 50 A50 50 0 0 0 100 100')
+
+    path.fill('none').move(20, 20).stroke({ width: 1, color: '#ccc' })
+
+    path.marker('start', 10, 10, function(add) {
+        add.element('title').words('This is a title.')
+    })
+
+</script>
+
+</body>
+</html>

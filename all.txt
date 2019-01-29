@@ -1,15 +1,3 @@
-ï»¿.fixed-table-body{overflow-x:'auto',overflow-y:'auto',height:'100%'}
-
-<router-view v-if="$route.meta.noNeedKeep"></router-view>
-    <keep-alive>
-      <router-view v-if="$route.meta.noNeedKeep==undefined"></router-view>
-    </keep-alive>
-    è·¯ç”±ç¼“å­˜
-
-vux   UIæ¡†æž¶
-
-touch.js https://blog.csdn.net/github_37360787/article/details/54837798
-
-//webæŠ€æœ¯æ–‡æ¡£
-//https://developer.mozilla.org/zh-CN/docs/Web
-
+node-sass°²×°Ê§°Ü½â¾ö·½°¸
+npm install -g mirror-config-china --registry=http://registry.npm.taobao.org
+npm install node-sass
