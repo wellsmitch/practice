@@ -1,0 +1,38 @@
+VSCode实现用Ctrl+滚轮实现代码的缩放：配置文件如下：
+
+在文件-->首选项-->设置-->用户设置中添加如下代码：
+
+"editor.mouseWheelZoom": true,
+
+vscode快速新建vue模板;
+文件 ==> 首选项 ==> 用户代码片段 ==> 输入 vue，选择 vue.json ==> 编辑vue.json文件如下：
+
+{    
+    "Print to console": {
+        "prefix": "vue",
+        "body": [
+            "<template>",
+            "   <div class=\"\">\n",
+            "   </div>",
+            "</template>\n",
+            "<script type=\"text/ecmascript-6\">",
+            "export default {",
+            "   name: '',",
+            "   data() {",
+            "       return {}",
+            "   },",
+            "  components: {}",
+            "}",
+            "</script>\n",
+            "<style scoped lang=\"stylus\">",
+            "</style>",
+            "$2"
+        ],
+        "description": "Log output to console"
+    }
+ }
+--------------------- 
+作者：猫老板的豆 
+来源：CSDN 
+原文：https://blog.csdn.net/x550392236/article/details/80771410 
+版权声明：本文为博主原创文章，转载请附上博文链接！
