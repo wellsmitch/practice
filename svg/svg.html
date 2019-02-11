@@ -16,7 +16,7 @@
 
 	</script>
 		<svg id="ctr" width='500' height='500px'>
-			<text x="0" y="0" fill="red" text-anchor="middle" dominant-baseline="hanging" >I study SVG</text>
+			<!--<text x="0" y="0" fill="red" text-anchor="middle" dominant-baseline="hanging" >I study SVG</text>-->
 			<!--rectangle-->
 			<!--<rect width='100' height='100' fill='#f44336' stroke='#8bc34a' stroke-width='1' x='5' y='5'></rect>-->
 			<!--circle ellipse line-->
@@ -37,10 +37,10 @@
 			<!--<path d='M100,100 300,150 300,300 100,100' fill='none' stroke='#000' stroke-width='1'></path>-->
 			<!--相对-->
 			<!--<path d='m100,100 l300,150 l300,300 q200,400 100,200' fill='none' stroke='yellow' stroke-width='10'></path>-->
-			<!--<text fill='red' font-size='30' x='50' y='50'>
-				hello world
-				<tspan x='200' y = '200'>second text</tspan>
-			</text>-->
+			<!--<text fill='red' font-size='30' x='50' y='50'>-->
+				<!--hello world-->
+				<!--<tspan x='200' y = '200'>second text</tspan>-->
+			<!--</text>-->
 
 			<!--<defs>-->
 				<!--<g id='rectangle'>-->
@@ -56,12 +56,12 @@
 			<!--<use xlink:href='#rectangle'></use>-->
 
 			<!--绘制文本-->
-			<!--<defs>-->
-				<!--<path id='custom' d='M0,0 L300,300'></path>-->
-			<!--</defs>-->
-			<!--<text x='100' y='100' stoke='#000' font-size='30'>-->
-				<!--<textpath xlink:href='#custom'>hello world</textpath>-->
-			<!--</text>-->
+			<defs>
+				<path id='custom' d='M0,0 L300,300'></path>
+			</defs>
+			<text x='100' y='100' stoke='#000' font-size='30'>
+				<textpath xlink:href='#custom'>hello world</textpath>
+			</text>
 			<!--曲线文字-->
 			<!--<defs>-->
 				<!--<path id='custom' d='M0,0 Q0,100 150,100'></path>-->
@@ -96,5 +96,6 @@
                 alert('已划入11111')
             };
 	</script>-->
+
 	</body>
 </html>
