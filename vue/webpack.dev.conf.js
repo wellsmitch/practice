@@ -71,8 +71,8 @@ module.exports = merge(baseWebpackConfig, {
 //(1)html-webpack-plugin插件是用来生成html文件的，有很灵活的配置项，下面是基本的一些用法
 //plugins: [
 //  new HtmlWebpackPlugin(), // Generates default index.html 
-//  new HtmlWebpackPlugin({  // Also generate a test.html 
-//    filename: 'test.html', // 生成的文件的名称
+//  new HtmlWebpackPlugin({  // Also generate a detail.html
+//    filename: 'detail.html', // 生成的文件的名称
 //    title: 'Custom template', // 文件的标题
 //    template: 'my-index.ejs' //可以指定模块html文件
 //  })
