@@ -8,14 +8,28 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
     <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
-
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <script type="text/javascript" src="quickQuery-packer.js"></script>
     <!--<link rel="stylesheet" type="text/css" href="quickQuery.css">-->
+<script type="text/javascript">
+    'use strict';
 
+	function f() {
+        console.log(a)
+    }
+
+    f();
+    var a = 1;
+    /*
+    *
+    * 调用函数之后再引入变量  否则可能会出现 全局变量污染 函数内的私有特殊变量；
+    * */
+</script>
     <script type="text/javascript">
 
+
         var arriveCityArray = new Array("","","");
-        arriveCityArray[0] = new Array("0", "丽江", "LIJIANG");
+        arriveCityArray[0] = new Array("0", "丽江", "LIJIANG",);
         arriveCityArray[1] = new Array("1", "青岛", "QINGDAO");
         arriveCityArray[2] = new Array("2", "临沧", "LINCANG");
         arriveCityArray[3] = new Array("3", "林西", "LINXI");
@@ -137,15 +151,23 @@
         // arriveCityArray[119] = new Array("119", "因斯布鲁克", "YINSIBULUKE");
         // arriveCityArray[120] = new Array("120", "克拉根福特", "KELAGENFUTE");
         window.onload = function(){
-            console.log(arriveCityArray);
-            $quickQuery(arriveCityArray);
+            //模式一
+            $quickQuery(arriveCityArray,{},function (a,b) {
+                console.log(a,b);
+                //此回调函数是点击后进行的回调
+                console.log($('#quickQuery_content_box li'));
+            });
+            //模式二
+            // $quickQuery( { "demo": arriveCityArray, "demo1": arriveCityArray }, {'isPage': true} );
+
         }
     </script>
 </head>
  
   <body>
     <input class="quickQuery$focus" style="border: 3px solid #ccc;" />
-    <input class="TTT quickQuery$focus" id="q2" value="北京" />
+    <input id="demo" value="北京" />
+    <input id="demo1" value="上海" />
    
     <input class="quickQuery$focus ttt" id="qq" value="guang" />
     <input class="NNN quickQuery$focus ttt" id="qqq" />
@@ -154,4 +176,5 @@
     <div class="quickQuery$focus"></div>
     <input class="NNNquickQuery$focus" type="button" value="按钮"/>
   </body>
+
 </html>

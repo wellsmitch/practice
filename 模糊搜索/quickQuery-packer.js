@@ -17,11 +17,11 @@
     };
     var n = document.all ? true : false;
     var o = {
-        'isSubVal': false,
-        'isPage': true,
-        'subSign': "-",
-        'buttonNum': 5,
-        'viewContentNum': 15
+        'isSubVal' : true, // 是否有附属值 默认为没有附属值
+        'isPage'	: true,	// 是否启用分页功能 默认为启动分页
+        'subSign'	: "-",	// 当有附属值的时候, 原值和附属值之间的间隔符号 默认符号为 -
+        'buttonNum' : 5,	// 分页按钮数 默认按钮数为5个
+        'viewContentNum' : 15	// 每页最大显示内容数 默认可视内容数为15 条
     };
     var p = {
         'subval': 0,
@@ -110,6 +110,7 @@
                         r = 1,
                         s = o['buttonNum'],
                         t = 1;
+
                         callDifferentModel(f, a, e, i);
                     }
                 };
@@ -328,7 +329,8 @@
                 }
                 c += '<li id="queryLi' + rl + '" lang="' + h + ',' + f + '"><a href=javascript:$query_getClickValue("' + h + ',' + f + '");>' + g + '</a></li>';
             } else {
-                c += '<li> </li>';
+                // 确保出线多余的li标签
+                // c += '<li> </li>';
             }
         } c += '</ul>';
         $(l.contentBox).innerHTML = c;

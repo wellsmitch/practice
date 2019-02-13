@@ -10,9 +10,15 @@
     <script>
         var a = {
             y:'dfwefwef'
-        }
+        };
      console.log(Object.prototype.toString.call(a) === "[object object]" ? a : a.y);
-    
+    function f() {
+        // 'use strict';
+        console.log(aa);
+        var aa = 1
+    }
+
+    f();
     </script>
 </body>
 </html>

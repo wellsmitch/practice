@@ -1,0 +1,158 @@
+/*
+数字，1, 2, 13, 10px
+               字符串，有引号字符串与无引号字符串，"foo", 'bar', baz
+                                               颜色，blue, #04a3f9, rgba(255,0,0,0.5)
+布尔型，true, false
+空值，null
+数组 (list)，用空格或逗号作分隔符，1.5em 1em 0 2em, Helvetica, Arial, sans-serif
+maps, 相当于 JavaScript 的 object，(key1: value1, key2: value2)
+*/
+
+
+/*sass 中的引入其它的scss文件*/
+@import "base";
+
+/*定义变量*/
+$color: #8950ff;
+$width:5px;
+$type: matador;
+
+h1{
+  color: $color;
+}
+/*sass 中的if判断语句*/
+p {
+  @if $type == ocean {
+    color: blue;
+  } @else if $type == matador {
+    color: red;
+  } @else {
+    color: black;
+  }
+}
+/*需先定义  再进行引用*/
+@mixin rounded-corners {
+  border: $width salmon solid;
+}
+
+@mixin border($width) {
+  -moz-border-radius: $width;
+  -webkit-border-radius: $width;
+  border-radius: $width;
+}
+
+.notice {
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  border: 2px solid #00aa00;
+  @include rounded-corners;
+  &:hover{color: #e4ff86}
+}
+
+/*for 循环*/
+@for $i from 1 through 3 {
+  .item-#{$i} { width: 2em * $i; }
+}
+
+/*sass 继承*/
+
+.error {
+  border: 1px red;
+  background-color: #fdd;
+}
+
+.seriousError {
+  @extend .error;
+  border: 1px #ff1ffb;
+  border-width: 3px;
+}
+
+/*@function*/
+$grid-width: 40px;
+$gutter-width: 10px;
+
+@function grid-width($n)
+
+{
+  @return $n * $grid-width + ($n - 1) * $gutter-width;
+}
+/*
+#sidebar {
+  width: 240px; }
+  */
+#sidebar { width: grid-width(5); }
+
+
+/*为便于书写，@mixin 可以用 = 表示，而 @include 可以用 + 表示，所以上面的例子可以写成：*/
+
+@mixin apply-to-ie6-only {
+  * html {
+    @content;
+  }
+}
+@include apply-to-ie6-only {
+  #logo {
+    background: khaki;
+  }
+}
+
+/* @each*/
+
+
+@each $animal in puma, sea-slug, egret, salamander {
+  .#{$animal}-ibcon {
+    background-image: url('/images/#{$animal}.png');
+  }
+}
+
+
+@each $animal, $color, $cursor in (puma, black, default),
+        (sea-slug, blue, pointer),
+        (egret, white, move) {
+  .#{$animal}-icon {
+    background-image: url('/images/#{$animal}.png');
+    border: 2px solid $color;
+    cursor: $cursor;
+  }
+}
+
+
+@each $header, $size in (h1: 2em, h2: 1.5em, h3: 1.2em) {
+  #{$header} {
+    font-size: $size;
+  }
+}
+
+
+@mixin does-parent-exist {
+  @if & {
+    &:hover {
+      color: #33bcff;
+    }
+  } @else {
+    a {
+      color: red;
+    }
+  }
+}
+
+.foo .bar {
+  $selector: &;
+  @include does-parent-exist
+}
+
+
+
+/*
+=apply-to-ie6-only
+ * html
+@content
+
++apply-to-ie6-only
+#logo
+background-image: url(/logo.gif)
+*/
+
+
+
