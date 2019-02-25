@@ -2,9 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<input type="text" id="model"><br/>
+<div id="modelText"></div>
+<script type="text/javascript">
+    var model = document.querySelector("#model");
+    var modelText = document.querySelector("#modelText");
+    var defaultName = "defaultName";
+    var userInfo = {};
+    // model.value = defaultName;
+    Object.defineProperty(userInfo, "name", {
+        get: function () {
+            return '';
+        },
+        set: function (value) {
+            // defaultName = value;
+            // model.value = value;
+            // console.log("-----value");
+            // console.log(value);
+            modelText.textContent = value;
+        }
+    });
+
+    // userInfo.name = "new value";
+    var isEnd = true;
+
+    model.addEventListener("keyup", function () {
+        if (isEnd) {
+            userInfo.name = this.value;
+        }
+    }, false);
+    //加入监听中文输入事件
+    model.addEventListener("compositionstart", function () {
+        console.log("开始输入中文");
+        isEnd = false;
+    });
+    model.addEventListener("compositionend", function () {
+        isEnd = true;
+        console.log("结束输入中文");
+    })
+</script>
+
 </body>
 </html>
