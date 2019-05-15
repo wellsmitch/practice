@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<body>
+<!--<form enctype="multipart/form-data" action="http://192.168.8.245:3000/users/uploader" method="post">-->
+    <!--<input type="file" name="avatar" id="fileself" onchange="tap1()">-->
+    <!--<input type="submit" id="btn" value="send">-->
+<!--</form>-->
+<form id="fo">
+    <input type="text"name="username" id="username">
+    <input type="text" name="pw" id="pw">
+    <input type="file"  id="fi" multiple="multiple">
+</form>
+<input type="button" id="button" value="tttt">
+
+<script type="text/javascript">
+    var files1 = null;
+
+    function tap1() {
+        console.log(9999)
+        files1 = document.querySelector('#fileself').files[0]
+    }
+  // $('#btn').click(function () {
+  //     //console.log(document.querySelector('#fileself').files[0]);
+  //     var file = new FormData();
+  //     console.log(file);
+  //     file.append('avatar',files1);
+  //     console.log(file);
+  //     $.ajax({
+  //         type:'post',
+  //         url: 'http://192.168.8.184:3000/users/uploader',
+  //         data:file,
+  //         processData: false,  // 不处理数据
+  //         success:function (data) {
+  //             console.log(data)
+  //         }
+  //     })
+  // })
+    $('#button').click(function () {
+        var te = new FormData();
+        // var te =  new FormData(document.querySelector('#fo'));
+        console.log(document.querySelector('#fi').files);
+        for (var i = 0;i<document.querySelector('#fi').files.length;i++) {
+            te.append('avatar',document.querySelector('#fi').files[i]);
+        }
+
+        te.append('name',$('#username').val());
+        te.append('pw',$('#pw').val());
+
+debugger
+        $.ajax({
+            type:"post",
+            url:"http://192.168.8.245:3000/users/login",
+            // headers:{'Content-Type': "multipart/form-data;charset=utf-8"},
+            data:te,
+            //     {
+            // 	    name:123456,
+            //     pw:123456
+            // },
+            processData: false,  // 不处理数据
+            contentType: false ,  // 不设置内容类型
+            /*\
+            *
+            *  contentType: false,
+                        processData: false,
+                        cache: false,
+                        dataType: 'json',*/
+            async:true,
+            success:function(data) {
+                console.log(data);
+            }
+        });
+    });
+
+
+	// $.ajax({
+	// 		type:"get",
+	// 		url:"http://jx.xuzhixiang.top/ap/api/productlist.php",
+	// 		async:true,
+	// 		success:function(data) {
+    //             console.log(data);
+    //         }
+	// 	});
+    // let tol = new FormData();
+    // tol.append('mobile', 18239081715);
+    // tol.append('event','register');
+// $.ajax({
+// 		type:"post",
+// 		url:"http://zhuang.tainongnongzi.com/api/sms/send",
+//     data:tol.serialize(),
+//     processData: false,
+//     async:true,
+// 		success:function(data) {
+//             console.log(data);
+//         }
+// 	});
+// $.ajax({
+//     type:"post",
+//     url:"http://zhuang.tainongnongzi.com/api/sms/send",
+//     data:{
+//         mobile:'18239081715',
+//         event:'register'
+//     },
+//     processData: true,
+//     async:true,
+//     success:function(data) {
+//         console.log(data);
+//     }
+// 	});
+
+</script>
+</body>
+</html>

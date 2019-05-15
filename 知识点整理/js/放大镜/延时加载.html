@@ -55,6 +55,7 @@ window.onload=window.onscroll=function(){
 	var div1=document.getElementById('div1');
 	var imgs=div1.getElementsByTagName('img');
 	var scl=document.body.scrollTop||document.documentElement.scrollTop;
+	console.log(scl)
 	var winh=document.documentElement.clientHeight;
 	for (var i = 0; i < imgs.length; i++) {
 		if (offsetl(imgs[i]).top<=winh+scl) {

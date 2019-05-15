@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+
+
+/* JavaScript imports */
+    import { BrowserModule } from '@angular/platform-browser';
+    import { NgModule } from '@angular/core';
+    import { FormsModule } from '@angular/forms';
+    import { HttpClientModule } from '@angular/common/http';
+
+    import { AppComponent } from './app.component';
+
+    /* the AppModule class with the @NgModule decorator */
+    @NgModule({
+        declarations: [
+            AppComponent
+        ],
+        imports: [
+            BrowserModule,
+            FormsModule,
+            HttpClientModule
+        ],
+        providers: [],
+        bootstrap: [AppComponent]
+    })
+    export class AppModule { }
+
+
+// @NgModule 装饰器表明 AppModule 是一个 NgModule 类。 @NgModule 获取一个元数据对象，它会告诉 Angular 如何编译和启动本应用。
+//
+// declarations —— 该应用所拥有的组件。
+//
+// imports —— 导入 BrowserModule 以获取浏览器特有的服务，比如 DOM 渲染、无害化处理和位置（location）。
+//
+// providers —— 各种服务提供商。
+//
+// bootstrap —— 根组件，Angular 创建它并插入 index.html 宿主页面。
+// Angular CLI 创建的默认应用只有一个组件 AppComponent，所以它会同时出现在 declarations 和 bootstrap 数组中。
+//
+// 用 declarations 数组声明指令。在模块中使用指令、组件或管道的步骤如下：
+//
+//1 从你编写它的文件中导出它。
+//
+//2 把它导入到适当的模块中。
+//
+//3 在 @NgModule 的 declarations 数组中声明它。
+//
+// 这三步的结果如下所示。在你创建指令的文件中导出它。 下面的例子中，item.directive.ts 中的 ItemDirective 是 CLI 自动生成的默认指令结构。
+//
+// src/app/item.directive.ts
+import { Directive } from '@angular/core';
+
+@Directive({
+    selector: '[appItem]'
+})
+export class ItemDirective {
+// code goes here
+    constructor() { }
+
+}
+// 重点在于你要先在这里导出它才能在别处导入它。接下来，使用 JavaScript 的 import 语句把它导入到 NgModule 中（这里是 app.module.ts）。
+//
+// src/app/app.module.ts
+import { ItemDirective } from './item.directive';
+// 同样在这个文件中，把它添加到 @NgModule 的 declarations 数组中：
+
+// src/app/app.module.ts
+
+
+// declarations: [
+//     AppComponent,
+//     ItemDirective
+// ],
+
+
+//     现在，你就可以在组件中使用 ItemDirective 了。这个例子中使用的是 AppModule，但是在特性模块中你也可以这么做。 要进一步了解指令，参见属性型指令和结构型指令。 这些也同样适用于管道和组件。
+//
+// 记住：组件、指令和管道都只能属于一个模块。你在应用中也只需要声明它们一次，因为你还可以通过导入必要的模块来使用它们。这能节省你的时间，并且帮助你的应用保持精简。
+//
+// imports 数组
+// 模块的 imports 数组只会出现在 @NgModule 元数据对象中。 它告诉 Angular 该模块想要正常工作，还需要哪些模块。
+//
+// 列表中的模块导出了本模块中的各个组件模板中所引用的各个组件、指令或管道。在这个例子中，当前组件是 AppComponent，它引用了导出自 BrowserModule、FormsModule 或 HttpClientModule 的组件、指令或管道。 总之，组件的模板中可以引用在当前模块中声明的或从其它模块中导入的组件、指令、管道。
+//
+// providers 数组
+// providers 数组中列出了该应用所需的服务。当直接把服务列在这里时，它们是全应用范围的。 当你使用特性模块和惰性加载时，它们是范围化的。要了解更多，参见服务提供商。
+//
+// bootstrap 数组
+// 应用是通过引导根模块 AppModule 来启动的，根模块还引用了 entryComponent。 此外，引导过程还会创建 bootstrap 数组中列出的组件，并把它们逐个插入到浏览器的 DOM 中。
+//
+// 每个被引导的组件都是它自己的组件树的根。 插入一个被引导的组件通常触发一系列组件的创建并形成组件树。
+//
+// 虽然也可以在宿主页面中放多个组件，但是大多数应用只有一个组件树，并且只从一个根组件开始引导。
+//
+// 这个根组件通常叫做 AppComponent，并且位于根模块的 bootstrap 数组中。
+
+    /* 常用的imports的导入 */
+
+// BrowserModule
+//
+// @angular/platform-browser
+//
+// 当你想要在浏览器中运行应用时
+//
+// CommonModule
+//
+// @angular/common
+//
+// 当你想要使用 NgIf 和 NgFor 时
+//
+// FormsModule
+//
+// @angular/forms
+//
+// 当要构建模板驱动表单时（它包含 NgModel ）
+//
+// ReactiveFormsModule
+//
+// @angular/forms
+//
+// 当要构建响应式表单时
+//
+// RouterModule	@angular/router
+// 要使用路由功能，并且你要用到 RouterLink,.forRoot() 和 .forChild() 时
+//
+// HttpClientModule
+//
+// @angular/common/http
+//
+// 当你要和服务器对话时
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

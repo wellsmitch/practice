@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>seaJS</title>
+    <link rel="stylesheet" href="../static/hellow/hellow.css" />
+</head>
+<body>
+<h4>seaJS 例子 example 01</h4>
+<div id="div01" class="div01">
+    <span id="span01" class="span01">my TEXT 001 seaJS 例子，鼠标移动到上面看看边框变化...</span>
+</div>
+<br>
+<div id="div02" class="div02">my TEXT 002 seaJS 例子，鼠标放到上面等下看</div>
+<script type="text/javascript" src="../sea-modules/sea.js"></script>
+<script type="text/javascript">
+    // seajs 的简单配置https://blog.csdn.net/aitangyong/article/details/49330425
+    seajs.config({
+        //all alias path base on this//所有别名基于本路径
+        base:"../sea-modules/"
+
+        //define each self path//定义paths，本例未启用
+        //,paths:{
+        //  "jQueryPath":"jquery"
+        //}
+
+        //映射配置
+        // map:[
+        //     ['/', "../sea-modules/"]
+        // ]
+        //define each alias name here别名配置
+        ,alias:{ //auto add suffix .js
+            "jQuery1.9":"jquery/jquery-1.9.1.min"
+            ,"jQuery1.11":"jquery/jquery-1.11.0.min"
+            ,"hellow":"../hellow/hellow"
+        }
+        ,charset:'utf-8'
+        // ,debug:true
+        // ,preload:'jQuery1.11'
+        // ,vars:{
+        //     'locale':'zh-cn' //本例未启用,在模块中可用格式{key},即{locale}表示变量
+        // }
+
+        /*
+        * seajs.config({
+              base: 'http://www.main.com/base/',
+
+              vars: {
+                'locale': 'zh-cn'
+              }
+            });
+
+            seajs.config({
+              base: 'http://www.main.com/base/',
+
+              vars: {
+                'locale': 'zh-cn'
+              }
+            });
+        *
+        * */
+    });
+    //加载入口模块，加载完成后调用模块的方法
+    seajs.use(['jQuery1.11','../static/hellow/hellowMain.js'],function($,hm, {locale}){
+        hm.initEvent();
+        console.log(locale)
+    });
+    //seajs.use(['jQuery1.11','../static/hellow/hellowMain.js']);
+</script>
+</body>
+</html>
+
+<!--sea.js 的介绍-->
+<script type="text/javascript">
+	/*
+	什么是 seaJS ？
+　　和requireJS相似的，seaJS 也是用JavaScript编写的JS框架，主要功能是可以按不同的先后依赖关系对 JavaScript 等文件的进行加载工作，可简单理解为JS文件的加载器，它非常适合在浏览器中使用，它可以确保所依赖的JS文件加载完成之后再加载当前的JS文件，这在大量使用JS文件的项目中可确保各个JS文件的先后加载顺序，确保避免了以前因某些原因某个文件加载慢而导致其它加载快的文件需要依赖其某些功能而出现某函数或某变量找不到的问题，这点非常有用，也是 seaJS （遵守CMD） 的主要价值所在吧；但和 requireJS （遵守AMD规范）有所区别。
+	快速简要知识点：
+
+1、seajs.config({...});   //用来对 Sea.js 进行配置。
+2、seajs.use(['a','b'],function(a,b){...});   //用来在页面中加载一个或多个模块。
+3、define(function(require, exports, module){...});   //用来定义模块。Sea.js 推崇一个模块一个文件，遵循统一的写法：
+4、require(function(require){var a = require("xModule"); ... });   //require 用来获取指定模块的接口。
+5、require.async,  //用来在模块内部异步加载一个或多个模块。 例如：
+define(function(require){
+    require.async(['aModule','bModule'],function(a,b){  // 异步加载多个模块，在加载完成时，执行回调
+    a.func();
+    b.func();
+    })
+});
+6、exports, //用来在模块内部对外提供接口。 例如：
+
+define(function(require, exports){
+    exports.varName01 = 'varValue';  // 对外提供 varName01 属性
+    exports.funName01 = function(p1,p2){  // 对外提供 funName01 方法
+    ....
+    }
+});
+7、module.exports, 与 exports 类似，用来在模块内部对外提供接口。例如：
+
+define(function(require, exports, module) {
+  module.exports = {  // 对外提供接口
+    name: 'a',
+    doSomething: function() {...};
+  };
+});
+	* */
+</script>
