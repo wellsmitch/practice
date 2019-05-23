@@ -9,20 +9,21 @@
 <script type="text/javascript">
 		var cvs	= document.getElementById('box');
 		var ctx = cvs.getContext('2d');
+		var context = cvs.getContext('2d');
 
-        // context.font = 'bold 35px Arial';
-        // context.textAlign = 'center';
-        // context.textBaseline = 'bottom';
-        // context.fillStyle = '#ccc';
-        // context.strokeText("Hello Canvas", 150, 100);
-        // context.fillText("Hello Canvas", 180, 140);   
+        context.font = 'bold 35px Arial';
+        context.textAlign = 'center';
+        context.textBaseline = 'bottom';
+        context.fillStyle = '#ccc';
+        context.strokeText("Hello Canvas", 150, 100);
+        context.fillText("Hello Canvas", 180, 140);   
 
-        ctx.beginPath();
-        ctx.font = 'bold 50px 宋体';
-        ctx.fillStyle = 'red';
-        ctx.textBaseline = 'top';
-        ctx.fillText('哈哈',100,100,100);
-        ctx.closePath();
+        // ctx.beginPath();
+        // ctx.font = 'bold 50px 宋体';
+        // ctx.fillStyle = 'red';
+        // ctx.textBaseline = 'top';
+        // ctx.fillText('哈哈',100,100,100);
+        // ctx.closePath();
 
         // ctx.beginPath();
         // ctx.font = 'bold 50px 宋体';

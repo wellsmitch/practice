@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- 浏览器hackhack处理http://www.divcss5.com/css-hack/c27.shtml -->
+<style>
+     table tr th, table tr td {
+        /*border: 1px solid #0094ff;*/
+    }
+
+    table {
+        /*width: 200px;*/
+        min-height: 25px;
+        line-height: 25px;
+        text-align: center;
+        /*border-collapse: collapse;*/
+    }
+</style>
+
+<!-- cellpadding='0'相当于padding：0 -->
+<!-- cellspacing="0"：单元格间距等于0，其默认值为2px， -->
+<!-- align="left"相当于float -->
+<!-- rules="rows" cols -->
+<div style="padding: 2px;margin: 5px">
+efwefewfrewfe
+</div>
+<script type="text/javascript">
+	console.log(document.querySelector('div').offsetHeight)
+</script>
+<table cellpadding='0' cellspacing="0" align="left">
+
+    <!--<caption>表格的标题</caption>-->
+    <colgroup>
+        <col span="2" align="left" style="background:#ff19b0;" rules="cols">
+        <col align="right" style="color:#0000FF;">
+    </colgroup>
+
+    <thead>
+        <tr>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>内容333</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+        </tr>
+        <tr>
+            <td colspan="3"  rowspan="3">内容1111</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+        </tr>
+        <tr>
+            <td colspan="3">内容1111</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+        </tr>
+        <tr>
+            <td colspan="3">内容1111</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+        </tr>
+    </tfoot>
+
+</table>
+<table width="100%" border="1">
+    <tr>
+        <th>ISBN</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Price</th>
+        <th>Price</th>
+    </tr>
+    <tr>
+        <td>3476896</td>
+        <td>My first HTML</td>
+        <td>My first HTML</td>
+        <td>My first HTML</td>
+        <td>$53</td>
+    </tr>
+</table>
+<table cellpadding="0" cellspacing="0" rules="cols">
+    <colgroup>
+        <col span="2" style="background-color:#66ff8b;color: #3dc033;">
+        <col style="background-color:yellow">
+    </colgroup>
+    <tr>
+        <th>ISBN</th>
+        <th>Title</th>
+        <th>Price</th>
+    </tr>
+    <tr>
+        <td>3476896</td>
+        <td>My first HTML</td>
+        <td>$53</td>
+    </tr>
+</table>
+
+<table border=1 >
+    <tr>
+        <td colspan="2">数据</td>
+        <td>数据</td>
+    </tr>
+    <tr>
+        <td>数据</td>
+        <td>数据</td>
+        <td>数据</td>
+    </tr>
+    <tr>
+        <td>数据</td>
+        <td>数据</td>
+        <td>数据</td>
+    </tr>
+</table>
+
+
+
+<table border=1 >
+    <tr>
+        <td rowspan="3">数据11</td>
+        <td>数据</td>
+        <td>数据</td>
+        <td>数据</td>
+    </tr>
+    <tr>
+        <td>数据</td>
+        <td>数据</td>
+        <td>数据</td>
+    </tr>
+    <tr>
+        <td>数据</td>
+        <td>数据</td>
+        <td>数据</td>
+    </tr>
+</table>
+
+
+<!--<p>desssddddddddddddmo</p>-->
+</body>
+</html>

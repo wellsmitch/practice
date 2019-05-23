@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    let go = function* (x) {
+        console.log('x', x);
+        let a = yield x;
+        console.log('xx', x);
+
+        console.log('a', a);
+
+        let b = yield(x + 100);
+
+        sum = a + b;
+        console.log(a, b);
+
+        yield a + b;
+
+        return a + b
+    };
+
+    go(10);
+
+    let g = go(10);
+    // console.log(g.next());
+    // console.log(g.next().value);
+    //这里加了三个
+    console.log(g.next(50));
+    console.log(g.next(8));
+    console.log(g.next(9));
+    console.log(g.next(18));
+
+</script>
+
+<script type="text/javascript">
+    function* g4() {
+        yield* [1, 2, 3];
+        // yield* { "a": 123, "b": 456};
+        return 'foo';
+    }
+
+    var result;
+
+    function* g5() {
+        result = yield* g4();
+    }
+
+    var iterator = g5();
+
+    console.log(iterator.next()); // {value: 1, done: false}
+    console.log(iterator.next()); // {value: 2, done: false}
+    console.log(iterator.next()); // {value: 2, done: false}
+    console.log(result);
+    console.log(iterator.next()); // {value: 3, done: false}
+    console.log(iterator.next()); // {value: undefined, done: true},
+                                  // g4() returned {value: 'foo', done: true} at this point
+
+    console.log(result);          // "foo"
+</script>
+</body>
+</html>

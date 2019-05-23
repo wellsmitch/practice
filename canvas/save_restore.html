@@ -10,7 +10,7 @@
     var cvs	= document.getElementById('box');
     var ctx = cvs.getContext('2d');
 
-    ctx.save()
+    // ctx.save()
     ctx.fillStyle = 'red'
     ctx.beginPath();
     ctx.moveTo(50,50);
@@ -19,8 +19,8 @@
     ctx.lineTo(100,50);
     ctx.closePath();
     ctx.fill()
-    ctx.restore()
-
+    // ctx.restore()
+    ctx.fillStyle = 'blue'
     ctx.beginPath();
     ctx.moveTo(50,100);
     ctx.lineTo(100,100);

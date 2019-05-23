@@ -57,7 +57,96 @@
                 <div class="mui-indicator"></div>
             </div>
         </div>
+
         <!-- <script src="../js/mui.min.js"></script> -->
+    <hr>
+    <h1>https://www.cnblogs.com/jianmeng/p/7022288.html</h1>
+    <!--<marquee behavior="alternate">我来回滚动</marquee>-->
+    <!--<marquee behavior="scroll">我单方向循环滚动</marquee>-->
+    <!--<marquee behavior="scroll" direction="up" height="30">我改单方向向上循环滚动</marquee>-->
+    <!--<marquee behavior="slide">我只滚动一次</marquee>-->
+    <marquee  direction="up" scrolldelay="2000" scrollamount="8" loop="infinite">
+        我改向上只滚动一次了
+        <br>
+        我改向上只滚动一次了
+    </marquee>
+    <marquee scrollAmount=2 width=300 height=160 direction=up>·早晨好啊！<br>·空气好清新啊<br>·今朝食乜好呢？<p>·<a href=http://www.cctv.com>中央电视台</a></marquee>　　
+
+
+    <Marquee direction=up onmouseover=this.stop() onmouseout=this.start() scrollamount=1 scrollDelay=4 width=150 Height=160><table border=0>
+        <td><a href="/Announce.asp?AnnounceID=26" title="2006-2007学年度第二学期网页设计实训(3-4周)讲座安排" target="_blank"> 2006-2007学年度第二学期网页设计实训(3-4周)讲座安排</a></td></tr>
+        </td>
+
+    </Marquee>
+    滚动字的代码
+    文字很快滚。
+
+    <marquee scrollamount=1>
+        文字很慢滚。
+    </marquee>
+
+
+
+    文字很慢滚。
+
+    <marquee onmouseover=this.stop() onmouseout=this.start() >
+        鼠标放上去停止滚动，移开继续滚动。
+    </marquee>
+
+
+
+    鼠标放上去停止滚动，移开继续滚动。
+
+    <marquee direction=left scrollamount=3>
+        文字向左滚。
+    </marquee>
+
+
+
+    文字向左滚。
+
+    <marquee direction=right scrollamount=3>
+        文字向右滚。
+    </marquee>
+
+
+
+    文字向右滚。
+
+    <marquee direction=up scrollamount=3>
+        文字向上滚。
+    </marquee>
+
+
+
+    文字向上滚。
+
+    <marquee direction=down scrollamount=3>
+        文字向下滚。
+    </marquee>
+
+
+
+    文字向下滚。
+
+    <marquee scrollamount=3 behavior=alternate>
+        文字来回滚。
+    </marquee>
+
+
+
+    文字来回滚。
+
+    <marquee scrolldelay=500 scrollamount=100>走一步，停一停！</marquee>
+    marquee：
+    <marquee direction=up behavior=scroll loop=3 scrollamount=1 scrolldelay=10 align=top bgcolor=#ffffff height=300 width=30% hspace=20 vspace=10 onmouseover=this.stop() onmouseout=this.start()> 此处输入滚动内容 </marquee>
+
+
+    <!--<marquee scrollamount="100">我速度很快.</marquee>-->
+    <!--<marquee scrollamount="50">我慢了些。</marquee>-->
+    <!--<marquee scrolldelay="30">我小步前进。</marquee>-->
+    <!--<marquee scrolldelay="1000" scrollamount="100">我大步前进。</marquee>-->
+
     <script>
         mui.back = function() {};
         mui.plusReady(function() {
@@ -66,7 +155,7 @@
         });
         //立即体验按钮点击事件
         document.getElementById("close").addEventListener('tap', function(event) {
-            plus.storage.setItem("lauchFlag", "true"); 
+            plus.storage.setItem("lauchFlag", "true");
             plus.navigator.setFullscreen(false);
             plus.webview.currentWebview().close();
         }, false);
@@ -96,6 +185,6 @@
     }
 
     </script>
-    
+
 </body>
-</html> 
+</html>
