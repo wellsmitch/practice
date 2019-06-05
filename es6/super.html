@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script type="text/javascript">
+        class Point {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.g();
+            }
+            g () {
+                console.log(this.x)
+            }
+        }
+
+        class ColorPoint extends Point {
+            constructor(x, y, color) {
+                // this.color = color; // ReferenceError
+                super(x, y);
+                this.color = color; // 正确
+            }}
+var a = new ColorPoint(3)
+    </script>
+</body>
+</html>

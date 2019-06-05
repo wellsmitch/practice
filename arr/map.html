@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-		<script type="text/javascript">
-		var arr = [11,12,15,18];
-		var arr1 = arr.map(function(item,i){
-			return item == 12 ? 88 : item
-		})
-		console.log(arr1)
-		</script>
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    /*map*/
+    var arr = [11, 12, 15, 18];
+    var arr1 = arr.map(function (item, i) {
+        return item == 12 ? 88 : item
+    });
+    console.log(arr1);
+    /*filter*/
+    var arr2 = [{a:11}, {a:15}];
+    var arr3 = arr2.filter(function (item, i) {
+        console.log(item);
+        return item.a == 15
+    });
+    console.log(arr3);
+
+    var arr4 = [];
+    var arrCopy = arr4.concat(9,[11,[13]]);
+    console.log(arr4.concat(...arrCopy));
+</script>
+</body>
 </html>

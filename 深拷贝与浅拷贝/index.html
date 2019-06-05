@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+<button>1</button>
+<button>2</button>
+<button>3</button>
+<div class="active">111</div>
+<div>222</div>
+<div>333</div>
+
+<body>
+
+
+
+
+<script type="text/javascript">
+    /**
+     * Created by 811 on 2018/7/27.
+     */
+
+    var obj = {
+        a: "hello",
+        b:{
+            a: "world",
+            b: 21
+        },
+        c:["Bob", "Tom", "Jenny"],
+        d:function() {
+            alert("hello world");
+        }
+    };
+    // var cloneObj = simpleClone(obj);
+
+
+
+    //更改原对象中的a,b,c,d，看看拷贝过来的对象是否变化
+    obj.a = "changed";
+
+    console.log(obj.a);    //hello
+
+
+</script>
+</body>
+</html>

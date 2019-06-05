@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
     <style>
         li {
             width: 300px;
@@ -11,22 +12,31 @@
             color: #00A8B3;
         }
 
-        li:nth-child(3n+3) {
+        li:nth-of-type(n+3) {
+            color: #5130b3;
+        }
+
+        /*从第三个开始   每5个为一个单位*/
+        li:nth-child(5n+3) {
             background: #6eb348;
         }
-        li:nth-child(n-3) {
-              border:1px solid #b35700;
-          }
 
+
+        /*以负号开头逻辑代表： 从后往前数  反之从前往后数*/
         li:nth-child(-3n+5) {
             border:1px solid #ff19b0;
             border-radius: 10px;
         }
+        /*全部li的odd*/
+        li:nth-of-type(odd) {
+            color: red;
+        }
+
+
     </style>
 </head>
 
 <body>
-<button>删除列表后面的三个元素</button>
 <lu>
     <li>1111111</li>
     <li>2222222</li>
@@ -41,12 +51,16 @@
     <li>88888888888</li>
     <li>88888888888</li>
     <li>88888888888</li>
+    <div>
+        <li>5wdqqwdrefwsf</li>
+        <li>5wdqqwdrefwsf</li>
+        <li>5wdqqwdrefwsf</li>
+    </div>
     <li>88888888888</li>
     <li>88888888888</li>
     <li>88888888888</li>
     <li>88888888888</li>
 </lu>
 
-<!--<img id="pageNone" src="404.jpg" alt="">-->
 </body>
 </html>

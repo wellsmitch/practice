@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
 <body>
 <!--<form enctype="multipart/form-data" action="http://192.168.8.245:3000/users/uploader" method="post">-->
     <!--<input type="file" name="avatar" id="fileself" onchange="tap1()">-->
@@ -21,7 +22,7 @@
     var files1 = null;
 
     function tap1() {
-        console.log(9999)
+        console.log(9999);
         files1 = document.querySelector('#fileself').files[0]
     }
   // $('#btn').click(function () {
@@ -40,9 +41,17 @@
   //         }
   //     })
   // })
+    $.ajax({
+    		type:"get",
+    		url:"https://www.layui.com/demo/table/user/?page=3&limit=10",
+    		async:true,
+    		success:function(data) {
+    			console.log(data)
+    		}
+    	});
     $('#button').click(function () {
         var te = new FormData();
-        // var te =  new FormData(document.querySelector('#fo'));
+        var te =  new FormData(document.querySelector('#fo'));
         console.log(document.querySelector('#fi').files);
         for (var i = 0;i<document.querySelector('#fi').files.length;i++) {
             te.append('avatar',document.querySelector('#fi').files[i]);
@@ -51,33 +60,69 @@
         te.append('name',$('#username').val());
         te.append('pw',$('#pw').val());
 
+axios({
+    method: 'get',
+    url: "http://jx.xuzhixiang.top/ap/api/goods/goods-add.php",
+
+    // headers: {
+    //     a: 123
+    // },
+    onUploadProgress: function (progressEvent) { //原生获取上传进度的事件
+        if (progressEvent.lengthComputable) {
+            //属性lengthComputable主要表明总共需要完成的工作量和已经完成的工作是否可以被测量
+            //如果lengthComputable为false，就获取不到progressEvent.total和progressEvent.loaded
+            // callback1(progressEvent);
+            console.log(progressEvent);
+        }
+
+    },
+    data: {
+        pimg : '123456',
+        pname : '图片1',
+        pprice : 100,
+        pdesc: 'pic message'
+    }
+    // data: te,
+        })
+    .then(function (a) {
+        console.log(a);
+    })
 // debugger
-        $.ajax({
-            type:"post",
-            url:"http://localhost:3000/users/login",
-            headers: {
-                'content-type': 'application/x-www-form-urlencoded',
-                'token': 'sssss'
-            },
-            data:
-            te,
-            //     {
-            // 	    name:123456,
-            //     pw:123456
-            // },
-            processData: false,  // 不处理数据
-            contentType: false ,  // 不设置内容类型 formdata 格式上传时候需要设置
-            /*\
-            *
-            *  contentType: false,
-                        processData: false,
-                        cache: false,
-                        dataType: 'json',*/
-            async:true,
-            success:function(data) {
-                console.log(data);
-            }
-        });
+//         $.ajax({
+//             type:"post",
+//             url:"http://localhost:3000/users/login",
+//             // headers: {
+//             //     'content-type': 'application/x-www-form-urlencoded',
+//             //     'token': 'sssss'
+//             // },
+//             data:
+//             te,
+//             //     {
+//             // 	    name:123456,
+//             //     pw:123456
+//             // },
+//             xhr: function() {
+//                 var myXhr = $.ajaxSettings.xhr()
+//                 if(myXhr.upload) {
+//                     myXhr.upload.addEventListener('progress', function (e) {
+//                         console.log(e)
+//                     }, false)
+//                 }
+//                 return myXhr
+//             },
+//             processData: false,  // 不处理数据
+//             contentType: false ,  // 不设置内容类型 formdata 格式上传时候需要设置
+//             /*\
+//             *
+//             *  contentType: false,
+//                         processData: false,
+//                         cache: false,
+//                         dataType: 'json',*/
+//             async:true,
+//             success:function(data) {
+//                 console.log(data);
+//             }
+//         });
     });
 
 

@@ -11,50 +11,68 @@
 		</style>
 	</head>
 	<body>
-		
-		Ssdfasdf 
-		
+		<!--
+
+		 li:nth-child(n+3) {
+            color: #00A8B3;
+        }
+
+        li:nth-child(3n+3) {
+            background: #6eb348;
+        }
+        li:nth-child(n-3) {
+              border:1px solid #b35700;
+          }
+
+        li:nth-child(-n+3) {
+            border:1px solid #ff19b0;
+            border-radius: 10px;
+        }
+
+		-->
+		Ssdfasdf
+
 		<ul class="list">
 			<li>移动</li>
 			<li>删除</li>
 		</ul>
-		
+
 		<script type="text/javascript">
-			
+
 			var list = document.querySelector('.list')
-			
+
 			document.oncontextmenu = function(e){
 				console.log('右键菜单 显示');
 				e.preventDefault();
 				e.returnValue = false;
-				
+
 				console.log(e.pageX,e.pageY)
 				list.style.display = 'block';
 				list.style.left = e.pageX+'px';
 				list.style.top = e.pageY +'px';
-				
-				
-				
+
+
+
 				return false
 			}
-			
-			
+
+
 			var oLis = list.querySelectorAll('li');
 			for(var i=0;i<oLis.length;i++){
 				oLis[i].onclick = function(){
 					console.log(this.innerHTML);
-					
+
 					list.style.display = 'none'
-					
+
 				}
 			}
-			
-			
-			
+
+
+
 			document.onclick = function(){
 				list.style.display = 'none'
 			}
-			
+
 		</script>
 	</body>
 </html>
