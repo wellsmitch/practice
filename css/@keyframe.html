@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*https://www.runoob.com/cssref/css3-pr-animation.html*/
+        div {
+            background: #00A8B3;
+            overflow: hidden;
+            animation: aa ease 1s;
+            animation-fill-mode:forwards;
+            /*animation: name duration timing-function delay iteration-count direction fill-mode play-state;*/
+            /*
+                animation-name	指定要绑定到选择器的关键帧的名称
+                animation-duration 	动画指定需要多少秒或毫秒完成
+                animation-timing-function  设置动画将如何完成一个周期
+                animation-delay  设置动画在启动前的延迟间隔。
+                animation-iteration-count    定义动画的播放次数。
+                animation-direction  指定是否应该轮流反向播放动画。
+                animation-fill-mode   规定当动画不播放时（当动画完成时，或当动画有一个延迟未开始播放时），要应用到元素的样式。
+                animation-play-state  指定动画是否正在运行或已暂停。
+            */
+        }
+        @keyframes aa {
+            from {height: 80px;}
+            to {height: 50px;}
+        }
+    </style>
+</head>
+<body>
+<div>fwefw<br/>efwe<br/>fwef<br/>we</div>
+</body>
+</html>

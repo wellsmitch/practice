@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div:nth-child(2){
+            color: red \0;
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript" src="menu_3/jquery.js">
+
+</script>
+<div>dwqeRFEWRFWERFWE</div>
+<div>dwqeRFEWRFWERFWE</div>
+<div>dwqeRFEWRFWERFWE</div>
+<div>dwqeRFEWRFWERFWE</div>
+<div>dwqeRFEWRFWERFWE</div>
+<!--<div id="time" style="font-size: 14px;line-height: 30px;color: #fff"></div>-->
+<script type="text/javascript">
+    function headTime() {
+        setInterval(function () {
+            var date_data = new Date();
+            var year = date_data.getFullYear();
+            var month = date_data.getMonth()+1;
+            var date = date_data.getDate();
+            var hour = date_data.getHours();
+            var minutes = date_data.getMinutes();
+            var second = date_data.getSeconds();
+            console.log(second.toString().length);
+            var week = date_data.getDay();
+            week
+            switch (week) {
+                case 1:
+                    week ='星期一';
+                    break;
+                case 2:
+                    week ='星期一';
+                    break;
+                case 3:
+                    week ='星期一';
+                    break;
+                case 4:
+                    week ='星期一';
+                    break;
+                case 5:
+                    week ='星期一';
+                    break;
+                case 6:
+                    week ='星期一';
+                    break;
+                case 7:
+                    week ='星期一';
+                    break;
+            }
+            //console.log(year,month,date,hour,minutes,second,week);
+            $('#time').empty().append("<div id='time_con1'><span>"+year+"年</span><span>"+month+"月</span><span>"+date+"日</span></div>");
+            $('#time').append("<div id='time_con2'><span>"+week+"</span><span>"+hour+"时</span><span>"+minutes+"分</span><span>"+second+"秒</span></div>")
+        }, 1000)
+    }
+    headTime()
+</script>
+</body>
+</html>

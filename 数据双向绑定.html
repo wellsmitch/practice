@@ -5,24 +5,31 @@
     <title>Title</title>
 </head>
 <body>
-<input type="text" id="model"><br/>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<input type="text" id="model" value=""><br/>
 <div id="modelText"></div>
 <script type="text/javascript">
+
     var model = document.querySelector("#model");
     var modelText = document.querySelector("#modelText");
     var defaultName = "defaultName";
     var userInfo = {};
     // model.value = defaultName;
-    Object.defineProperty(userInfo, "name", {
-        get: function () {
-            return '';
+    setTimeout(function () {
+        $(model).val('6666')
+    },2000);
+    Object.defineProperty(model, "value", {
+        get: function (value) {
+            console.log(value, 232323);
+            return '2222';
         },
         set: function (value) {
             // defaultName = value;
             // model.value = value;
-            // console.log("-----value");
+            console.log(value, "-----value");
+            return value;
             // console.log(value);
-            modelText.textContent = value;
+           // modelText.textContent = value;
         }
     });
 
