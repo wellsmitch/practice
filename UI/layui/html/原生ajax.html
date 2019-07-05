@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="status"></div>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+    function createXHR() {
+        if (typeof XMLHttpRequest != "undefined") {
+            return new XMLHttpRequest();
+        } else if (typeof ActiveXObject != "undefined") {
+            if (typeof arguments.callee.activeXString != "string") {
+                var versions = ["MSXML2.XMLHttp.6.0", "MSXML2.XMLHttp.3.0", "MSXML2.XMLHttp"],
+                    i, len;
+
+                for (i = 0, len = versions.length; i < len; i++) {
+                    try {
+                        var xhr = new ActiveXObject(versions[i]);
+                        arguments.callee.activeXString = versions[i];
+                        return xhr;
+                    } catch (ex) {
+                        //跳过
+                    }
+                }
+            }
+
+            return new ActiveXObject(arguments.callee.activeXString);
+        } else {
+            throw new Error("No XHR object available.");
+        }
+    }
+
+    window.onload = function () {
+        var xhr = createXHR();
+        setInterval(function () {
+            xhr.onprogress = function (event) {
+                console.log(event);
+                var divStatus = document.getElementById("status");
+                if (event.lengthComputable) {
+                    console.log(event);
+                    divStatus.innerHTML = "接收到 " + event.loaded + " of " + event.total + " bytes";
+                }
+            }
+        },5);
+        xhr.onload = function () {
+            if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+                // alert(xhr.responseText);
+            } else {
+                // alert("Request was unsuccessful: " + xhr.status);
+            }
+        };
+
+
+        xhr.open("get", "http://jx.xuzhixiang.top/ap/api/login.php?username=11&password=1212", true);
+        xhr.send(null);
+    };
+</script>
+</body>
+</html>

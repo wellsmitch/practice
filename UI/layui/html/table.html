@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="layui-v2.4.5/layui-v2.4.5/layui/css/layui.css">
+    <script src="layui-v2.4.5/layui-v2.4.5/layui/layui.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<table class="layui-hide" id="demo" lay-filter="test"></table>
+<div>
+
+    <form class="layui-form" action="">
+        <div>
+            <span class="blue_block"> </span>
+            选择业务
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input type="radio" name="item" value="工程项目测绘" title="工程项目测绘" checked="">
+                <input type="radio" name="item" value="用地预审" title="用地预审">
+                <!--<input type="radio" name="item" value="用地报批" title="用地报批" disabled="">-->
+                <input type="radio" name="item" value="用地报批" title="用地报批">
+                <input type="radio" name="item" value="土地征收" title="土地征收">
+                <input type="radio" name="item" value="土地储备" title="土地储备">
+                <input type="radio" name="item" value="土地利用" title="土地利用">
+                <input type="radio" name="item" value="土地登记" title="土地登记">
+            </div>
+        </div>
+        <button class="layui-btn layui-btn-primary">dsfsdfxd</button>
+        <div class="hidden">
+            <div class="fl">
+                <span class="blue_block"> </span>
+                <span> 成果材料</span>
+            </div>
+            <div class="fr">
+                <button class="res_info">+ 成果材料</button>
+            </div>
+        </div>
+        <div style="width: 80%">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">土地坐落</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            <div class="layui-inline">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">土地面积</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">图幅号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="fl">土地四至</div>
+                <div>
+                    <div class="layui-inline">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">北至</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="title" lay-verify="title" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">东至</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="title" lay-verify="title" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               <div>
+                   <div class="layui-inline">
+                       <div class="layui-form-item">
+                           <label class="layui-form-label">南至</label>
+                           <div class="layui-input-block">
+                               <input type="text" name="title" lay-verify="title" autocomplete="off" class="layui-input">
+                           </div>
+                       </div>
+                   </div>
+                   <div class="layui-inline">
+                       <div class="layui-form-item">
+                           <label class="layui-form-label">西至</label>
+                           <div class="layui-input-block">
+                               <input type="text" name="title" lay-verify="title" autocomplete="off" class="layui-input">
+                           </div>
+                       </div>
+                   </div>
+               </div>
+
+            </div>
+
+        </div>
+        <button id="gis_data_save" type="submit" lay-submit lay-filter="gis_data_save">提交</button>
+    </form>
+
+</div>
+<script type="text/html" id="barDemo">
+
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+
+
+</script>
+<input type="checkbox" name="layTableCheckbox" lay-skin="primary" checked="checked">
+<div>789798</div>
+<script type="text/javascript">
+    layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider', 'form', 'jquery'], function(){
+        var laydate = layui.laydate //日期
+            ,laypage = layui.laypage //分页
+            ,layer = layui.layer //弹层
+            ,table = layui.table //表格
+            ,form = layui.form //
+            ,$ = layui.jquery //
+            ,carousel = layui.carousel //轮播
+            ,upload = layui.upload //上传
+            ,element = layui.element //元素操作
+            ,slider = layui.slider; //滑块
+
+        //向世界问个好
+        layer.msg('Hello World');
+
+        //监听Tab切换
+        element.on('tab(demo)', function(data){
+            layer.tips('切换了 '+ data.index +'：'+ this.innerHTML, this, {
+                tips: 1
+            });
+        });
+
+        //执行一个 table 实例https://www.layui.com/demo/table/user/?page=3&limit=10
+       var tabledemo = table.render({
+            elem: '#demo'
+            ,height: 420
+            ,url: './data.json' //数据接口
+            ,title: '用户表'
+           ,where:{a:1111}
+            ,page: true //开启分页
+          // ,toolbar: 'default' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+            ,totalRow: true //开启合计行
+            ,cols: [[ //表头
+                {type: 'radio', fixed: 'left'}
+                ,{field: 'id', title: 'ID', width:80, sort: true, fixed: 'left', totalRowText: '合计：'}
+                ,{field: 'username', title: '用户名', width:80}
+                ,{field: 'experience', title: '积分', width: 90, sort: true, totalRow: true}
+                ,{field: 'sex', title: '性别', width:80, sort: true}
+                ,{field: 'score', title: '评分', width: 80, sort: true, totalRow: true}
+                ,{field: 'city', title: '城市', width:150}
+                ,{field: 'sign', title: '签名', width: 200}
+                ,{field: 'classify', title: '职业', width: 100}
+                ,{field: 'wealth', title: '财富', width: 135, sort: true, totalRow: true}
+                ,{fixed: 'right', width: 165, align:'center', toolbar: '#barDemo'}
+            ]]
+           , done: function(res, curr, count){
+               //如果是异步请求数据方式，res即为你接口返回的信息。
+               //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
+
+               console.log(res , $('input[type="radio"]'));
+
+               //得到当前页码
+               console.log(curr);
+
+               //得到数据总量
+               console.log(count);
+           }
+        });
+        console.log(tabledemo);
+        form.on('submit(gis_data_save)',function (data) {
+            console.log(data);
+
+            return false;
+        })
+        //监听头工具栏事件
+        table.on('toolbar(test)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id)
+                ,data = checkStatus.data; //获取选中的数据
+            switch(obj.event){
+                case 'add':
+                    layer.msg('添加');
+                    break;
+                case 'update':
+                    if(data.length === 0){
+                        layer.msg('请选择一行');
+                    } else if(data.length > 1){
+                        layer.msg('只能同时编辑一个');
+                    } else {
+                        layer.alert('编辑 [id]：'+ checkStatus.data[0].id);
+                    }
+                    break;
+                case 'delete':
+                    if(data.length === 0){
+                        layer.msg('请选择一行');
+                    } else {
+                        layer.msg('删除');
+                        obj.del();
+                    }
+                    break;
+            }
+        });
+
+        //监听行工具事件
+        // table.on('tool(test)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+        //     var data = obj.data //获得当前行数据
+        //         ,layEvent = obj.event; //获得 lay-event 对应的值
+        //     if(layEvent === 'detail'){
+        //         layer.msg('查看操作');
+        //     } else if(layEvent === 'del'){
+        //         layer.confirm('真的删除行么', function(index){
+        //             obj.del(); //删除对应行（tr）的DOM结构
+        //             layer.close(index);
+        //             //向服务端发送删除指令
+        //         });
+        //     } else if(layEvent === 'edit'){
+        //         layer.msg('编辑操作');
+        //     }
+        // });
+
+        //以复选框事件为例
+        table.on('checkbox(test)', function(obj){
+            console.log(obj)
+        });
+
+
+        //分页
+        laypage.render({
+            elem: 'pageDemo' //分页容器的id
+            ,count: 100 //总页数
+            ,skin: '#1E9FFF' //自定义选中色值
+            //,skip: true //开启跳页
+            ,jump: function(obj, first){
+                if(!first){
+                    layer.msg('第'+ obj.curr +'页', {offset: 'b'});
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
