@@ -8,7 +8,7 @@
 				width: 100px;
 				height: 200px;
 				background: red;
-				
+
 				position: absolute;
 				top: 100px;
 				right: 20px;
@@ -18,19 +18,21 @@
 	<body>
 		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 		<div id="box">
-			
+
 		</div>
 		<script type="text/javascript">
+			var arr = [212,324,23432];
+			arr.forEach(function (ele, i) {
+				console.log(ele)
+            })
 			$('#box').animate({
 				width:400
-			
 			},1000,function(){
 				console.log(1)
 			}).animate({
 				height:400
-			
 			},1000)
-		
+
 		</script>
 	</body>
 </html>

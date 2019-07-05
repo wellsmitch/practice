@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <script src="../../js/vue.js"></script>
+    <script src="../js/vant.js"></script>
+    <link rel="stylesheet" href="../css/vant.css">
 </head>
 <body>
-$END$
+<div id="box">
+    <van-rate v-model="value" />
+</div>
+<script type="text/javascript">
+	var vm = new Vue({
+        el: '#box',
+        data: {
+            value: 2
+        }
+    })
+</script>
 </body>
 </html>

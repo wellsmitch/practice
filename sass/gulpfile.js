@@ -5,6 +5,7 @@ var sass        = require('gulp-sass');
 // var prefix      = require('gulp-autoprefixer');
 var reload      = browserSync.reload;
 
+
 var Asset = {
     html: './**.html',
     js: './**.js',
@@ -35,8 +36,16 @@ gulp.task('watch', function(){
             .pipe(gulp.dest('./css'));
     });
     // gulp.watch("Asset.js", reload);
-    // gulp.watch("Asset.sass", ['sass'], reload);
+    // gulp.watch("A
+    //
+    //
+    //
+    //
+    // sset.sass", ['sass'], reload);
     // gulp.watch("Asset.images", reload);
 });
+gulp.task('default', ['sass']);
+
 // 默认
-gulp.task('default', ['sass','watch']);
+// gulp.task('default', ['sass','watch']);
+

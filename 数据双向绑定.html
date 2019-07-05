@@ -15,32 +15,36 @@
     var defaultName = "defaultName";
     var userInfo = {};
     // model.value = defaultName;
-    setTimeout(function () {
-        $(model).val('6666')
-    },2000);
-    Object.defineProperty(model, "value", {
-        get: function (value) {
-            console.log(value, 232323);
-            return '2222';
-        },
-        set: function (value) {
-            // defaultName = value;
-            // model.value = value;
-            console.log(value, "-----value");
-            return value;
-            // console.log(value);
-           // modelText.textContent = value;
-        }
-    });
+    // setTimeout(function () {
+    //     $(model).val('6666')
+    // },2000);
 
+    // model.addEventListener("keyup", function () {
+        console.log(model.value,888);
+        Object.defineProperty(model, "value", {
+            get: function () {
+                console.log(this.value, 232323);
+                return this.value+232323;
+            },
+            set: function (value) {
+                // defaultName = value;
+                // model.value = value;
+                console.log(value, "-----value");
+                return value + '1111';
+                // console.log(value);
+                // modelText.textContent = value;
+            }
+        });
+        console.log(model.value,888888);
+    // });
     // userInfo.name = "new value";
     var isEnd = true;
 
-    model.addEventListener("keyup", function () {
-        if (isEnd) {
-            userInfo.name = this.value;
-        }
-    }, false);
+    // model.addEventListener("keyup", function () {
+    //     if (isEnd) {
+    //         userInfo.name = this.value;
+    //     }
+    // }, false);
     //加入监听中文输入事件
     model.addEventListener("compositionstart", function () {
         console.log("开始输入中文");

@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<input type="text" id="a">
+<h1 id="b"></h1>
+<script type="text/javascript">
+    var obj = {};
+    var  name = '';
+    Object.defineProperty(obj,'hello',{
+        set:function(newVal){
+            document.getElementById('a').value = newVal;
+            document.getElementById('b').innerHTML = newVal;
+            name = newVal;
+        },
+        get: function () {
+            return '《' + name + '》'
+        }
+    });
+    document.addEventListener('keyup',function(e){
+        obj.hello = e.target.value;
+    })
+</script>
+
+
 </body>
 </html>

@@ -7,7 +7,7 @@
 </head>
 <body>
 <script type="text/javascript">
-    console.log(123456)
+    console.log(123456);
     document.addEventListener('plusready',function(){
         // console.log(plus.sqlite,798789)
         plus.sqlite.openDatabase({
@@ -15,9 +15,9 @@
             path: '_doc/test.db',
             success: function(e){
                 console.log('openDatabase success!');
-                executeSQL()
-                updateSQL()
-                deleteSQL()
+                executeSQL();
+                updateSQL();
+                deleteSQL();
                 selectSQL()
 
             },
@@ -73,7 +73,7 @@
                 fail: function(e){
                     console.log('selectSql failed: '+JSON.stringify(e));
                 }
-            });
+            })
         }
         // 查询SQL语句
         function selectSQL(){

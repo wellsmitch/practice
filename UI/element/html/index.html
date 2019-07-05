@@ -2,9 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="../../js/vue.js"></script>
+    <link rel="stylesheet" href="../css/element.css">
+    <script src="../js/element.js"></script>
 </head>
 <body>
-$END$
+<div id="box">
+    <el-button :plain="true" @click="open">打开消息提示</el-button>
+    <el-button :plain="true" @click="openVn">VNode</el-button>
+</div>
+
+
+<script type="text/javascript">
+	var vm = new Vue({
+        el: "#box",
+        methods: {
+            open() {
+                this.$message('这是一条消息提示');
+            },
+
+            openVn() {
+                const h = this.$createElement;
+                this.$message({
+                    message: h('p', null, [
+                        h('span', null, '内容可以是 '),
+                        h('i', { style: 'color: teal' }, 'VNode')
+                    ])
+                });
+            }
+        }
+    })
+</script>
 </body>
 </html>
