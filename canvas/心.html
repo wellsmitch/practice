@@ -18,18 +18,18 @@
                 radian_add =  Math.PI/180;  //设置弧度增量
             content.beginPath();  //开始绘图
             content.translate(250,250);  //设置绘图原点
-            content.moveTo(getX(radian),getY(radian)); //移动绘图游标至原点
+            content.moveTo(getX1(radian),getY1(radian)); //移动绘图游标至原点
             while(radian <= (Math.PI*2)){  //每增加一次弧度，绘制一条线
                 radian += radian_add;
-                X = getX(radian);
-                Y = getY(radian);
+                X = getX1(radian);
+                Y = getY1(radian);
                 content.lineTo(X,Y);
             }
             content.strokeStyle = "red";  //设置描边样式
             content.stroke();  //对路径描边
         }
     }
-    draw()
+    draw();
     function getX(t){   //获取玫瑰线的X坐标
         return 100 * Math.sin(4*t)*Math.cos(t);
         //  return 100 *(1 - Math.cos(t))*Math.cos(t);

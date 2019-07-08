@@ -5,9 +5,10 @@
     <title>layui</title>
     <!--<meta name="renderer" content="webkit">-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="layui-v2.4.5/layui-v2.4.5/layui/css/layui.css">
-    <script src="layui-v2.4.5/layui-v2.4.5/layui/layui.js"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="../layui.js"></script>
+    <link rel="stylesheet" href="../css/layui.css">
+
 
     <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 </head>
@@ -54,7 +55,15 @@
 <script>
     layui.use('layer', function(){ //独立版的layer无需执行这一句
         var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
-
+        // layer.confirm('你确定要退出应用么?', {icon: 3, title:'提示'}, function(index){
+        //     //do something
+        //
+        //     layer.close(index);
+        // });
+        layer.msg('大部分参数都是可以公用的<br>合理搭配，展示不一样的风格', {
+            time: 20000, //20s后自动关闭
+            btn: ['退出', '取消']
+        });
         //触发事件
         var active = {
             setTop: function(){

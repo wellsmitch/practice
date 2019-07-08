@@ -80,6 +80,7 @@
 
     //画sin 曲线函数
     var drawSin = function(xOffset){
+        // console.log(xOffset);
         ctx.save();
         var lg = ctx.createLinearGradient(0,20,0,200);
         // lg.addColorStop(1/5,'#ff0000');
@@ -90,8 +91,9 @@
         var points=[];  //用于存放绘制Sin曲线的点
         ctx.beginPath();
         //在整个轴长上取点
-        for(var x = sX; x < sX + axisLength; x += 20 / axisLength){
+        for(var x = sX; x < sX + axisLength; x += 120 / axisLength){
             //此处坐标(x,y)的取点，依靠公式 “振幅高*sin(x*振幅宽 + 振幅偏移量)”
+
             var y = -Math.sin((sX + x) * waveWidth + xOffset);
             var dY = 2*cR * (1 - nowRange / 100 );//2*cR 为内部水珠的总高度
             points.push([x, dY + y * waveHeight]);
@@ -152,7 +154,6 @@
         ctx.textAlign = 'center';
         ctx.fillStyle = "rgba(06, 85, 128, 0.8)";
         ctx.fillText(~~nowRange + '%', r, r + size / 2);
-
         ctx.restore();
     };
 
@@ -178,7 +179,8 @@
         drawSin(xOffset);
         // drawSin1(xOffset);
         drawText();
-
+// debugger;
+//         console.log(xOffset);
         xOffset += speed;
         requestAnimationFrame(render);
     };
