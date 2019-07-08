@@ -54,7 +54,7 @@ export default {
   methods:{
     saveCid(){
       if(!this.$store.state.save_cid){
-        console.log('zhixing')
+        console.log('zhixing');
         let data;
         if(this.system == 'ios_client_id'){
           data = {
