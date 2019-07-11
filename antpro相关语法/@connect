@@ -1,0 +1,48 @@
+1、dva中@connect使用的数据来自pages/.umi/dva.js文件夹
+modal层 开始
+export default {
+  namespace: 'login',
+
+  state: {
+    status: undefined,
+  },
+  effects: {
+      *login({ payload }, { call, put }) {
+        console.log(payload);
+        const response = yield call(fakeAccountLogin, payload);
+        console.log(response,8888999);
+        yield put({
+          type: 'changeLoginStatus',
+          payload: response,
+        });
+ reducers: {
+     changeLoginStatus(state, { payload }) {
+       console.log(state, payload, 456353464);
+       setAuthority(payload.currentAuthority);
+       //reducers返回的数据在组件中  接过来命名空间以后通过props可以取出来
+       return {
+         ...state,
+         status: payload.status,
+         type: payload.type,
+       };
+     },
+   }
+}
+modal层 结束
+
+
+导入dva
+import { connect } from 'dva';
+
+//此处的login 为命名空间  ['login/login'] 中的第二个login为login命名空间下面的login函数
+@connect(({ login, loading }) => ({
+  login111:login,
+  submitting: loading.effects['login/login'],
+}))
+
+render() {
+    const { login111, submitting } = this.props;
+    }
+
+
+

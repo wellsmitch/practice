@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li v-for="item in a">{{item}}</li>
+    </ul>
+</div>
+<script type="text/javascript">
+	var vm = new Vue({
+        el:'#box',
+        data:{
+            a:[111,222,3333]
+        }
+    })
+</script>
+</body>
+</html>
