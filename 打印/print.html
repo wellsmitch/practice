@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.js"></script>
+    <script src="jquery.PrintArea.js"></script>
+    <style>
+        @page {
+            size: a4 landscape;
+            margin: 0;
+        }
+        /*landscape指的是竖向打印 */
+    </style>
+</head>
+<body>
+<div id="print-area">
+    <h1>打印示例</h1>
+</div>
+
+<button id="print">打印</button>
+<script type="text/javascript">
+    var hkey_root ,hkey_path, hkey_key;
+    hkey_root = 'HKEY_CURRENT_USER',
+        hkey_path= '\\Software\\Microsoft\\Internet Explorer\\PageSetup\\';
+    try {
+        var RegWsh = new ActiveXObject('WScript.Shell');
+        hkey_key = "header";
+        RegWsh.RegWrite(hkey_root + hkey_path + hkey_key, "");
+        hkey_key = "footer";
+        RegWsh.RegWrite(hkey_root + hkey_path + hkey_key, "");
+    } catch (e) {
+
+    }
+
+    $("#print").click(function() {
+        $("#print-area").printArea();
+    })
+    </script>
+</body>
+</html>
