@@ -6,8 +6,9 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <link rel="stylesheet" href="layui-v2.4.5/layui-v2.4.5/layui/css/layui.css">
-    <script src="layui-v2.4.5/layui-v2.4.5/layui/layui.js"></script>
+    <link rel="stylesheet" href="../css/layui.css">
+    <script src="../layui.js"></script>
+
     <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 </head>
 <body>
@@ -38,7 +39,7 @@
     <button data-method="offset" data-type="rb" class="layui-btn layui-btn-normal">右下弹出</button>
     <button data-method="offset" data-type="auto" class="layui-btn layui-btn-normal">居中弹出</button>
 </div>
-
+<button id="confirm">confirm</button>
 <!-- 示例-970 -->
 <ins class="adsbygoogle" style="display:inline-block;width:970px;height:90px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="3820120620"></ins>
 
@@ -50,14 +51,67 @@
 
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 <script>
-    layui.use('layer', function(){ //独立版的layer无需执行这一句
+    layui.use(['layer', 'jquery'], function(){ //独立版的layer无需执行这一句
         // https://blog.csdn.net/ytangdigl/article/details/72903267
-        var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+        var $ = layui.jquery,
+            layer = layui.layer,
+            //独立版的layer无需执行这一句
+            $ = layui.jquery;
         // layer.alert('酷毙了', {icon: 1});
         // layer.alert('酷毙了', {icon: 2});
         // layer.alert('酷毙了', {icon: 3});
         // layer.alert('酷毙了', {icon: 4});
         // layer.alert('酷毙了', {icon: 5});
+function self_confirm(mainStyle, titleStyle, contentStyle, closeStyle, buttonStyle) {
+    var openOrderNum = layer.open({
+        type: 1
+        // ,offset: type //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+        ,id: 'layerDemo'+Math.random() //防止重复弹出
+        ,content: '<div style="padding: 20px 100px;">'+ '我是内容区' +'</div>'
+        ,btn:  ['确定', '关闭'] //只是为了演示
+        ,btnAlign: 'c' //按钮居中
+        ,shade: 0 //不显示遮罩
+        ,yes: function(index,dom){
+            // 点击确定的回调
+            console.log(index,dom);
+            layer.close(openOrderNum);
+        }
+        ,cancel: function (index,dom) {
+            //点击右上角关闭箭头的回调
+            console.log(index,dom);
+            layer.close(openOrderNum);
+            return false;
+        }
+        ,end: function () {
+        //   弹窗关闭完成的回调
+        }
+    });
+    console.log($('#layui-layer' + openOrderNum + ' .layui-layer-btn a'));
+    $('#layui-layer'+  + openOrderNum +' .layui-layer-btn').css({background:'#fff'});
+    $('#layui-layer' + openOrderNum).css(mainStyle)
+        .find('.layui-layer-title').css(titleStyle)
+        .end().find('.layui-layer-content').css(contentStyle)
+        .end().find('.layui-layer-setwin a').css(closeStyle);
+
+    for(var i_ = 0;i_<$('.layui-layer-btn a').length;i_++) {
+        if(buttonStyle && buttonStyle[i_]) {
+            console.log(111);
+            $('#layui-layer' + openOrderNum+' .layui-layer-btn a').eq(i_).css(buttonStyle[i_])
+        }else if(buttonStyle) {
+            $('#layui-layer' + openOrderNum+' .layui-layer-btn a').eq(i_).css(buttonStyle[0]);
+            console.log(222);
+        }
+    }
+}
+        $('#confirm').click(function () {
+            self_confirm(
+                {'background':'#96def5',border:'1px solid #219fc5'},
+                {'background':'#96def5','color':'#058bb5',borderBottom:'none'},
+                {borderTop:'1px solid #30add3',background:'#fff'},
+                {color:'red'},
+                [{color:'#fff',background:'#199ed8'}]
+            )
+        });
         layer.alert('酷毙了', {icon: 6});
         // layer.alert('酷毙了', {icon: 7});
         //触发事件
@@ -128,7 +182,7 @@
                     ,offset: type //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
                     ,id: 'layerDemo'+type //防止重复弹出
                     ,content: '<div style="padding: 20px 100px;">'+ text +'</div>'
-                    ,btn: '关闭全部'
+                    ,btn:  ['继续弹出', '全部关闭'] //只是为了演示
                     ,btnAlign: 'c' //按钮居中
                     ,shade: 0 //不显示遮罩
                     ,yes: function(){

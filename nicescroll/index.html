@@ -2,9 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>nicescroll</title>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/jquery.nicescroll.js"></script>
 </head>
-<body>
+<!--https://nicescroll.areaaperta.com/demo/-->
+<style>
+    html,body {
+        height: 200%;
+    }
+</style>
+<body class="n">
 $END$
 </body>
+<script type="text/javascript">
+    $("body").niceScroll({
+        cursorcolor:'red',
+        scrollspeed:100
+    })
+</script>
 </html>

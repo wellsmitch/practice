@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/layui.css">
+    <script src="../layui.js"></script>
+</head>
+<body>
+<button id="confirm">confirm</button>
+</body>
+<script type="text/javascript">
+    layui.use(['layer', 'jquery'], function () { //独立版的layer无需执行这一句
+        // https://blog.csdn.net/ytangdigl/article/details/72903267
+        var $ = layui.jquery,
+            layer = layui.layer;
+
+        function self_confirm(mainStyle, titleStyle, contentStyle, closeStyle, buttonStyle) {
+            var openOrderNum = layer.open({
+                type: 1
+                // ,offset: type //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+                , id: 'layerDemo' + Math.random() //防止重复弹出
+                , content: '<div style="padding: 20px 100px;">' + '我是内容区' + '</div>'
+                , btn: ['确定', '关闭'] //只是为了演示
+                , btnAlign: 'c' //按钮居中
+                , shade: 0 //不显示遮罩
+                , yes: function (index, dom) {
+                    // 点击确定的回调
+                    console.log(index, dom);
+                    layer.close(openOrderNum);
+                }
+                , cancel: function (index, dom) {
+                    //点击右上角关闭箭头的回调
+                    console.log(index, dom);
+                    layer.close(openOrderNum);
+                    return false;
+                }
+                , end: function () {
+                    //   弹窗关闭完成的回调
+                }
+            });
+            console.log($('#layui-layer' + openOrderNum + ' .layui-layer-btn a'));
+            $('#layui-layer' + +openOrderNum + ' .layui-layer-btn').css({background: '#fff'});
+            $('#layui-layer' + openOrderNum).css(mainStyle)
+                .find('.layui-layer-title').css(titleStyle)
+                .end().find('.layui-layer-content').css(contentStyle)
+                .end().find('.layui-layer-setwin a').css(closeStyle);
+
+            for (var i_ = 0; i_ < $('.layui-layer-btn a').length; i_++) {
+                if (buttonStyle && buttonStyle[i_]) {
+                    console.log(111);
+                    $('#layui-layer' + openOrderNum + ' .layui-layer-btn a').eq(i_).css(buttonStyle[i_])
+                } else if (buttonStyle) {
+                    $('#layui-layer' + openOrderNum + ' .layui-layer-btn a').eq(i_).css(buttonStyle[0]);
+                    console.log(222);
+                }
+            }
+        }
+
+        $('#confirm').click(function () {
+            self_confirm(
+                {'background': '#96def5', border: '1px solid #219fc5'},
+                {'background': '#96def5', 'color': '#058bb5', borderBottom: 'none'},
+                {borderTop: '1px solid #30add3', background: '#fff'},
+                {color: 'red'},
+                [{color: '#fff', background: '#199ed8'}]
+            )
+        });
+    })
+</script>
+</html>

@@ -30,9 +30,4 @@ vscode快速新建vue模板;
         ],
         "description": "Log output to console"
     }
- }
---------------------- 
-作者：猫老板的豆 
-来源：CSDN 
-原文：https://blog.csdn.net/x550392236/article/details/80771410 
-版权声明：本文为博主原创文章，转载请附上博文链接！
+ } 
