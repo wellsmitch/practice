@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<table border="1" style="border-collapse: collapse;width: 100%;">
+    <tr>
+        <td width="80px">vsdf</td>
+        <td>vsdf</td>
+        <td>vsdf</td>
+        <td>vsdf</td>
+        <td>vsdf</td>
+    </tr>
+    <tr>
+        <td>vsdf</td>
+        <td>vsdf</td>
+        <td>vsdf</td>
+        <td>vsdf</td>
+        <td>vsdf</td>
+    </tr>
+    <tr>
+        <td>vsdf</td>
+        <td>vsdf</td>
+        <td>vsdf</td>
+        <td>vsdf</td>
+        <td>vsdf</td>
+    </tr>
+    <tr>
+        <td>vsdf</td>
+        <td>vsdf</td>
+        <td>vsdf</td>
+        <td>vsdf</td>
+        <td>vsdf</td>
+    </tr>
+    <tr>
+        <td>vsdf</td>
+        <td>vsdf</td>
+        <td>vsdf</td>
+        <td>vsdf</td>
+        <td>vsdf</td>
+    </tr>
+</table>
+<div id="a">
+    <div v-html="str"></div>
+</div>
+<script type="text/javascript">
+	var vm = new Vue({
+        el:'#a',
+        data: {
+            str:'dasdadasdaedaw<br>dssad'
+        }
+    })
+</script>
+</body>
+</html>

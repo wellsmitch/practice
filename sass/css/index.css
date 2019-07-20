@@ -1,0 +1,117 @@
+@charset "UTF-8";
+/*
+数字，1, 2, 13, 10px
+               字符串，有引号字符串与无引号字符串，"foo", 'bar', baz
+                                               颜色，blue, #04a3f9, rgba(255,0,0,0.5)
+布尔型，true, false
+空值，null
+数组 (list)，用空格或逗号作分隔符，1.5em 1em 0 2em, Helvetica, Arial, sans-serif
+maps, 相当于 JavaScript 的 object，(key1: value1, key2: value2)
+*/
+/*sass 中的引入其它的scss文件*/
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Century Gothic"; }
+
+/*定义变量*/
+h1 {
+  color: #8950ff; }
+
+/*sass 中的if判断语句*/
+p {
+  color: black; }
+
+/*需先定义  再进行引用*/
+~ a {
+  font-size: 20px; }
+
+.notice {
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  border: 2px solid #00aa00;
+  border: 5px salmon solid; }
+  .notice:hover {
+    color: #e4ff86; }
+
+/*for 循环*/
+.item-1 {
+  width: 2em; }
+
+.item-2 {
+  width: 4em; }
+
+.item-3 {
+  width: 6em; }
+
+/*sass 继承*/
+.error, .seriousError {
+  border: 1px red;
+  background-color: #fdd; }
+
+.seriousError {
+  border: 1px #ff1ffb;
+  border-width: 3px; }
+
+/*@function*/
+/*
+#sidebar {
+  width: 240px; }
+  */
+#sidebar {
+  width: 240px; }
+
+/*为便于书写，@mixin 可以用 = 表示，而 @include 可以用 + 表示，所以上面的例子可以写成：*/
+* html #logo {
+  background: khaki; }
+
+/* @each*/
+.puma-ibcon {
+  background-image: url("/images/puma.png"); }
+
+.sea-slug-ibcon {
+  background-image: url("/images/sea-slug.png"); }
+
+.egret-ibcon {
+  background-image: url("/images/egret.png"); }
+
+.salamander-ibcon {
+  background-image: url("/images/salamander.png"); }
+
+.puma-icon {
+  background-image: url("/images/puma.png");
+  border: 2px solid black;
+  cursor: default; }
+
+.sea-slug-icon {
+  background-image: url("/images/sea-slug.png");
+  border: 2px solid blue;
+  cursor: pointer; }
+
+.egret-icon {
+  background-image: url("/images/egret.png");
+  border: 2px solid white;
+  cursor: move; }
+
+h1 {
+  font-size: 2em; }
+
+h2 {
+  font-size: 1.5em; }
+
+h3 {
+  font-size: 1.2em; }
+
+.foo .bar:hover {
+  color: #33bcff; }
+
+/*
+=apply-to-ie6-only
+ * html
+@content
+
++apply-to-ie6-only
+#logo
+background-image: url(/logo.gif)
+*/

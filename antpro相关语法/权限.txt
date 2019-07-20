@@ -1,0 +1,4 @@
+modesls:
+ reloadAuthorized();// 如果不加这句话在登录之后即使有权选也进入不了页面（可以理解为登陆成功之后刷新当前登陆用户的权限）
+
+setAuthority(payload.currentAuthority); // 设置权限用的 

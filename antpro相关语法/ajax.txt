@@ -1,0 +1,35 @@
+  {
+    "/apii": {
+      target: "http://192.168.43.106:3000",
+      changeOrigin: true,
+      pathRewrite: { '^/apii': '' },
+    },
+  },
+
+
+return request('/apii/users/login', {
+    method: 'POST',
+    data: params
+    //   {
+    //   name:'123456',
+    //   pw:'123456'
+    // },
+  });
+
+npm start no-proxy
+
+//token 管制
+function requestfunc(p,q){
+  // if(!p.token) {
+    console.log(66666666666666,p,q)
+   return extend({
+     // prefix: 'http://localhost:3000',
+     errorHandler, // 默认错误处理
+     headers: {
+       Some: 'header----------------------------' // unified headers
+     },
+     // credentials: 'include', // 默认请求是否带上cookie
+   })(p,q)
+  // }
+
+}

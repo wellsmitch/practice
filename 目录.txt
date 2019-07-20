@@ -1,0 +1,7 @@
+88->examples->图片转换.html中     签名canvas转 图片base64 svg png
+
+upload.js 搜索 f = function   return "choose" === t ? l.choose && l.choose(g) : ((l.before && l.before(g)) === false ? '' : a.ie ? a.ie > 9 ? u() : c() : void u())//此行为了增加upload 上传之前可以拦截的问题
+
+测试ajax在 jsBase中 的ajax及上传进度监听.html文件中
+
+nicescroll 是自定义滚动条的功能文件
