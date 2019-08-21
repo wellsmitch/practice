@@ -43,13 +43,18 @@
         <td>vsdf</td>
     </tr>
 </table>
+
 <div id="a">
-    <div v-html="str"></div>
+        <div :style="{22 == 221 ? 'color:red' : 'color:#000'}">qqqqqqqqqqqqqqqqqqqqqqqqqq</div>
+
+
 </div>
 <script type="text/javascript">
 	var vm = new Vue({
         el:'#a',
         data: {
+            a:'color:red',
+            b:'color:#000',
             str:'dasdadasdaedaw<br>dssad'
         }
     })

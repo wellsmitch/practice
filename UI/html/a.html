@@ -2,13 +2,104 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <title>Title</title>
     <script src="../js/vue.js"></script>
+    <script src="../js/jquery.js"></script>
+    <style>
+        #scrollCon li {
+            border-bottom: 1px solid #aaa;
+            line-height: 30px;
+        }
+        li {
+            list-style: none;
+        }
+        #scrollCon .hh {
+            color: #ff4b35;
+        }
+    </style>
 </head>
 <body>
-<div id="box">
-    <ul>
-        <li v-for="item in a">{{item}}</li>
+<div id="box" style="padding-top: 120px">
+    <div id="mark_a">
+        <a href="#aa" style="background: #5a9cff">aaa</a>
+        <a href="#bb">bbb</a>
+        <a href="#cc">ccc</a>
+    </div>
+
+    <ul id="scrollCon" style="height: 150px;overflow: auto;border: 1px solid #000;position: relative">
+        <li class="hh" h="1" id="aa">aaaaaaaaaa</li>
+        <li>22srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0sad0srgresge</li>
+        <li>0fwe0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0sad0srgresge</li>
+        <li>0fwe0srgresge</li>
+        <li>33srgresge</li>
+        <li>44srgresge</li>
+        <li class="hh" h="2" id="bb">bbbbbbbbbbbbb</li>
+        <li>66srgresge</li>
+        <li>77srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0sad0srgresge</li>
+        <li>0fwe0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0sad0srgresge</li>
+        <li>0fwe0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0sad0srgresge</li>
+        <li>0fwe0srgresge</li>
+        <li>88srgresge</li>
+        <li class="hh" h="3" id="cc">cccccccccccccc</li>
+        <li>00srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0we0srgresge</li>
+        <li>0sad0srgresge</li>
+        <li>0fwe0srgresge</li>
+        <li>0dfew0srgresge</li>
+        <li>0ew0srgresge</li>
+        <li>0fre0srgresge</li>
+        <li>0gre0srgresge</li>
+        <li>0gre0srgresge</li>
     </ul>
 </div>
 <script type="text/javascript">
@@ -17,7 +108,27 @@
         data:{
             a:[111,222,3333]
         }
-    })
+    });
+    $('a').click(function () {
+        $(this).css('background','#5a9cff').siblings().css('background','transparent')
+    });
+    document.querySelector('#scrollCon').onscroll = function (e) {
+        var num = Math.floor(e.target['scrollTop'] / $('#scrollCon li').height());
+        var mark_num = Number($('li').eq(num).attr('h'));
+        var $dom = $('#scrollCon li').eq(num);
+        for (var j =0;j < $('#scrollCon li').length;j++) {
+            if(!!$dom.attr('h')) {
+                mark_num = Number($dom.attr('h'));
+                $dom = $('#scrollCon li').eq(num);
+                if(!!mark_num && (mark_num > 0 || mark_num ==0)) {
+                    $('#mark_a a').eq(mark_num - 1).css('background','#5a9cff').siblings().css('background','transparent');
+                }
+                break;
+            }
+            $dom = $dom.prev()
+        }
+
+    }
 </script>
 </body>
 </html>

@@ -1,0 +1,143 @@
+/*************store.js************/
+// redux-saga 会对发出的action进行拦截如果 如果生成器函数中存在此动作 则优先执行该动作 然后执行reducer
+import {createStore, applyMiddleware} from 'redux'
+import createSagaMiddleware from 'redux-saga'
+import reducers from './reducers'
+import rootSaga from './rootSaga'
+
+// 创建一个saga中间件
+const sagaMiddleWare = createSagaMiddleware();
+
+// 创建store
+const store = createStore(
+    reducers,
+    applyMiddleware(sagaMiddleWare)
+);
+
+sagaMiddleWare.run(rootSaga);
+
+export default store;
+
+/*************/reducers.js************/
+
+import {combineReducers} from 'redux';
+import {doStart} from './add'
+const reducer = combineReducers({
+    doStart
+});
+export default reducer
+
+/*************rootSaga.js************/
+
+import {fork} from 'redux-saga/effects'
+import {add_} from './saga/add'
+
+
+export default  function *rootSaga() {
+    yield fork (add_)
+}
+
+/*************/saga/add.js************/
+import { take, call, put } from 'redux-saga/effects'
+import { actionType } from '../actionType/actionType'
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+export function *add_delay() {
+  try {
+      return yield call(delay, 1500)
+  }catch (e) {
+      console.log(e)
+  }
+}
+
+export function *add_() {
+    while (true) {
+        console.log(actionType.DO_ADD);
+        let res = yield take(actionType.DO_ADD);
+        let response = yield call(add_delay,res.value);
+        console.log(response,'ggrfs');
+        yield put({
+            type: 'DO_ADD_',//  为了区分DO_ADD  防止连续加了两次
+            // data: list
+        })
+
+    }
+}
+/***********************使用saga的组件*********************/
+
+import React, {Component} from 'react';
+import $ from 'jquery';
+import s from '../33.jpeg'
+import {  bindActionCreators  } from 'redux'
+import { connect } from 'react-redux'
+import { addm } from '../action/action'
+
+class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            arr: [],
+            bg: {
+                // background: 'red',
+                height: '80px',
+                backgroundImage: `url(${s})`
+            },
+            s:{
+                width:'100px',height:'100px'
+            },
+            con:0,
+        }
+    }
+
+    additem(a) {
+        console.log(333);
+        this.props.additem1(a)
+    }
+
+    render() {
+        // const word = 'is good';
+        const { con } = this.props;
+        return (
+            <React.Fragment>
+                {/*<React.Fragment> == <div> == <>*/}
+                <h1 className={'d'}>首页1</h1>
+                <button onClick={(e)=>{this.additem(67892)}}>+</button>
+                <img style={this.state.s} src={s} alt=""/>
+                <p>{this.bg}</p>
+                <div style={this.state.bg}>fffffffffffffff</div>
+                <h1>{con}</h1>
+            </React.Fragment>
+        )
+    }
+
+    componentWillMount() {
+        var _this = this;
+        $.ajax({
+            type: 'get',
+            url: 'http://jx.xuzhixiang.top/ap/api/productlist.php',
+            data: {},
+            dataType: 'json',
+            success: function (data) {
+                console.log(data.data);
+                _this.setState({arr: data.data})
+            }
+        })
+
+    }
+}
+let mapStateToProps = (state) =>{
+    console.log(state);
+    return {
+        con:state.doStart.a
+    }
+
+
+};
+
+let mapDispatchToProps = (dispatch)=>{
+    return {
+        additem1: bindActionCreators(addm, dispatch)
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
+

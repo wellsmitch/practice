@@ -1,0 +1,62 @@
+// 父
+
+ <ChartCard
+        bordered={false}
+        title={<FormattedMessage id="app.analysis.total-sales" defaultMessage="Total Sales" />}
+        action={
+          <Tooltip
+            title={<FormattedMessage id="app.analysis.introduce" defaultMessage="Introduce" />}
+          >
+            <Icon type="info-circle-o" />
+          </Tooltip>
+        }
+        loading={loading}
+        total={() => <Yuan>126560</Yuan>}
+        footer={
+          <Field
+            label={<FormattedMessage id="app.analysis.day-sales" defaultMessage="Daily Sales" />}
+            value={`￥${numeral(12423).format('0,0')}`}
+          />
+        }
+        contentHeight={46}
+      >
+
+// 子
+class ChartCard extends React.PureComponent {
+
+ render() {
+    const {
+      loading = false,
+      contentHeight,
+      title,
+      avatar,
+      action,
+      total,
+      footer,
+      children,
+      ...rest
+    } = this.props;
+    console.log(rest);
+    return (
+      <Card loading={loading} bodyStyle={{ padding: '20px 24px 8px 24px' }} {...rest}>
+        {this.renderConnet()}
+      </Card>
+    );
+  }
+
+子节点可以通过this.props  拿到父节点标签上面所有的属性  若在获取属性时进行了重新赋值  则rest会少拿该值
+例如
+ const {
+    //  loading = false,
+      contentHeight,
+      title,
+      avatar,
+      action,
+      total,
+      footer,
+      children,
+      ...rest
+    } = this.props;// {bordered: false, loading: false}
+
+
+｝

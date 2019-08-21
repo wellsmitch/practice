@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="layui-v2.4.5/layui-v2.4.5/layui/css/layui.css">
-    <script src="layui-v2.4.5/layui-v2.4.5/layui/layui.js"></script>
+
     <style>
 
     </style>
+    <script src="../../js/jquery.js"></script>
+    <script src="../layui.js"></script>
+    <link rel="stylesheet" href="../css/layui.css">
 </head>
 <body>
 
-<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <table class="layui-hide" id="demo" lay-filter="test"></table>
 <div>
 
@@ -156,9 +157,13 @@
             ,totalRow: true //开启合计行
             ,cols: [[ //表头
                 {type: 'radio', fixed: 'left'}
-                ,{field: 'id', title: 'ID', width:80, sort: true, fixed: 'left', totalRowText: '合计：'}
+                ,{field: 'id', title: 'ID', width:80, sort: true, fixed: 'left', totalRowText: '' +
+                       '合计：'}
                 ,{field: 'username', title: '用户名', width:80}
-                ,{field: 'experience', title: '积分', width: 90, sort: true, totalRow: true}
+                ,{field: 'experience', title: '积分', width: 90, sort: true, totalRow: true,templet:function (a) {
+                       // console.log(a)
+                       return '---'+a.experience
+                   }}
                 ,{field: 'sex', title: '性别', width:80, sort: true}
                 ,{field: 'score', title: '评分', width: 80, sort: true, totalRow: true}
                 ,{field: 'city', title: '城市', width:150}

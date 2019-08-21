@@ -1,0 +1,27 @@
+* getLatestList(action, { call, put, select }) {
+     const data = yield call(getData);
+     // 如果使用定时器来轮询getDate这个请求的话，代码就会是这样的
+     setInterval(() => {
+	   const data = yield call(getData); // 此时就会报错 因为yield 必须配合 * 来使用
+	 }, 300)
+}
+
+
+
+上面示例的代码中在定时器中使用yield call(getData)会报错。
+所以我们可以通过yield 关键字可以阻塞代码，将异步变为同步的特性来实现轮询， 我们可以通过设置一个延时函数，延时时间为300ms，当此次的数据请求完成之后通过延时函数延时300ms之后再进行下一次请求执行
+所以，改造后的代码为
+
+
+
+* getLatestList(action, { call, put, select }) {
+	 const delay = ms => new Promise(resolve => setTimeout(resolve, ms);
+     // 如果使用定时器来轮询getDate这个请求的话，代码就会是这样的
+     // setInterval(() => {
+	 //  const data = yield call(getData); // 此时就会报错 因为yield 必须配合 * 来使用
+	 // }, 300)
+	 while(true) {
+	    const data = yield call(getData);
+	    yield call(delay, 300); // 延时300ms之后进行下一次的while循环执行
+     }
+}

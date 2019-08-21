@@ -1,4 +1,4 @@
-1、dva中@connect使用的数据来自pages/.umi/dva.js文件夹
+﻿1、dva中@connect使用的数据来自pages/.umi/dva.js文件夹
 modal层 开始
 export default {
   namespace: 'login',
@@ -42,6 +42,47 @@ import { connect } from 'dva';
 
 render() {
     const { login111, submitting } = this.props;
+//相当于
+/*********
+    additem(a) {
+        console.log(333);
+        this.props.additem1(a)
+    }
+
+
+let mapStateToProps = (state) =>{
+    console.log(state);
+    return {
+        con:state.doStart.a
+    }
+
+
+};
+
+let mapDispatchToProps = (dispatch)=>{
+    return {
+        additem1: bindActionCreators(addm, dispatch)
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
+
+***********/
+	handleSubmit = (err, values) => {
+   	 console.log(err, values,'---handleSubmit')
+   	 const { type } = this.state;
+   	 if (!err) {
+     	 console.log(this.props);
+     	 const { dispatch } = this.props;
+      	dispatch({
+        	type: 'login/login',
+       	 payload: {
+        	  ...values,
+        	  type,
+       	 },
+      	});
+   	 }
+  };
     }
 
 
