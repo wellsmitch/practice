@@ -3,25 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="js/require.js"></script>
+    <script src="js/require.js" data-main="js/requireConfig.js"></script>
 </head>
 <body>
+<script type="text/javascript" src="js/te/s.js"></script>
 <script type="text/javascript">
-    require.config({
+    // require.config({
+    //
+    //     baseUrl: "js",
+    //
+    //     paths: {
+    //         // "a": "s",
+    //         "dop": "k",//此模块必须指定dop  否则拿不到定义的模块
+    //     }
+    //
+    // });
 
-        baseUrl: "js",
 
-        paths: {
-            "a": "s",
-            "dop": "k",//此模块必须指定dop  否则拿不到定义的模块
-        }
-
-    });
-
-
-    require(['a','dop'], function (radsadsa,k){
-    console.log(radsadsa,k)
-
+    // require(['a','dop'], function (radsadsa,k){
+    // console.log(radsadsa,k)
+    //
+    // });
+    require(['fg'], function (a){
+        console.log(a.add(5, 6));
     });
 </script>
 </body>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/layui.css">
+    <script src="../layui.js"></script>
+    <script src="../../js/jquery.js"></script>
+</head>
+<body>
+<table class="layui-table" style="" lay-data="{url:'../../data/demo2.json?', width: 800, cellMinWidth: 80, page: true}">
+    <thead>
+    <tr>
+        <th lay-data="{field:'username', width:80}" rowspan="3">联系人</th>
+        <th lay-data="{field:'amount', width:120}" rowspan="3">金额</th>
+        <th lay-data="{align:'center', width:120}" colspan="5">地址1</th>
+        <th lay-data="{align:'center', width:120}" colspan="2">地址2</th>
+        <!--fixed: 'right',, toolbar: '#barDemo'-->
+        <th lay-data="{ width: 160, align: 'center'}" rowspan="3">操作</th>
+    </tr>
+    <tr>
+        <th lay-data="{field:'province'}" rowspan="2">省</th>
+        <th lay-data="{field:'city'}" rowspan="2">市</th>
+        <th lay-data="{align:'center'}" colspan="3">详细</th>
+        <th lay-data="{field:'province'}" rowspan="2">省</th>
+        <th lay-data="{field:'city'}" rowspan="2">市</th>
+    </tr>
+    <tr>
+        <th lay-data="{field:'street'}" rowspan="2">街道</th>
+        <th lay-data="{field:'address'}">小区</th>
+        <th lay-data="{field:'house'}">单元</th>
+    </tr>
+    </thead>
+</table>
+
+
+<div class="layui-tab layui-tab-card" id="contentWraper" style="width: 290px;border: 1px solid #bdbdbd;background: #f2f2f2;opacity: .8;color: #000;box-shadow: 0 0 10px -3px #000;padding: 4px;">
+    <ul class="layui-tab-title" style="height: 30px;">
+        <li class="layui-this" style="line-height: 24px;">土地供应</li>
+        <li style="line-height: 20px;">土地储备</li>
+
+    </ul>
+    <div class="layui-tab-content" style="height: 100px;">
+        <div class="layui-tab-item layui-show" id="content">
+
+        </div>
+        <div class="layui-tab-item">土地储备的内容</div>
+
+    </div>
+</div>
+<div class="layui-tab layui-tab-card" id="contentWraper6" style="width: 290px;border: 1px solid #bdbdbd;background: #f2f2f2;opacity: .8;color: #000;box-shadow: 0 0 10px -3px #000;padding: 4px;">
+    <ul class="layui-tab-title" style="height: 30px;">
+        <li class="layui-this" style="line-height: 24px;">土地供应</li>
+        <li style="line-height: 20px;">土地储备</li>
+
+    </ul>
+    <div class="layui-tab-content" style="height: 100px;">
+        <div class="layui-tab-item layui-show" id="content">
+
+        </div>
+        <div class="layui-tab-item">土地储备的内容</div>
+
+    </div>
+</div>
+<button>fsdfsd</button>
+<script type="text/javascript">
+    layui.use(['table', 'element'], function(){
+        var table = layui.table;
+        var element = layui.element;
+        $('button').click(function () {
+            $('#contentWraper').css('display','block');
+        })
+    });
+</script>
+</body>
+</html>

@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <title>Title</title>
-    <script src="../js/vue.js"></script>
-    <script src="../js/jquery.js"></script>
+    <script src="jquery.js"></script>
     <style>
         #scrollCon li {
             border-bottom: 1px solid #aaa;
@@ -103,12 +102,6 @@
     </ul>
 </div>
 <script type="text/javascript">
-	var vm = new Vue({
-        el:'#box',
-        data:{
-            a:[111,222,3333]
-        }
-    });
     $('a').click(function () {
         $(this).css('background','#5a9cff').siblings().css('background','transparent')
     });
