@@ -1,4 +1,4 @@
-define('',['te/k'],function (dop){
+define('fg',['te/k'],function (dop){
 
     // define(["./cart", "./inventory"], function(cart, inventory) {
 

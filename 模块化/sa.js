@@ -1,5 +1,4 @@
 (function (root, factory) {
-    debugger
     if (typeof define === "function" && define.amd) {
         define(["libName"], factory);
     } else if (typeof module === "object" && module.exports) {

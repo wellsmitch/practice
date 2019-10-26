@@ -3,30 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="js/require.js" data-main="js/requireConfig.js"></script>
+    <script type="text/javascript" data-main="requireConfig.js" src="require.js"></script>
+    <!--<script type="text/javascript" src="js/requireConfig.js"></script>-->
+
+    <!--data-main="js/requireConfig.js"-->
 </head>
 <body>
-<script type="text/javascript" src="js/te/s.js"></script>
+<!--<script type="text/javascript" src="js/te/s.js"></script>-->
 <script type="text/javascript">
     // require.config({
     //
-    //     baseUrl: "js",
+    //     baseUrl: "js/te",
     //
     //     paths: {
-    //         // "a": "s",
+    //         "a": "s",
     //         "dop": "k",//此模块必须指定dop  否则拿不到定义的模块
     //     }
     //
     // });
 
+    setTimeout(function () {
+        require(['a'], function (radsadsa,k){
+            // radsadsa.dropMethod()
 
-    // require(['a','dop'], function (radsadsa,k){
-    // console.log(radsadsa,k)
-    //
+        },1000);
+
+    })
+
+
+
+    // require(['fg'], function (a){
+    //     console.log(a.add(5, 6));
     // });
-    require(['fg'], function (a){
-        console.log(a.add(5, 6));
-    });
+
+
 </script>
+<!--<script src="sa.js"></script>-->
 </body>
 </html>

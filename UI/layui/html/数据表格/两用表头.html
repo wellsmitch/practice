@@ -15,7 +15,7 @@
 
 常用两级表头：
 
-<table class="layui-table" lay-data="{width:800, url:'/UI/layui/json/demo2.json?v=2', page: true, limit: 6, limits:[6]}">
+<table class="layui-table" lay-data="{id:tal,width:800, url:'/UI/layui/json/demo2.json?v=2', page: true, limit: 6, limits:[6]}">
     <thead>
     <tr>
         <th lay-data="{checkbox:true, fixed:'left'}" rowspan="2"></th>
@@ -67,7 +67,15 @@
 <script>
     layui.use('table', function(){
         var table = layui.table;
-
+        table.reload('tal', {
+            url: '/UI/layui/json/demo2.json?v=2'
+            ,where: {} //设定异步数据接口的额外参数
+            ,cols:[[
+                {field:'street', title: '文章标题', width: 200} //这里的templet值是模板元素的选择器
+                ,{field:'address', title:'ID', width:100}
+            ]]
+            //,height: 300
+        });
     });
 </script>
 

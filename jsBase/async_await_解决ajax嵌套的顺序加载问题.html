@@ -9,7 +9,7 @@
 
 	<body>
 		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-        <script src="https://cdn.bootcss.com/babel-polyfill/7.4.4/polyfill.min.js"></script>
+        <!--<script src="https://cdn.bootcss.com/babel-polyfill/7.4.4/polyfill.min.js"></script>-->
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<script type="text/javascript">
 			function sleep(second, param) {
@@ -17,7 +17,7 @@
 					setTimeout(() => {
 						console.log('---1')
 						resolve(param);
-						
+
 					}, second);
 				})
 
@@ -25,21 +25,21 @@
 			function aaa(i){
 			return 	axios.get('http://jx.xuzhixiang.top/ap/api/productlist.php',{})
 				.then(function(data){
-					
+
 					console.log(i,'---aaa')
 					return 5555
 				})
-			}			
+			}
 			function ccc(e){
 				axios.get('http://jx.xuzhixiang.top/ap/api/productlist.php',{})
 				.then(function(data){
 					console.log(e,'---bbb')
 				})
-			}		
+			}
 			async function test() {
 				let result1 = await sleep(2000, 'req01');
-				let result2 = await aaa(result1);	
-				let result3 = await ccc(result2);	
+				let result2 = await aaa(result1);
+				let result3 = await ccc(result2);
 			}
 
 			test();

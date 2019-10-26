@@ -11,7 +11,7 @@ define([],function (){
     return {
         add11: add11,
         dropMethod:function () {
-            console.log('dop 模块执行了');
+            console.log('dop1111111111111111 模块执行了');
         }
     };
 

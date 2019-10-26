@@ -170,7 +170,7 @@
                 ,{field: 'sign', title: '签名', width: 200}
                 ,{field: 'classify', title: '职业', width: 100}
                 ,{field: 'wealth', title: '财富', width: 135, sort: true, totalRow: true}
-                ,{fixed: 'right', width: 165, align:'center', toolbar: '#barDemo'}
+                ,{fixed: 'right', title:'操作', width: 165, align:'center', toolbar: '#barDemo'}
             ]]
            , done: function(res, curr, count){
                //如果是异步请求数据方式，res即为你接口返回的信息。
@@ -186,6 +186,27 @@
                console.log(count);
            }
         });
+        tabledemo.reload({
+            url: './data.json'
+            ,where: {} //设定异步数据接口的额外参数
+            ,cols: [[ //表头
+                {type: 'radio', fixed: 'left'}
+                ,{field: 'id', title: 'ID', width:80, sort: true, fixed: 'left', totalRowText: '' +
+                        '合计：'}
+                ,{field: 'username', title: '用户名', width:80}
+                ,{field: 'experience', title: '积分', width: 90, sort: true, totalRow: true,templet:function (a) {
+                        // console.log(a)
+                        return '---'+a.experience
+                    }}
+                ,{field: 'sex', title: '性别', width:80, sort: true}
+                ,{field: 'score', title: '评分', width: 80, sort: true, totalRow: true}
+                ,{field: 'city', title: '城市', width:150}
+                ,{field: 'sign', title: '签名', width: 200}
+                ,{field: 'classify', title: '职业', width: 100}
+                ,{field: 'wealth', title: '财富', width: 135, sort: true, totalRow: true}
+                // ,{fixed: 'right', title:'操作', width: 165, align:'center', toolbar: '#barDemo'}
+            ]]
+        })
         console.log(tabledemo);
         form.on('submit(gis_data_save)',function (data) {
             console.log(data);

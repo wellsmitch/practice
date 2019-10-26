@@ -9,11 +9,13 @@
 			function point(x,y){
 				this.x = x;
 				this.y = y;
-				this.toString = function(){
-					return `(${this.x})-----(${this.y})`
-				}
+				// this.toString = function(){
+				// 	return `(${this.x})-----(${this.y})`
+				// }
 			}
-			
+            point.prototype.toString = function () {
+                return `(${this.x})-----(${this.y})`
+            }
 			var a = new point(1,2)
 			console.log(a.toString())
 		</script>

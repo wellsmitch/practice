@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <title>ChapterTwoExternal</title>
+    <style>
+        body {
+            padding: 20px;
+        }
+        .divContainer {
+            width: 800px;
+            height:400px;
+            border:1px solid #aaa;
+            margin: 10px auto;
+            overflow: auto;
+            padding:10px 0;
+        }
+        .testDiv {
+            width:400px;
+            height:40px;
+            background:#23769b;
+            margin:0 auto;
+        }
+        .insertDiv {
+            width:400px;
+            height:40px;
+            background:#10811c;
+            margin:2px auto;
+            color:#fff;
+            line-height:40px;
+        }
+        .insertDiv1 {
+            width:400px;
+            height:40px;
+            background:#900;
+            margin:2px auto;
+            color:#fff;
+            line-height:40px;
+        }
+    </style>
+    <script src="js/jquery.js"></script>
+</head>
+<body>
+<div class="container text-center">
+    <button class="btn btn-primary" id="btnAfter">点击通过jQuery的after添加元素</button>
+    <button class="btn btn-primary" id="btnBefore">点击通过jQuery的before添加元素</button>
+    <div class="divContainer" >
+        <div class="testDiv" id="demo"></div>
+        <div class="insertDiv"></div>
+    </div>
+    <button class="btn btn-primary" id="btnInsertBefore">点击通过jQuery的insertBefore添加元素</button>
+    <button class="btn btn-primary" id="btnInsertAfter">点击通过jQuery的insertAfter添加元素</button>
+</div>
+<script>
+
+    $("#btnAfter").click(function () {
+        //$(A).before(B)
+        $("#demo").after("<div class='insertDiv'>DOM外部插入after()与before()</div>");
+    });
+
+    $("#btnBefore").click(function () {
+        //$(A).before(B)
+        $("#demo").before("<div class='insertDiv'>DOM外部插入after()与before()</div>");
+    });
+
+    $("#btnInsertBefore").click(function () {
+        //.before()和.insertBefore()实现同样的功能。主要的区别是语法——内容和目标的位置
+        //$(A).before(B)
+        $("<div class='insertDiv1'>DOM外部插入insertAfter()与insertBefore()</div>").insertBefore($("#demo"));
+    });
+
+    $("#btnInsertAfter").click(function () {
+        //.after()和.insertAfter() 实现同样的功能
+        //$(A).before(B)
+        $("<div class='insertDiv1'>DOM外部插入insertAfter()与insertBefore()</div>").insertAfter($("#demo"));
+    });
+</script>
+</body>
+</html>

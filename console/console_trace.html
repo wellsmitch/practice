@@ -18,9 +18,18 @@
 
         box()
     </script>
+    <script src="../js/jquery.js"></script>
 
 </head>
 <body>
+<textarea name="" id="" cols="30" rows="10"></textarea>
+<button>执行</button>
+<script type="text/javascript">
+    $('button').click(function () {
+       var s =eval($('textarea').val());
+        console.log(s);
+    });
 
+</script>
 </body>
 </html>
