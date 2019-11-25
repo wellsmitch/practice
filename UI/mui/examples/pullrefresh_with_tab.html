@@ -51,7 +51,7 @@
 				/*-webkit-backface-visibility: hidden;
 				-webkit-transition-duration: 400ms;
 				transition-duration: 400ms;*/
-				
+
 				margin: 0;
 			}
 			.mui-pull-top-wrapper .mui-icon,
@@ -116,7 +116,7 @@
 					</div>
 				</div>
 				<div class="mui-slider-group">
-					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+					<!--<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">-->
 						<div id="scroll1" class="mui-scroll-wrapper">
 							<div class="mui-scroll">
 								<ul class="mui-table-view">
@@ -183,7 +183,7 @@
 								</ul>
 							</div>
 						</div>
-					</div>
+					<!--</div>-->
 					<div id="item2mobile" class="mui-slider-item mui-control-content">
 						<div class="mui-scroll-wrapper">
 							<div class="mui-scroll">
@@ -536,10 +536,10 @@
 				//阻尼系数
 				var deceleration = mui.os.ios?0.003:0.0009;
 				$('.mui-scroll-wrapper').scroll({
-					bounce: false,
-					indicators: true, //是否显示滚动条
-					deceleration:deceleration
-				});
+                    bounce: false,
+                    indicators: true, //是否显示滚动条
+                    deceleration:deceleration
+                });
 				$.ready(function() {
 					//循环初始化所有下拉刷新，上拉加载。
 					$.each(document.querySelectorAll('.mui-slider-group .mui-scroll'), function(index, pullRefreshEl) {
@@ -550,7 +550,7 @@
 									setTimeout(function() {
 										var ul = self.element.querySelector('.mui-table-view');
 										ul.insertBefore(createFragment(ul, index, 10, true), ul.firstChild);
-										self.endPullDownToRefresh();
+										//self.endPullDownToRefresh();
 									}, 1000);
 								}
 							},

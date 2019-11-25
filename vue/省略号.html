@@ -1,34 +1,71 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title></title>
-		<style type="text/css">
-			.gf {
-				width: 100px;
-				color: rgb(1, 170, 237);
-				overflow: hidden;
-				white-space: nowrap;
-				cursor: pointer;
-				text-overflow: ellipsis;
-			}
-		</style>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        .gf {
+            width: 100px;
+            color: rgb(1, 170, 237);
+            overflow: hidden;
+            white-space: nowrap;
+            cursor: pointer;
+            text-overflow: ellipsis;
+        }
+    </style>
+    <script src="../UI/layui/layui.js"></script>
+    <link rel="stylesheet" href="../UI/layui/css/layui.css">
 
-	</head>
-	<script src="vue.js" type="text/javascript" charset="utf-8"></script>
-	<body>
-		<div id="out">
+</head>
+<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+<body>
+<div id="out">
+    <form id="data_in_base" class="layui-form layui-tab-item ulcon1 layui-show"
+          style="box-sizing: border-box;padding:0" lay-filter="data_in_base">
+        <select name="areaNum">
+            <!--<option>dfgd</option>-->
+            <!--<option>dfgd1</option>-->
+            <!--<option>dfgd2</option>-->
+            <option v-for="(key) in g" :value="key">{{key}}</option>
+        </select>
+    </form>
+    <!--<p class="gf" v-for="item in arr">{{item}}</p>-->
+</div>
+</body>
+<script type="text/javascript">
+    layui.use(['form', 'jquery'], function () {
+        var form = layui.form;
+
+        var vm = new Vue({
+            el: '#out',
+            data: {
+                arr: ['111111111111111111111111', '22222222222222222222222', '33333333333333333333333'],
+                g: null
+
+            },
+            methods: {
+                as: function () {
+                    this.g = {
+                        a: 11,
+                        b: 222
+                    }
+                }
+
+            },
+            mounted() {
+                this.as();
+                this.$nextTick(function () {
+                    form.render()
+                })
+            },
+            update: function () {
 
 
-			<p class="gf" v-for="item in arr">{{item}}</p>
-		</div>
-	</body>
-	<script type="text/javascript">
-		var vm = new Vue({
-			el: '#out',
-			data: {
-				arr: ['111111111111111111111111', '22222222222222222222222', '33333333333333333333333']
-			}
-		})
-	</script>
+
+            }
+        })
+
+    })
+
+</script>
 </html>

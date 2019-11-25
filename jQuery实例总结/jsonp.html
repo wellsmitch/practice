@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>\
+<script type="text/javascript">
+    $.ajax({
+        url: "http://www.wellsmitch.top/qq/oauth2.0/me?access_token=" + access_token,
+        dataType: 'jsonp',
+        jsonpCallback: 'callback',
+        success: function(res) {
+            console.log(res)
+        },
+        error: function(XMLHttpReuqest, textStautus, errothrown,i,p) {
+            console.log(XMLHttpReuqest, textStautus, errothrown,i,p)
+        }
+    })
+</script>
+
+</body>
+</html>

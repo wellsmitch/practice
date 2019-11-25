@@ -7,4 +7,12 @@
 <body>
 $END$
 </body>
+<script language=javascript>
+    function confirm(str)
+    {
+        execScript("n = (msgbox('"+str+"',vbYesNo, '提示')=vbYes)", "vbscript");
+        return(n);
+    }
+    confirm("重载的confirm弹出框");
+</script>
 </html>
