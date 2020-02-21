@@ -1,4 +1,4 @@
-/**
+ /**
  *  Version 2.4.0 Copyright (C) 2013
  *  Tested in IE 11, FF 28.0 and Chrome 33.0.1750.154
  *  No official support for other browsers, but will TRY to accommodate challenges in other browsers.

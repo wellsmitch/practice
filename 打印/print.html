@@ -18,13 +18,13 @@
     </style>
 </head>
 <body>
-<div id="print-area" style="width: 100%;/*border: 1px solid #000;*/height: 290mm">
+<div id="print-area" style="width: 100%;border: 1px solid #000;height: 290mm;box-sizing: border-box">
     <h1>打印示例</h1>
 </div>
 
 <button id="print">打印</button>
 <script type="text/javascript">
-    var hkey_root ,hkey_path, hkey_key;
+/*    var hkey_root ,hkey_path, hkey_key;
     hkey_root = 'HKEY_CURRENT_USER',
         hkey_path= '\\Software\\Microsoft\\Internet Explorer\\PageSetup\\';
     try {
@@ -35,10 +35,12 @@
         RegWsh.RegWrite(hkey_root + hkey_path + hkey_key, "");
     } catch (e) {
 
-    }
+    }*/
 
     $("#print").click(function() {
-        $("#print-area").printArea();
+        $("#print-area").printArea({
+
+        });
     })
     </script>
 </body>

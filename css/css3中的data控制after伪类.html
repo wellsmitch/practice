@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js控制after伪类</title>
+    <style>
+        div:after {
+            content: attr(data-content);
+        }
+        .a:after {
+            content: 'attr(data-content)';
+        }
+    </style>
+    <script src="../js/jquery.js"></script>
+</head>
+<body>
+<div class="a" data-content="1231231"> 正文内容 </div>
+<script type="text/javascript">
+    // $("div").attr('data-content', 789798);
+</script>
+</body>
+</html>

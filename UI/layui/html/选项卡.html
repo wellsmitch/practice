@@ -8,7 +8,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script src="../layui1.js"></script>
     <link rel="stylesheet" href="../css/layui.css">
+    <script src="url转二维码/js/barcode.js"></script>
     <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <script type="text/javascript">
+        /**
+         * Option	Default value	Type
+         format（选择要使用的条形码类型）	"auto" (CODE128)	String
+         width（设置条之间的宽度）	2	Number
+         height（高度）	100	Number
+         displayValue（是否在条形码下方显示文字）	true	Boolean
+         text （覆盖显示的文本）	undefined	String
+         fontOptions（使文字加粗体或变斜体）	""	String
+         font（设置文本的字体）	"monospace"	String
+         textAlign（设置文本的水平对齐方式）	"center"	String
+         textPosition（设置文本的垂直位置）	"bottom"	String
+         textMargin（设置条形码和文本之间的间距）	2	Number
+         fontSize（设置文本的大小）	20	Number
+         background（设置条形码的背景）	"#ffffff"	String (CSS color)
+         lineColor（设置条和文本的颜色）	"#000000"	String (CSS color)
+         margin（设置条形码周围的空白边距）	10	Number
+         marginTop（设置条形码上方的空白边距）	undefined	Number
+         marginBottom（设置条形码下方的空白边距）	undefined	Number
+         marginLeft（设置条形码左边的空白边距	undefined	Number
+         marginRight（设置条形码右边的空白边距）	undefined	Number
+         flat	false	Boolean
+         valid	function(valid){}	Function
+         */
+    </script>
 </head>
 <body>
 
@@ -28,6 +54,8 @@
         <div class="layui-tab-item layui-show">
             1. 高度默认自适应，也可以随意固宽。
             <br>2. Tab进行了响应式处理，所以无需担心数量多少。
+            <br>
+            <svg id="barcode" width="170"></svg>
         </div>
         <div class="layui-tab-item">内容2</div>
         <div class="layui-tab-item">内容3</div>
@@ -219,7 +247,13 @@
         element.on('tab(test)', function(elem){
             location.hash = 'test='+ $(this).attr('lay-id');
         });
-
+        JsBarcode("#barcode", "12345678S90128", {
+            // format: "pharmacode",
+            lineColor: "#0aa",
+            width: 1,
+            height: 40,
+            displayValue: true
+        })
     });
 </script>
 

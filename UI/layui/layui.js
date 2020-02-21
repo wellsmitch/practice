@@ -67,6 +67,7 @@
             ,flow: 'modules/flow' //流加载
             ,util: 'modules/util' //工具块
             ,code: 'modules/code' //代码修饰器
+            ,wdf: 'modules/wdf' //代码修饰器
             ,jquery: 'modules/jquery' //DOM库（第三方）
 
             ,mobile: 'modules/mobile' //移动大模块 | 若当前为开发目录，则为移动模块入口，否则为移动模块集合
@@ -78,6 +79,7 @@
 
     //定义模块
     Layui.prototype.define = function(deps, factory){
+        console.trace(13523453453453);
         var that = this
             ,type = typeof deps === 'function'
             ,callback = function(){
@@ -134,12 +136,15 @@
 
         //加载完毕
         function onScriptLoad(e, url){
+            console.log(e);
             var readyRegExp = navigator.platform === 'PLaySTATION 3' ? /^complete$/ : /^(complete|loaded)$/
             if (e.type === 'load' || (readyRegExp.test((e.currentTarget || e.srcElement).readyState))) {
                 config.modules[item] = url;
                 head.removeChild(node);
                 (function poll() {
+                    console.log(timeout);
                     if(++timeout > config.timeout * 1000 / 4){
+                        console.log(555);
                         return error(item + ' is not a valid module');
                     };
                     config.status[item] ? onCallback() : setTimeout(poll, 4);
@@ -202,6 +207,7 @@
         } else { //缓存
             (function poll() {
                 if(++timeout > config.timeout * 1000 / 4){
+                    console.log(888);
                     return error(item + ' is not a valid module');
                 };
                 (typeof config.modules[item] === 'string' && config.status[item])

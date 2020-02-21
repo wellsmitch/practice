@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+    <script src="../js/jquery.js"></script>
+</head>
+<body>
+<div id="out">
+    <div v-for="item in metadata">
+        <div v-if="item.type=='string'">
+            {{item.name}}:<input type="text" v-model="info[item.field]"/>
+        </div>
+        <div v-if="item.type=='boolean'">
+            {{item.name}}:<input type="checkbox" v-model="info[item.field]"/>
+        </div>
+    </div>
+    <button @click="submit()">submit</button>
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#out',
+        data: {
+            metadata: [],
+            info: {}
+        },
+        methods: {
+            submit: function () {
+                console.log(this.info);
+            }
+        },
+        mounted() {
+            this.metadata = [{
+                name: '图层名称', field: 'layer', type: 'string'
+            }, {
+                name: '文档名称', field: 'docName', type: 'string'
+            }, {
+                name: '是否可见', field: 'show', type: 'boolean'
+            }];
+        }
+    })
+</script>
+</body>
+</html>

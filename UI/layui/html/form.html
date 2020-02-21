@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="../layui1.js"></script>
+    <script src="../layui.js"></script>
     <link rel="stylesheet" href="../css/layui.css">
 </head>
 <body>
@@ -250,10 +250,11 @@
         <div class="layui-form-mid layui-word-aux">此处只是演示联动排版，并未做联动交互</div>
     </div>
 </form>
+<input type="file" id="sa" multiple>
 </body>
 <script type="text/javascript">
-    layui.use(['form', 'jquery'], function () {
-
+    layui.use(['wdf'], function () {
+        layui.wdf.wdf();
     })
 </script>
 </html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<title>CSS</title>
+
+<style>
+    body {
+        font: 200%/1.45 charter;
+    }
+
+    ref::before {
+        content: '\00A7';
+        letter-spacing: .1em;
+    }
+</style>
+
+<article>The seller can, under Business Law
+    <ref>1782</ref>
+    , offer a full refund to buyers.
+</article>
+
+<script>
+    function ruleSelector(selector) {
+        function uni(selector) {
+            return selector.replace(/::/g, ':')
+        }
+
+        return Array.prototype.filter.call(
+            Array.prototype.concat.apply([], Array.prototype.map.call(document.styleSheets, function (x) {
+            return Array.prototype.slice.call(x.cssRules);
+        })), function (x) {
+            return uni(x.selectorText) === uni(selector);
+        }
+        );
+    }
+
+    var toggle = false,
+        pseudo = ruleSelector("ref::before");
+        // pseudo = ruleSelector("ref::before").slice(-1);
+
+    document.querySelector("article").onclick = function () {
+        pseudo.forEach(function (rule) {
+            if (toggle = !toggle){
+                rule.style.color = "red";
+                rule.content = "fasfsa"
+            } else{
+                rule.style.color = "black";
+                rule.content = "faerfer";
+            }
+        });
+    }
+</script>
