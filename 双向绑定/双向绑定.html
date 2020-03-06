@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>双向绑定</title>
+</head>
+<body>
+<script type="text/javascript">
+    var vue = function (data_,mounted) {
+        this.$data = data_;
+        this.observe(data_,mounted)
+    };
+    var rtw = {
+        a: '123',
+        b: {
+            c: 123,
+            t: {}
+        },
+        c:90
+    };
+    var defs = [];
+    vue.prototype.observe = function (obj,mounted) {
+        var value;
+        var self = this;
+        for (var key in obj) {
+            value = obj[key];
+            if (typeof value === 'object') {
+                this.observe(value)
+            } else {
+                Object.defineProperty(this.$data, key, {
+                    get: function () {
+                        // 进行依赖收集
+                        console.log(111111);
+                        return value
+                    },
+                    set: function (newvalue) {
+                        //更新视图
+                        value = newvalue;
+                        self.render();
+                    }
+                })
+            }
+
+        }
+        // mounted('self.$data');
+    };
+    vue.prototype.render = function () {
+        console.log(this.$data);
+    };
+
+    var s = new vue(rtw,function () {
+        console.log(this.$data);
+    });
+    setTimeout(function () {
+        s.$data.a = 456;
+        s.$data.c = 4568
+    },1000)
+</script>
+</body>
+</html>

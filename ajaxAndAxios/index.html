@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/axios.js"></script>
+    <script src="../js/qs.js"></script>
+    <!-- https://blog.csdn.net/weixin_41224131/article/details/104610900 -->
+</head>
+<body>
+<input type="text" id="userName">
+<input type="text" id="password">
+<button id="normalAjax">普通发送ajax</button>
+<button id="jsonAjax">json发送ajax</button>
+<button id="formDateAjax">formDate发送ajax</button>
+
+<button id="normalAxios">普通发送axios</button>
+<button id="jsonAxios">json发送axios</button>
+<button id="formDateAxios">formDate发送axios</button>
+<script type="text/javascript">
+    /**
+     * 前端发送content-type为formdate的时候后端不能够使用//,@RequestBody User users_接收  否则会出现415错误
+     *
+     * */
+    $('#normalAjax').click(function () {
+        var userName_ = $('#userName').val();
+        var password_ = $('#password').val();
+        $.ajax({
+            type: "post",
+            // url: "http://47.111.113.130:8082/bbb/item/userLogin.action",
+            url: "http://localhost:8099/bbb/item/userLogin.action",
+            data:
+                {
+                username: userName_,
+                password: password_
+            },
+                //"username=zhangsan&password=1",
+            /**
+             * ajax 默认使用的contentType: 'application/x-www-form-urlencoded' 格式进行数据传输
+             * */
+            // contentType: 'application/x-www-form-urlencoded',
+            //application/x-www-form-urlencoded; charset=UTF-8
+            async: true,
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    });
+    $('#jsonAjax').click(function () {
+        var userName_ = $('#userName').val();
+        var password_ = $('#password').val();
+        /**
+         * 后台只能使用接收 @RequestBody User users_
+         * */
+        $.ajax({
+            type: "post",
+            url: "http://localhost:8099/bbb/item/userLogin.action",
+            data: 
+			// {
+   //              username: userName_,
+   //              password: Number(password_)+2
+   //          },
+			JSON.stringify({
+                username: userName_,
+                password: password_
+            }),
+            contentType: 'application/json',
+            async: true,
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    });
+    $('#formDateAjax').click(function () {
+        var userName_ = $('#userName').val();
+        var password_ = $('#password').val();
+        var fm = new FormData();
+        fm.append("username", userName_);
+        fm.append("password", password_);
+
+        $.ajax({
+            type: "post",
+            url: "http://localhost:8099/bbb/item/userLogin.action",
+            data: fm,
+            contentType: false,
+            processData: false,
+            async: true,
+            cache: false,
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    });
+
+    $('#normalAxios').click(function () {
+        var userName_ = $('#userName').val();
+        var password_ = $('#password').val();
+
+        var ajaxData = Qs.stringify(
+            {
+                username: userName_,
+                password: password_
+            }
+        );
+        axios({
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+            },
+            method: "post",
+            url: 'http://localhost:8099/bbb/item/userLogin.action',
+            data: ajaxData
+        })
+            .then(function (res) {
+                console.log(res);
+            })
+            .catch(function (erres) {
+                console.error(erres)
+            })
+    });
+
+    $('#jsonAxios').click(function () {
+        /** 默认Content-Type: application/json;charset=UTF-8
+         * 只能使用@RequestBody User users_接受到数据*/
+        var userName_ = $('#userName').val();
+        var password_ = $('#password').val();
+        axios({
+            method: "post",
+            url: 'http://localhost:8099/bbb/item/userLogin.action',
+			headers: {
+			                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+			            },
+            data: {
+                username: userName_,
+                password: password_
+            },
+
+        })
+            .then(function (res) {
+                console.log(res);
+            })
+            .catch(function (erres) {
+                console.error(erres)
+            })
+    });
+
+    $('#formDateAxios').click(function () {
+        var userName_ = $('#userName').val();
+        var password_ = $('#password').val();
+        var fm1 = new FormData();
+        fm1.append("username", userName_);
+        fm1.append("password", password_);
+        // axios({
+        //     method: "post",
+        //     url: 'http://localhost:8099/bbb/item/userLogin.action',
+        //     data: fm,
+        //     headers: {
+        //         'Content-type': 'multipart/form-data'
+        //     },
+        // })
+        //     .then(function (res) {
+        //         console.log(res);
+        //     })
+        //     .catch(function (erres) {
+        //         console.error(erres)
+        //     })
+        axios.post('http://localhost:8099/bbb/item/userLogin.action',fm1,{
+            'Content-Type':'multipart/form-data'
+        }).then(res=>{
+            console.log(res);
+        })
+    });
+</script>
+</body>
+</html>
