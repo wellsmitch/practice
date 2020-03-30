@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.4.4.min.js"></script>
+    <script src="../vue/vue.js"></script>
+    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="css/zTreeStyle/zTreeStyle.css">
+    <script src="js/jquery.ztree.core.js"></script>
+    <script src="js/jquery.ztree.excheck.js"></script>
+    <script src="js/jquery.ztree.exedit.js"></script>
+</head>
+<body>
+<div id="zTreeWrap">
+    <ul id="treeDemo" class="ztree"></ul>
+</div>
+<script type="text/javascript">
+    var zNodes = [
+        {
+            id: 1,
+            pId: 0,
+            name: "根 Root",
+            open: true,
+            iconOpen: 'css/zTreeStyle/img/diy/1_open.png',
+            iconClose: 'css/zTreeStyle/img/diy/1_close.png'
+        },
+        {id: 11, pId: 1, name: "父节点 1-1", open: false},
+        {id: 111, pId: 11, name: "叶子节点 1-1-1"},
+        {id: 112, pId: 11, name: "叶子节点 1-1-2"},
+        {id: 113, pId: 11, name: "叶子节点 1-1-3"},
+        {id: 114, pId: 11, name: "叶子节点 1-1-4"},
+        {id: 12, pId: 1, name: "父节点 1-2", open: false},
+        {id: 121, pId: 12, name: "叶子节点 1-2-1"},
+        {id: 122, pId: 12, name: "叶子节点 1-2-2"},
+        {id: 123, pId: 12, name: "叶子节点 1-2-3"},
+        {id: 124, pId: 12, name: "叶子节点 1-2-4"}
+    ];
+    setTimeout(function () {
+        zNodes.push({id: 13, pId: 1, name: "父节点 1-3", open: false})
+    }, 3000);
+
+    /**
+     *
+     * @param obj
+     * @param showCheck 是否显示选框
+     * @param checkType 勾选框类型  默认是复选框 备选单选框
+     * @param showIcon  是否显示节点前面图标
+     * @param onRemove 删除节点回调
+     * @param onRename 重命名回调
+     * @param onClick 点击节点回调
+     */
+    function zyZtreeCommon(obj) {
+        this.init(obj);
+    }
+
+    zyZtreeCommon.prototype.init = function (obj_) {
+        var obj = obj_ || {};
+        var _this = this;
+        new Vue({
+            el: '#treeDemo',
+            data: {
+                setting: {
+                    check: {
+                        //控制显示勾选框
+                        enable: obj.showCheck != undefined ? obj.showCheck : true,
+                        chkStyle: obj.checkType != undefined ? obj.checkType : 'checkbox',
+                        autoCheckTrigger: false
+                    },
+                    view: {
+                        dblClickExpand: false,
+                        //是否显示虚线
+                        showLine: true,
+                        //是否显示文件图标
+                        showIcon: obj.showIcon != undefined ? obj.showIcon : true
+                    },
+                    data: {
+                        simpleData: {
+                            enable: true
+                        }
+                    },
+                    callback: {
+                        onDrop: obj.onDrop,
+                        onRemove: obj.onRemove != undefined ? obj.onRemove : function () {},
+                        onRename: obj.onRename != undefined ? obj.onRename : function () {},
+                        onClick: obj.onClick != undefined ? obj.onClick : function () {},
+                        onExpand: function () {
+                            console.log(66666);
+                        }
+                    },
+                    edit: {
+                        enable: true,
+                        showRemoveBtn: true,
+                        showRenameBtn: true,
+                        drag: {
+                            isCopy: false,//所有操作都是move
+                            isMove: true,
+                            prev: true,
+                            next: true,
+                            inner: true
+                        }
+                    }
+                },
+                zNodes: obj.data
+            },
+            mounted: function () {
+                var that = this;
+                $.fn.zTree.init($("#treeDemo"), that.setting, that.zNodes);
+            },
+            watch: {
+                zNodes: function (a) {
+                    var that = this;
+                    this.$nextTick(function () {
+                        $.fn.zTree.init($("#treeDemo"), that.setting, that.zNodes);
+                    });
+                }
+            }
+        });
+    };
+
+    new zyZtreeCommon({
+        data: zNodes,
+        showCheck: true,
+        checkType: "checkbox",
+        showIcon: true,
+        onClick: function (a, b, c, d) {
+            console.log("onClick",a, b, c, d);
+        },
+        onDrop: function (a, b, c, d) {
+            console.log("onDrop",a, b, c, d);
+        },
+        onRemove: function (a, b, c, d) {
+            console.log("onRemove",a, b, c, d);
+        },
+        onRename: function (a, b, c, d) {
+            console.log("onRename",a, b, c, d);
+        }
+    });
+</script>
+</body>
+</html>

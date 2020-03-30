@@ -11,6 +11,7 @@
 <body>
 <input type="text" id="userName">
 <input type="text" id="password">
+<input type="file" id="fileInput">
 <button id="normalAjax">普通发送ajax</button>
 <button id="jsonAjax">json发送ajax</button>
 <button id="formDateAjax">formDate发送ajax</button>
@@ -42,6 +43,19 @@
             // contentType: 'application/x-www-form-urlencoded',
             //application/x-www-form-urlencoded; charset=UTF-8
             async: true,
+            xhr:function(){
+                myXhr = $.ajaxSettings.xhr();
+                if(myXhr.upload){ // check if upload property exists
+                    myXhr.upload.addEventListener('progress',function(e){
+                        var loaded = e.loaded;                  //已经上传大小情况
+                        var total = e.total;                      //附件总大小
+                        var percent = Math.floor(100*loaded/total)+"%";     //已经上传的百分比
+                        console.log("已经上传了："+percent);
+                        $("#processBar").css("width",percent);
+                    }, false); // for handling the progress of the upload
+                }
+                return myXhr;
+            },
             success: function (data) {
                 console.log(data);
             }
@@ -56,7 +70,7 @@
         $.ajax({
             type: "post",
             url: "http://localhost:8099/bbb/item/userLogin.action",
-            data: 
+            data:
 			// {
    //              username: userName_,
    //              password: Number(password_)+2
@@ -75,9 +89,11 @@
     $('#formDateAjax').click(function () {
         var userName_ = $('#userName').val();
         var password_ = $('#password').val();
+        console.log($("#fileInput")[0].files[0]);
         var fm = new FormData();
         fm.append("username", userName_);
         fm.append("password", password_);
+        fm.append("file",$("#fileInput")[0].files[0]);
 
         $.ajax({
             type: "post",
@@ -87,6 +103,19 @@
             processData: false,
             async: true,
             cache: false,
+            xhr:function(){
+                myXhr = $.ajaxSettings.xhr();
+                if(myXhr.upload){ // check if upload property exists
+                    myXhr.upload.addEventListener('progress',function(e){
+                        var loaded = e.loaded;                  //已经上传大小情况
+                        var total = e.total;                      //附件总大小
+                        var percent = Math.floor(100*loaded/total)+"%";     //已经上传的百分比
+                        console.log("已经上传了："+percent);
+                        $("#processBar").css("width",percent);
+                    }, false); // for handling the progress of the upload
+                }
+                return myXhr;
+            },
             success: function (data) {
                 console.log(data);
             }
@@ -103,12 +132,13 @@
                 password: password_
             }
         );
+        axios.defaults.baseURL = "http://localhost:8099";
         axios({
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-            },
+            // headers: {
+            //     "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+            // },
             method: "post",
-            url: 'http://localhost:8099/bbb/item/userLogin.action',
+            url: '/bbb/item/userLogin.action',
             data: ajaxData
         })
             .then(function (res) {
@@ -150,6 +180,8 @@
         var fm1 = new FormData();
         fm1.append("username", userName_);
         fm1.append("password", password_);
+        // fm1.append("file",$("#fileInput")[0].files[0]);
+
         // axios({
         //     method: "post",
         //     url: 'http://localhost:8099/bbb/item/userLogin.action',
@@ -165,7 +197,7 @@
         //         console.error(erres)
         //     })
         axios.post('http://localhost:8099/bbb/item/userLogin.action',fm1,{
-            'Content-Type':'multipart/form-data'
+            // 'Content-Type':'multipart/form-data'
         }).then(res=>{
             console.log(res);
         })
