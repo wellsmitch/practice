@@ -24,6 +24,9 @@
         var self = this;
         for (var key in obj) {
             value = obj[key];
+
+            console.log(obj[key]);
+
             if (typeof value === 'object') {
                 this.observe(value)
             } else {
@@ -34,6 +37,8 @@
                         return value
                     },
                     set: function (newvalue) {
+                        console.log("触发可set");
+
                         //更新视图
                         value = newvalue;
                         self.render();
@@ -52,8 +57,9 @@
         console.log(this.$data);
     });
     setTimeout(function () {
-        s.$data.a = 456;
-        s.$data.c = 4568
+        // s.$data.a = 456;
+        s.$data.b.a = 456;
+        // s.$data.c = 4568
     },1000)
 </script>
 </body>
