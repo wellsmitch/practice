@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vueIndex</title>
+    <script src="../js/vue.js"></script>
+    <link rel="stylesheet" href="css/vue.antd.1.5.3.css">
+    <!--<script src="js/moment.2.24.js"></script>-->
+    <script src="js/vue.antd.1.5.3.js"></script>
+    <!--<script src="js/polyfill7.4.4.js"></script>-->
+</head>
+<body>
+<div id="out">
+    <!--<a-button type="primary">Primary</a-button>-->
+    <a-table :columns="column" :dataSource="data">
+        <a slot="name" slot-scope="text">{{ text }}</a>
+        <span slot="customTitle"><a-icon type="smile-o"/> Name</span>
+        <span slot="tags" slot-scope="tags">
+      <a-tag
+              v-for="tag in tags"
+              :color="tag === 'loser' ? 'volcano' : tag.length > 5 ? 'geekblue' : 'green'"
+              :key="tag"
+      >
+        {{ tag.toUpperCase() }}
+      </a-tag>
+    </span>
+        <span slot="action" slot-scope="text, record">
+      <a>Invite 一 {{ record.name }}</a>
+      <a-divider type="vertical"/>
+      <a>Delete</a>
+      <a-divider type="vertical"/>
+      <a class="ant-dropdown-link"> More actions <a-icon type="down"/> </a>
+    </span>
+    </a-table>
+    <a-popconfirm
+            title="Are you sure delete this task?"
+            @confirm="confirm"
+            @cancel="cancel"
+            okText="Yes"
+            cancelText="No"
+    >
+        <a href="#">Delete</a>
+    </a-popconfirm>
+    <a-popover title="Title" trigger="click" v-model="visible">
+        <a @click="hide" slot="content">Close</a>
+        <a-button type="primary">Click me</a-button>
+    </a-popover>
+    <div style="width: 256px">
+        <a-button type="primary" @click="toggleCollapsed" style="margin-bottom: 16px">
+            <a-icon :type="collapsed ? 'menu-unfold' : 'menu-fold'"></a-icon>
+        </a-button>
+        <a-menu
+                :defaultSelectedKeys="['1']"
+                :defaultOpenKeys="['sub1']"
+                mode="inline"
+                theme="dark"
+                :inlineCollapsed="collapsed"
+        >
+            <a-menu-item key="1">
+                <a-icon type="pie-chart"></a-icon>
+                <span>Option 1</span>
+            </a-menu-item>
+            <a-menu-item key="2">
+                <a-icon type="desktop"></a-icon>
+                <span>Option 2</span>
+            </a-menu-item>
+            <a-menu-item key="3">
+                <a-icon type="inbox"></a-icon>
+                <span>Option 3</span>
+            </a-menu-item>
+            <a-sub-menu key="sub1">
+                <span slot="title"><a-icon type="mail"></a-icon><span>Navigation One</span></span>
+                <a-menu-item key="5">Option 5</a-menu-item>
+                <a-menu-item key="6">Option 6</a-menu-item>
+                <a-menu-item href="vdfgasd" key="7">Option 7</a-menu-item>
+                <a-menu-item key="8">Option 8</a-menu-item>
+            </a-sub-menu>
+            <a-sub-menu key="sub2" v-for="item in [111,222]">
+                <span slot="title"><a-icon type="appstore"></a-icon><span>Navigation Two</span></span>
+                <a-menu-item key="9">Option 9</a-menu-item>
+                <a-menu-item key="10">Option 10</a-menu-item>
+                <a-sub-menu v-if="item === 111" key="sub3" title="Submenu">
+                    <a-menu-item key="11">Option 11</a-menu-item>
+                    <a-menu-item key="12">Option 12</a-menu-item>
+                </a-sub-menu>
+            </a-sub-menu>
+        </a-menu>
+    </div>
+
+    <div>
+        <a-menu style="width: 256px" mode="vertical" @click="handleClick">
+            <a-menu-item key="1">
+                <a-icon type="mail"/>
+                Navigation One
+            </a-menu-item>
+            <a-menu-item key="2">
+                <a-icon type="calendar"/>
+                Navigation Two
+            </a-menu-item>
+            <a-sub-menu key="sub1">
+                <span slot="title"><a-icon type="appstore"/><span>Navigation Three</span></span>
+                <a-menu-item key="3">Option 3</a-menu-item>
+                <a-menu-item key="4">Option 4</a-menu-item>
+                <a-sub-menu key="sub1-2" title="Submenu">
+                    <a-menu-item key="5">Option 5</a-menu-item>
+                    <a-menu-item key="6">Option 6</a-menu-item>
+                </a-sub-menu>
+            </a-sub-menu>
+            <a-sub-menu key="sub2">
+                <span slot="title"><a-icon type="setting"/><span>Navigation Four</span></span>
+                <a-menu-item key="7">Optdsfion 7</a-menu-item>
+                <a-menu-item key="8">Option 8</a-menu-item>
+                <a-menu-item key="9">Option 9</a-menu-item>
+                <a-menu-item key="10">Option 10</a-menu-item>
+            </a-sub-menu>
+        </a-menu>
+    </div>
+</div>
+<script type="text/javascript">
+    const columns = [
+        {
+            dataIndex: 'name',
+            key: 'name',
+            slots: {title: 'customTitle'},
+            scopedSlots: {customRender: 'name'},
+        },
+        {
+            title: 'Age',
+            dataIndex: 'age',
+            key: 'age',
+        },
+        {
+            title: 'Address',
+            dataIndex: 'address',
+            key: 'address',
+        },
+        {
+            title: 'Tags',
+            key: 'tags',
+            dataIndex: 'tags',
+            scopedSlots: {customRender: 'tags'},
+        },
+        {
+            title: 'Action',
+            key: 'action',
+            scopedSlots: {customRender: 'action'},
+        },
+    ];
+    var urlObj = [
+        {
+            step:1,
+
+        }
+    ];
+    const data = [
+        {
+            key: '1',
+            name: 'John Brown',
+            age: 32,
+            address: 'New York No. 1 Lake Park',
+            tags: ['nice', 'developer'],
+        },
+        {
+            key: '2',
+            name: 'Jim Green',
+            age: 42,
+            address: 'London No. 1 Lake Park',
+            tags: ['loser'],
+        },
+        {
+            key: '3',
+            name: 'Joe Black',
+            age: 32,
+            address: 'Sidney No. 1 Lake Park',
+            tags: ['cool', 'teacher'],
+        },
+    ];
+    var vm = new Vue({
+        el: "#out",
+        data() {
+            return {
+                collapsed: true,
+                visible: false,
+                text: "没有数据",
+                data: data,
+                column: columns,
+            }
+        },
+        methods: {
+            handleClick(e) {
+                console.log('click ', e);
+            },
+            hide() {
+                console.log(111);
+                this.visible = false;
+            },
+            toggleCollapsed() {
+                this.collapsed = !this.collapsed;
+            },
+            confirm(e) {
+                console.log(e);
+                this.$message.success('Click on Yes');
+            },
+            cancel(e) {
+                console.log(e);
+                this.$message.error('Click on No');
+            },
+        },
+    })
+</script>
+</body>
+</html>

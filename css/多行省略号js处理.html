@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<body>
+<p class="mapleTextareaOverFlow" rows='1'>
+    人生不如意常十八九，要让自己快乐，就必须给自己减压，减压的好方法就是学会忘记，人生需要能拿得起，有时候放得下更重要。
+</p>
+<p class="mapleTextareaOverFlow" rows='2'>
+    人生不如意常十八九，要让自己快乐，就必须给自己减压，减压的好方法就是学会忘记，人生需要能拿得起，有时候放得下更重要。
+</p>
+<p class="mapleTextareaOverFlow" rows='3'>
+    人生不如意常十八九，要让自己快乐，就必须给自己减压，减压的好方法就是学会忘记，人生需要能拿得起，有时候放得下更重要。
+</p>
+</body>
+
+<script type="text/javascript">
+    // 获取需要设置多行省略的标签
+    const elBoxs = document.getElementsByClassName('mapleTextareaOverFlow');
+    const elBoxsLength = elBoxs.length;
+
+    // 没有使用forEach(有些浏览器不兼容)和map（标签数组不能使用map的方法）
+    for(let i = 0; i < elBoxsLength; i += 1) {
+        const el = elBoxs[i];
+        let text = el.innerHTML;
+        // 需要在第几行省略，是否支持webkitLineClamp属性
+        let options = {
+            rows: parseInt(el.getAttribute('rows')),
+            isSupportlineCamp: `${el.style.webkitLineClamp}` !== 'undefined',
+        };
+
+        // 设置需要省略的属性及字体的两端对齐的样式
+        el.style.overflow = 'hidden';
+        el.style.textOverflow = 'ellipsis';
+        el.style.wordBreak = 'break-all';
+        el.style.wordWrap = 'break-word';
+        el.style.textAlign = 'justify';
+
+        // 支持webkitLineClamp的话直接使用浏览器css样式设置省略号（safari不是很支持，可以直接使用js计算方式），否则通过计算方式
+        if(options.isSupportlineCamp) {
+            el.style.webkitLineClamp = options.rows;
+            el.style.display = '-webkit-box';
+            el.style.webkitBoxOrient = 'vertical';
+        } else {
+            const heightStr = getCurrentStyle(el, 'height');
+            const height = getNumber(heightStr);
+            const maxHeight = getMaxHeight(el, options.rows, text);
+            if(height > maxHeight) {
+                subStrChar(el, maxHeight, text);
+            } else {
+                el.innerHTML = text;
+            }
+        }
+    };
+
+    // 截取字符串，从第一个开始，当前高度大于最大高度时，截取到前一个字符；
+    function subStrChar(el, maxHeight, text) {
+        console.log(maxHeight);
+        let end = false;
+        let i = 0;
+        while(!end) {
+            i++;
+            el.innerHTML = text.substring(0, i) + '...';
+            const currentHeightStr = getCurrentStyle(el, 'height');
+            const currentHeight = getNumber(currentHeightStr);
+            if(currentHeight > maxHeight) {
+                el.innerHTML = text.substring(0, i - 1) + '...';
+                end = true;
+            }
+            if(i >= text.length) {
+                break;
+            }
+        }
+    }
+
+    // 获取最大高度，当line-height为normal的时候，对标签塞入字符，获取一行的行高
+    function getMaxHeight(el, rows, text) {
+        const lineHeight = getCurrentStyle(el, 'lineHeight');
+        let number = 0;
+
+        if(lineHeight === 'normal') {
+            let index = 0;
+            do {
+                el.innerHTML = text[index++];
+            } while(!getNumber(getCurrentStyle(el, 'height')));
+            number = getNumber(getCurrentStyle(el, 'height'));
+        } else {
+            number = getNumber(lineHeight);
+        }
+
+        return number * rows;
+    }
+
+    // 获取当前元素的属性值
+    function getCurrentStyle(el, elAttr) {
+        // getComputedStyle获取元素的所有CSS属性的值
+        return window.getComputedStyle(el)[elAttr]
+    }
+
+    // 将获取的字符串值变成向上取整成数字
+    function getNumber(str) {
+        let number = parseFloat(str);
+        return Math.ceil(number)
+    }
+</script>
+</body>
+</html>

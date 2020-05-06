@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.js"></script>
+</head>
+<body>
+<input type="text">
+<script type="text/javascript">
+    var url1 = 'https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=31351,1428,21126,31341,30910,31271,31463,30824,31163,31472&wd=1a&req=2&csor=2&cb='+$("input").val()
+    //jsonp 接口 必须 两个字段  dataType:'jsonp'， jsonp:cb（回调函数字段）
+    //jq会自动生成回调函数   //&cb=jQuery1102045621865612995216_1498111113677
+  $("input").keyup(function () {
+      $.ajax({
+          url:url1,
+          dataType:'jsonp',
+          jsonp:'cb',
+          success:function (res) {
+              console.log(res)
+          },
+          error:function (error) {
+              console.log(error)
+          }
+      })
+  })
+</script>
+</body>
+</html>
