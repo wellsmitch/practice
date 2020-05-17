@@ -9,14 +9,14 @@
     /*map*/
     var arr = [11, 12, 15, 18];
     var arr1 = arr.map(function (item, i) {
-        return item == 12 ? 88 : item
+        return item === 12 ? 88 : item
     });
     console.log(arr1);
     /*filter*/
     var arr2 = [{a:11}, {a:15}];
     var arr3 = arr2.filter(function (item, i) {
         console.log(item);
-        return item.a == 15
+        return item.a === 15
     });
     console.log(arr3);
 

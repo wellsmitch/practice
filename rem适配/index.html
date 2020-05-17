@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style type="text/css">
+        .a {
+            font-size: 20px;
+        }
+        .b {
+            font-size: .2rem;
+        }
+        body {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<span class="a">aaa</span>
+<span class="b">aaa</span>
+<script>
+
+    var bw = (document.documentElement.clientWidth/3.75)+"px";
+    var htmlTag = document.getElementsByTagName("html")[0];
+    htmlTag.style.fontSize=bw;
+
+</script>
+</body>
+</html>
