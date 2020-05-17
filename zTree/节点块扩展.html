@@ -22,32 +22,16 @@
     </style>
     <SCRIPT type="text/javascript">
         layui.use('slider', function () {
-       var slider = layui.slider;
-
-
-
-            /*
-            * ztree.expandNode(ztree.getNodeByParam("id",treeId,null));//展开指定节点
-                ztree.selectNode(ztree.getNodeByParam("id",treeId,null));//选中指定节点
-                ztree.setting.callback.onClick(null, ztree.setting.treeId, ztree.getNodeByParam("id",treeId,null));//触发函数
-                ————————————————
-                版权声明：本文为CSDN博主「wzk2015」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
-                原文链接：https://blog.csdn.net/wzk2015/article/details/18652645
-            *
-            * */
-
-
+            var slider = layui.slider;
             var setting = {
                 check: {
                     //控制显示勾选框
                     enable: true,
-//				chkStyle:'radio',
                     chkStyle: 'checkbox',
-//				nocheckInherit: true,
                     autoCheckTrigger: false
                 },
                 view: {
-                    nameIsHTML:true,
+                    nameIsHTML: true,
                     dblClickExpand: false,
                     //是否显示虚线
                     showLine: true,
@@ -57,15 +41,6 @@
                 data: {
                     simpleData: {
                         enable: true
-                    }
-                },
-                callback: {
-                    beforeDrag: beforeDrag,
-                    beforeDrop: beforeDrop,
-                    onDrop: onDrop,
-                    onClick: onClick,
-                    onExpand: function () {
-                        console.log(66666);
                     }
                 },
                 edit: {
@@ -81,35 +56,6 @@
                     }
                 }
             };
-
-            //在拖拽之前
-            function beforeDrag(treeId, treeNodes) {
-                for (var i = 0, l = treeNodes.length; i < l; i++) {
-                    if (treeNodes[i].drag === false) {
-                        return false;
-                    }
-                }
-                return true;
-            }
-
-            //用于捕获节点拖拽操作结束之前的事件回调函数，并且根据返回值确定是否允许此拖拽操作
-            //默认值 null
-            function beforeDrop(treeId, treeNodes, targetNode, moveType) {
-                return targetNode ? targetNode.drop !== false : true;
-            }
-
-            function onDrop(event, treeId, treeNodes, targetNode, moveType) {
-                //拖拽成功时，修改被拖拽节点的pid
-                console.log(event);
-                console.log(treeId + '11111');
-                console.log(treeNodes);
-                console.log(treeNodes[0].parentCode);
-                console.log(targetNode);
-                console.log(moveType);
-                var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-                var nodes = zTree.getNodes();
-                console.log(zTree.transformToArray(nodes));
-            }
 
             var zNodes = [
                 {
@@ -138,43 +84,39 @@
             ];
 
             zNodes.map(function (ele, i) {
-                ele.name = "<div style=\"width: 80px;height: 50px\">" +
+                ele.name = "<div customDiv style=\"width: 80px;height: 50px\">" +
                     "<div style='display: inline-block'>" + ele.name + "</div>" +
-                    '<div style="position: relative" id="slideTest' + i + '" class="demo-slider"></div>' +
+                    '<div style="position: relative;display:inline-block;width: 50px;margin: 0 10px" id="slideTest' + i + '" class="demo-slider"></div>' +
+                    '<input type="checkbox" style="position: relative" id="showCheckedId' + ele.id + '" class="" />' +
                     "</div>";
 
             });
-
-            function onClick(e, treeId, treeNode) {
-                var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-                console.log(e)
-                zTree.expandNode(treeNode);
-                uu(data)
-            }
-
-            $(document).ready(function () {
+            $(function () {
                 $.fn.zTree.init($("#treeDemo"), setting, zNodes);
 
-                zNodes.forEach(function (ele,i) {
+                zNodes.forEach(function (ele, i) {
+                    (function (id) {
+                        $('#showCheckedId' + id).click(function (e) {
+                            console.log($(e.target)[0].checked);
+                            var checkedStatus = $(e.target)[0].checked;
+                            // if(checkedStatus) {
+                                var checkboxDoms =  $(e.target).parent().parent().parent().next().find("input[id^='showCheckedId']");
+                                // var checkboxDoms =  $(e.target).find("input[id^='showCheckedId']");
+                                console.log($(e.target), checkboxDoms);
+                                $.each(checkboxDoms, function (i,domObject) {
+                                    console.log($(domObject));
+                                    $(domObject).eq(0).attr("checked",checkedStatus)
+                                })
+                            // }
+                        });
+                    }(ele.id));
                     slider.render({
-                        elem: '#slideTest'+i
+                        elem: '#slideTest' + i,
+                        change: function (e) {
+
+                        }
                     });
-                })
-
-                var zTree = $.fn.zTree.getZTreeObj("treeDemo");
-
-                function rr() {
-                    zTree.expandNode(zTree.getNodeByParam("id", 11, null), true, true, false, false);//展开指定节点
-                }
-
-                function gg(dom, data) {
-                    zTree.expandNode(dom, true, true, false, false);//展开指定节点
-                    uu(data)
-                }
-
-
-                var nodes = zTree.getNodeByParam("id", 113, null);
-                zTree.checkNode(nodes, true, true);
+                });
             });
         })
     </SCRIPT>
