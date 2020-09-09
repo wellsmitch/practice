@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>test</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+    <script src="https://unpkg.com/antd@3.19.3/dist/antd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/3.19.0/antd.css">
+</head>
+<body>
+<div id="demo-app"></div>
+
+<script type="text/babel">
+    // ReactDOM.render(
+    //     <div>
+    //         <p>demo</p>
+    //         <antd.Button type="primary">Primary</antd.Button>
+    //         <antd.Button>Default</antd.Button>
+    //         <antd.Button type="dashed">Dashed</antd.Button>
+    //         <antd.Button type="danger">Danger</antd.Button>
+    //         <antd.Button type="link">Link</antd.Button>
+    //     </div>,
+    //     document.getElementById("demo-app")
+    // );
+    const columns = [
+        {
+            title: 'Name',
+            dataIndex: 'name',
+            key: 'name',
+            render: text => <a>{text}</a>,
+        },
+        {
+            title: 'Age',
+            dataIndex: 'age',
+            key: 'age',
+        },
+        {
+            title: 'Address',
+            dataIndex: 'address',
+            key: 'address',
+        },
+        {
+            title: 'Tags',
+            key: 'tags',
+            dataIndex: 'tags',
+            render: tags => (
+                <span>
+        {tags.map(tag => {
+            let color = tag.length > 5 ? 'geekblue' : 'green';
+            if (tag === 'loser') {
+                color = 'volcano';
+            }
+            return (
+                <antd.Tag color={color} key={tag}>
+                    {tag.toUpperCase()}
+                </antd.Tag>
+            );
+        })}
+      </span>
+            ),
+        },
+        {
+            title: 'Action',
+            key: 'action',
+            render: (text, record) => (
+                <span>
+        <a>Invite {record.name}</a>
+        <Divider type="vertical" />
+        <a>Delete</a>
+      </span>
+            ),
+        },
+    ];
+
+    const data = [
+        {
+            key: '1',
+            name: 'John Brown',
+            age: 32,
+            address: 'New York No. 1 Lake Park',
+            tags: ['nice', 'developer'],
+        },
+        {
+            key: '2',
+            name: 'Jim Green',
+            age: 42,
+            address: 'London No. 1 Lake Park',
+            tags: ['loser'],
+        },
+        {
+            key: '3',
+            name: 'Joe Black',
+            age: 32,
+            address: 'Sidney No. 1 Lake Park',
+            tags: ['cool', 'teacher'],
+        },
+    ];
+
+    ReactDOM.render(<antd.Table columns={columns} dataSource={data} />,document.getElementById("demo-app"));
+</script>
+</body>
+</html>

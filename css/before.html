@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>before</title>
+    <link rel="stylesheet" href="../UI/mui/css/mui.css">
+    <style type="text/css">
+        .fl {
+            float: left;
+        }
+
+        .overflow {
+            overflow: hidden;
+        }
+
+        .upModal .width30percent {
+            width: 33.33%;
+            padding: 6px 0;
+        }
+
+        .sitePanel {
+            width: 80%;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 5px;
+        }
+
+        .upModal .active .singleSite {
+            position: relative;
+            text-align: center;
+            background: #E0F2FF;
+            color: #579BC6;
+        }
+
+        .upModal .active .singleSite .img {
+            display: block;
+            width: 0;
+            height: 0;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            border-top: 8px solid transparent;
+            border-right: 10px solid #1269d3;
+            border-bottom: 8px solid #1269d3;
+            border-left: 10px solid transparent;
+        }
+        .sitePanel .mui-icon-checkmarkempty:before {
+            position: absolute;
+            top: -10px;
+            right: -16px;
+            z-index: 20;
+            color: #ffffff;
+        }
+        .singleSite {
+            position: relative;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 30px;
+            display: block;
+            color: #6B6B6B;
+            text-align: center;
+        }
+    </style>
+
+    <script src="../js/jquery.js"></script>
+</head>
+<body>
+<div class="upModal"></div>
+<script type="text/javascript">
+    var siteList = [
+        {name: "全市"},
+        {name: "郑州市"},
+        {name: "新密市"},
+        {name: "荥阳市"},
+        {name: "中牟县"},
+        {name: "航空港区"},
+        {name: "上街区"}
+    ];
+    var str = '';
+    for (var i = 0; i < siteList.length; i++) {
+        str += "<div class='fl siteCtrl overflow width30percent'>" +
+            "<div class='sitePanel overflow'>" +
+            "<div class='mui-icon singleSite'>" + siteList[i]["name"] + "<div class='img mui-icon mui-icon-checkmarkempty'></div></div>" +
+            "</div>" +
+            "</div>"
+
+    }
+    $(".upModal").html(str);
+    $(".siteCtrl").click(function (e) {
+        $(e.currentTarget).toggleClass("active")
+    })
+</script>
+</body>
+</html>
