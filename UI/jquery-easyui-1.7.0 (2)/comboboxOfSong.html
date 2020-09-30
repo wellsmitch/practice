@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>加载动态下拉列表框数据 - jQuery EasyUI组件功能在线演示</title>
+    <link rel="stylesheet" type="text/css" href="./themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="./themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="./demo/demo.css">
+    <script type="text/javascript" src="./jquery.min.js"></script>
+    <script type="text/javascript" src="./jquery.easyui.min.js"></script>
+</head>
+<body>
+<h2>加载动态下拉列表框数据</h2>
+<p>单击下面的按钮加载数据。</p>
+
+<div style="margin:20px 0;">
+    <!--<a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#language').combobox('reload', '/jeasyui/json/combobox_data1.json')">LoadData</a>-->
+    <button class="LoadData">LoadData</button>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#language').combobox('reload', '/jeasyui/json/combobox_data1.json')">LoadData</a>
+</div>
+
+<div class="easyui-panel" style="width:100%;max-width:400px;padding:30px 60px;">
+    <div style="margin-bottom:20px">
+        <input id="language" class="easyui-combobox" name="language" style="width:100%;" data-options="
+                    valueField: 'id',
+                    textField: 'text',
+                    label: 'Language:',
+                    labelPosition: 'top'
+                    ">
+    </div>
+</div>
+<script type="text/javascript">
+	var data = [{
+        "id":1,
+        "text":"Java",
+        "desc":"Write once, run anywhere"
+    },{
+        "id":2,
+        "text":"C#",
+        "desc":"One of the programming languages designed for the Common Language Infrastructure"
+    },{
+        "id":3,
+        "text":"Ruby",
+        "selected":true,
+        "desc":"A dynamic, reflective, general-purpose object-oriented programming language"
+    },{
+        "id":4,
+        "text":"Perl",
+        "desc":"A high-level, general-purpose, interpreted, dynamic programming language"
+    },{
+        "id":5,
+        "text":"Basic",
+        "desc":"A family of general-purpose, high-level programming languages"
+    }]
+    $(".LoadData").click(function () {
+        $('#language').combobox('loadData', data)
+    });
+</script>
+</body>
+</html>

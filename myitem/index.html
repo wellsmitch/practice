@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <meta charset="UTF-8">
+                <title></title>
+				 <script src="../js/jquery.js"></script>
+        </head>
+        <body>
+               <button type="button" id="getUsrInfo">获取用户信息</button>
+                <script type="text/javascript">
+					var access_token = '';
+					var client_id=101825085;
+					var openId = '';
+                        $.ajax({
+                                type: 'get',
+                                url: 'http://www.wellsmitch.top/qq/oauth2.0/token?grant_type=authorization_code&client_id=101825085&client_secret=30675d03d271881e8536f6a3e455216d&code=' +
+                                        location.search.split('=')[1] + '&redirect_uri=http://www.wellsmitch.top/syb',
+                                success: function(data) {
+                                        access_token = data.split('&')[0].split('=')[1];
+                                        /* $.getJSON("http://www.wellsmitch.top/qq/oauth2.0/me?access_token=" + access_token + '&cb=?', function(dataa) {
+                                                console.log(dataa.client_id)
+                                        }); */
+
+
+                                        $.ajax({
+                                                url: "http://www.wellsmitch.top/qq/oauth2.0/me?access_token=" + access_token,
+                                                dataType: 'jsonp',
+                                                jsonpCallback: 'callback',
+                                                success: function(res) {
+                                                        console.log(res);
+														openId = res.openid;
+                                                },
+                                                error: function(XMLHttpReuqest, textStautus, errothrown,i,p) {
+                                                        console.log(XMLHttpReuqest, textStautus, errothrown,i,p)
+                                                }
+                                        })
+
+                                }
+                        })
+						
+						// 获取用户信息
+						$('#getUsrInfo').click(function(e) {
+							console.log(e.clientX)
+							 $.ajax({
+								url: 'http://www.wellsmitch.top/qq/user/get_user_info?access_token='+ access_token +'&oauth_consumer_key='+ client_id +'&openid='+ openId,
+								type:'get',
+								success: function(data) {
+									console.log('用户信息：', data)
+								}
+							}) 
+						})
+						$('#getUsrInfo').click()
+                </script>
+        </body>
+</html>

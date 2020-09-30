@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="zy.util.provide.js"></script>
+    <script src="zy.util.mq.js"></script>
+    <script src="jquery.js"></script>
+</head>
+<body>
+<button class="add">add</button>
+<button class="del">del</button>
+<button class="update">update</button>
+<button class="modify">modify</button>
+<script type="text/javascript">
+    var data = [{
+        a1: "first111",
+        a111: "first111",
+        property: {
+            a1: "second111",
+            b1: "second111",
+            c1: ["second111"],
+        }
+    }, {
+        a1: "first111",
+        a111: "first111",
+        property: {
+            a1: "second111",
+            b1: "second111",
+            c1: ["second111"],
+        }
+    }];
+    var layerListener = new zy.util.mq("mapLayer_" + Math.ceil(Math.random() * 1000), data, ["a1", "a111"]);
+    layerListener.register({
+        // 添加
+        add: function (info) {
+            console.log("add:::::", info, data);
+        },
+        //删除 gis web
+        remove: function (info, index) {
+            console.log("remove::::", info, data);
+        },
+        //更新 update
+        update: function (newInfo, oldInfo) {
+            console.log("update:::::", newInfo, oldInfo, data);
+        },
+        //更新 modifyProperties
+        modifyProperties: function (info, key, value) {
+            console.log("modifyProperties:::::", info, key, value, data);
+        }
+    });
+
+    $(".add").click(function () {
+        data.push({
+            a1: "first111add",
+            property: {
+                a1: "second111add",
+                b1: "second111add",
+                c1: ["second111add"],
+            }
+        })
+    });
+    $(".del").click(function () {
+        data.splice(1, 1)
+    });
+    $(".update").click(function () {
+        data[1] = {
+            a1: "first111update",
+            property: {
+                a1: "second111update",
+                b1: "second111update",
+                c1: ["second111update"],
+            }
+        }
+    });
+    $(".modify").click(function () {
+        data[0].a1 = "second111modify"
+    })
+</script>
+</body>
+</html>
