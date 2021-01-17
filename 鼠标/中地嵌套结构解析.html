@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .indent10px {
+            padding-left: 10px;
+        }
+    </style>
+    <script src="../js/jquery.js"></script>
+    <script src="../zTree/js/jquery.ztree.all.js"></script>
+    <script src="../vue/vue.js"></script>
+    <link rel="stylesheet" href="../UI/layui/css/layui.css">
+</head>
+<body>
+<div id="out">
+    <div class="ztree zykk">
+        <div :class="" v-html="fnm(tempData)"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    var data = {
+        "lstYearInfo": [
+            {
+                "name": "区域内规划地类总面积",
+                "field": "总面积",
+                "value": "40559504.13(60839.2562)",
+                "detail": "false",
+                "widget": ""
+            },
+            {
+                "name": "    农用地占地",
+                "field": "",
+                "value": "39192725.75(58789.0886)",
+                "detail": "false",
+                "widget": ""
+            },
+            {
+                "name": "        占用耕地",
+                "field": "耕地",
+                "value": "26412202.06(39618.3031)",
+                "detail": "false",
+                "widget": ""
+            }, {
+                "name": "                占用耕地11111111",
+                "field": "耕地",
+                "value": "26412202.06(39618.3031)",
+                "detail": "false",
+                "widget": ""
+            },
+            {
+                "name": "        占用园地",
+                "field": "园地",
+                "value": "94002.02(141.0030)",
+                "detail": "false",
+                "widget": ""
+            },
+            {
+                "name": "        占用林地",
+                "field": "林地",
+                "value": "12686521.66(19029.7825)",
+                "detail": "false",
+                "widget": ""
+            },
+            {
+                "name": "        占用牧草地",
+                "field": "牧草地",
+                "value": "0.00(0.0000)",
+                "detail": "false",
+                "widget": ""
+            },
+            {
+                "name": "        占用其他农用地",
+                "field": "其他农用地",
+                "value": "0.00(0.0000)",
+                "detail": "false",
+                "widget": ""
+            },
+            {
+                "name": "    建设用地占地1",
+                "field": "",
+                "value": "1257939.96(1886.9099)",
+                "detail": "false",
+                "widget": ""
+            },
+            {
+                "name": "        占用城乡建设用地",
+                "field": "城乡建设用地面积",
+                "value": "1257939.96(1886.9099)",
+                "detail": "false",
+                "widget": ""
+            },
+            {
+                "name": "        占用交通水利用地",
+                "field": "交通水利用地面积",
+                "value": "0.00(0.0000)",
+                "detail": "false",
+                "widget": ""
+            },
+            {
+                "name": "        占用其他建设用地",
+                "field": "其他建设用地面积",
+                "value": "0.00(0.0000)",
+                "detail": "false",
+                "widget": ""
+            },
+            {
+                "name": "    未利用地占地",
+                "field": "",
+                "value": "108838.43(163.2576)",
+                "detail": "false",
+                "widget": ""
+            },
+            {
+                "name": "        占用水域",
+                "field": "水域面积",
+                "value": "0.00(0.0000)",
+                "detail": "false",
+                "widget": ""
+            },
+            {
+                "name": "        占用滩涂",
+                "field": "滩涂面积",
+                "value": "0.00(0.0000)",
+                "detail": "false",
+                "widget": ""
+            },
+            {
+                "name": "        占用自然保留地",
+                "field": "自然保留地面积",
+                "value": "108838.43(163.2576)",
+                "detail": "false",
+                "widget": ""
+            }
+        ]
+    };
+
+    function getBlank(param) {
+        var count = 0;
+        while (true) {
+            count++;
+            var d = param.substr(1, count).trim();
+            if (d !== '') {
+                return count
+            }
+        }
+    }
+
+    var tempData = JSON.parse(JSON.stringify(data.lstYearInfo));
+    tempData.map(function (ele, index, tempDataArr) {
+        if (index === 0) {
+            ele.pid = 0;
+            ele.id = ele.name;
+        } else {
+            var count = index - 1;
+            while (count > -1) {
+                if (getBlank(tempDataArr[count].name) < getBlank(ele.name)) {
+                    ele.id = ele.name;
+                    ele.pid = tempDataArr[count]["id"];
+                    return
+                }
+                if (count === 0) {
+                    ele.id = ele.name;
+                    ele.pid = 0;
+                }
+                count--;
+            }
+        }
+        return ele
+    });
+
+    function toTree(data) {
+        var result = [];
+        if (!Array.isArray(data)) {
+            return result
+        }
+        data.forEach(item => {
+            delete item.children;
+        });
+        var map = {};
+        data.forEach(item => {
+            map[item.id] = item;
+        });
+        data.forEach(item => {
+            var parent = map[item.pid];
+            if (parent) {
+                (parent.children || (parent.children = [])).push(item);
+            } else {
+                result.push(item);
+            }
+        });
+        return result;
+    }
+
+    var toTreedata = toTree(tempData);
+    var vm = new Vue({
+        el: "#out",
+        data: function () {
+            return {
+                tempData: toTreedata
+            }
+        },
+        methods: {
+            recursion: function (childrenData, $innerDiv) {
+                var that = this;
+                childrenData.forEach(function (children_) {
+                    var $child = "";
+                    if(children_.children && children_.children.length > 0) {
+                        $child = $("<div class='toggleAnalysisRes layui-icon layui-icon-triangle-d indent10px'>" + children_.name + "</div>");
+                    }else {
+                        $child = $("<div class='indent10px'>" + children_.name + "</div>");
+
+                    }
+                    $innerDiv.append($child);
+                    if (children_.children) {
+                        that.recursion(children_.children, $child)
+                    }
+                })
+            },
+            fnm: function (a) {
+                console.log(a);
+                var that = this;
+                var $panelDiv = '';
+                this.tempData.forEach(function (ele) {
+                    $panelDiv = $("<div class='toggleAnalysisRes layui-icon layui-icon-triangle-d'></div>");
+                    var $innerDom = $("<div class='toggleAnalysisRes layui-icon layui-icon-triangle-d indent10px'>" + ele.name + "</div>");
+                    $panelDiv.append($innerDom);
+                    if (ele.children) {
+                        that.recursion(ele.children, $innerDom)
+                    }
+                });
+                return $panelDiv.html()
+            }
+        },
+        mounted: function () {
+            $("#out").click(".toggleAnalysisRes", function (e) {
+                if (!$(e.target).hasClass("toggleAnalysisRes")) {
+                    return
+                }
+                if ($(e.target).hasClass("layui-icon-triangle-r")) {
+                    $(e.target).attr({
+                        "class": "toggleAnalysisRes layui-icon layui-icon-triangle-d indent10px"
+                    });
+                    $(e.target).find(">div").show()
+                } else {
+                    $(e.target).attr({
+                        "class": "toggleAnalysisRes layui-icon layui-icon-triangle-r indent10px"
+                    });
+                    $(e.target).find(">div").hide()
+                }
+                return false
+
+            });
+        }
+    })
+</script>
+</body>
+</html>

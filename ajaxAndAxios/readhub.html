@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>readhub</title>
+    <script src="../js/jquery.js"></script>
+</head>
+<body>
+<button id="getNews">获取信息</button>
+<script type="text/javascript">
+    $("#getNews").click(function () {
+        $.ajax({
+            url:"http://wellsmitch.top/readhub/topic?lastCursor=",
+            type:"get",
+            data: {
+
+            },
+            success: function (res) {
+                console.log(res);
+            }
+        })
+    });
+</script>
+</body>
+</html>

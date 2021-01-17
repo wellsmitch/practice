@@ -4,34 +4,65 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <style type="text/css">
+        div {
+            color: #c0617b;
+        }
+    </style>
 </head>
 <body>
+
 <script type="text/javascript">
-    // $.getJSON('http://jsonplaceholder.typicode.com/posts',(res)=>{
+    // $.getJSON('http://musicapi.taihe.com/v1/restserver/ting?method=baidu.ting.song.playAAC&format=jsonp&callback=?&songid=675017674&from=web&_=1600505652061',(res)=>{
+    // // $.get('http://localhost/readhub/topic?lastCursor=&pageSize=20',(res)=>{
+    // // $.get('http://localhost/yy/index.php?r=play/getdata&callback=&hash=7E49771EB73E3971A61E664E816A4ABF',(res)=>{
     //     console.log(res);
     // })
-    function* gen() {
-        var posts = yield $.getJSON('http://jsonplaceholder.typicode.com/posts');
-        console.log(posts);
-        var posts1 = yield $.getJSON('http://jsonplaceholder.typicode.com/comments');
-        console.log(posts1);
-    }
 
-    run(gen);
+    $.ajax({
+        url:"http://localhost:8099/getFavoriteList.action",
+        type:"get",
+            contentType: 'application/x-www-form-urlencoded',
+        data: {
+          a:123
+        },
+        success: function (res) {
 
-    function run(generator) {
-        var myGen = generator();
-
-        function handle(yielded) {
-            if (!yielded.done) {
-                yielded.value.then(function (data) {
-                    return handle(myGen.next(data))
-                })
-            }
         }
+    })
+/*    $.get('http://localhost:8099/Hao123NewSongList', {
+        urlStr: "https://huaban.com/search/?q=%E6%9F%AF%E5%8D%97",
+        selectorRexp: "data-baiduimageplus-ignore",
+        pickAttr: "src"
+    }, function (res) {
+        console.log(res);
+        res.forEach(function (ele) {
+            $("body").append("<img src=" + ele + "/format/webp />")
+        })
+    });*/
+    /* function* gen() {
+         var posts = yield $.getJSON('http://jsonplaceholder.typicode.com/posts');
+         console.log(posts);
+         var posts1 = yield $.getJSON('http://jsonplaceholder.typicode.com/comments');
+         console.log(posts1);
+     }
 
-        return handle(myGen.next())
-    }
+
+     run(gen);
+
+     function run(generator) {
+         var myGen = generator();
+
+         function handle(yielded) {
+             if (!yielded.done) {
+                 yielded.value.then(function (data) {
+                     return handle(myGen.next(data))
+                 })
+             }
+         }
+
+         return handle(myGen.next())
+     }*/
 
 </script>
 </body>

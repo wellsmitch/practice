@@ -83,7 +83,18 @@
                scrollbars: true
            });
            myscroll.scrollTo(0, -100, 200)
-
+function ajax__(data,callback) {
+    $.ajax({
+        url: '',
+        data: data,
+        success: function (res) {
+            callback(res)
+        }
+    })
+}
+           ajax__({a:123},function (res) {
+               
+           })
 </script>
 </body>
 </html>
