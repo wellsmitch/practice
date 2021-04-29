@@ -8,27 +8,45 @@
 <body>
 <script type="text/javascript">
     class Network {
+        static contentType = {
+            urlEncoded: {
+                "Content-Type": "application/x-www.form-urlencoded"
+            },
+            json: {
+                "Content-Type": "application/json"
+            }
+        };
+
         constructor(option) {
             Object.assign(this, option);
             this.baseUrl = this.baseUrl || '';
             this.method = this.method || 'get';
             this.responseType = this.responseType || 'json';
-            this.headers = this.headers || {};
-            this.timeout = this.timeout || 1000;
+            this.contentType = Network.contentType;
+            this.headers = this.headers || {
+                "Content-Type": "application/x-www-form-urlencoded"
+            };
+            this.timeout = 20000;
         }
 
-        build(url, params, data, success, fail, complete) {
+        build(url, params, paramData, data, success, fail, complete) {
             let that = this;
-            this.headers = params.headers;
-            this.timeout = params.timeout;
-            axios({
+            this.headers = params.headers ? params.headers : this.headers;
+            this.method = params.method ? params.method : this.method;
+
+            this.axiosOption = {
                 method: that.method,
                 url: that.baseUrl + url,
                 headers: that.headers,
+                params: paramData,
                 data: data,
                 timeout: that.timeout,
                 responseType: that.responseType,
-            })
+            };
+            // if (params.headers["Content-Type"].indexOf("application/json") > -1) {
+            //     delete this.axiosOption.params
+            // }
+            axios(that.axiosOption)
                 .then(response => {
                     success(response)
                 })
@@ -42,22 +60,41 @@
 
         get(url, params, data, success, fail, complete) {
             params.method = 'get';
-            this.build(url, params, data, success, fail, complete)
+            params.headers = Object.assign(this.contentType.urlEncoded, params.headers);
+            this.build(url, params, data, data, success, fail, complete)
+        }
+
+        getByJson(url, params, data, success, fail, complete) {
+            params.method = 'get';
+            params.headers = Object.assign(this.contentType.json, params.headers);
+            this.build(url, params, data, data, success, fail, complete)
         }
 
         post(url, params, data, success, fail, complete) {
             params.method = 'post';
-            this.build(url, params, data, success, fail, complete)
+            params.headers = Object.assign(this.contentType.urlEncoded, params.headers);
+            this.build(url, params, data, data, success, fail, complete)
+        }
+
+        postByJson(url, params, data, success, fail, complete) {
+            params.method = 'post';
+            params.headers = Object.assign(this.contentType.json, params.headers);
+            this.build(url, params, data, data, success, fail, complete)
         }
     }
 
-    new Network().get('https://wellsmitch/bbb/getOuterData', {}, {}, function (resultData) {
+    new Network().get('https://wellsmitch.top/bbb/getOuterData', {}, {
+        url: "https://api.readhub.cn/topic",
+        lastCursor: "",
+        pageSize: 20
+    }, function (resultData) {
         console.log("resultData::", resultData);
     }, function (errData) {
         console.log("errData::", errData);
     }, function (completeData) {
         console.log("completeData::", completeData);
     })
+
 </script>
 </body>
 </html>
