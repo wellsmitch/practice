@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/js/vue.js"></script>
+</head>
+<body>
+<div id="out">
+    <h2>嵌套组件</h2>
+    <v-parent></v-parent>
+
+</div>
+<template id="parent">
+    <div>
+        <h1>父组件</h1>
+        <p>{{str}}</p>
+        <button @click="tip()">发送数据给子组件</button>
+        <hr>
+        <v-child :name="str1"></v-child>
+    </div>
+
+</template>
+
+<template id="child">
+    <div>
+        <h1>子组件</h1>
+        <p>{{str}}</p>
+        <button  @click="tap()">接收数据-----{{name}}</button>
+        <hr>
+    </div>
+</template>
+
+
+<script>
+let vm  =  new  Vue({
+    el:"#out",
+    data:{
+    },
+    methods:{
+    },
+    components:{
+        "v-parent":{
+            template:"#parent",
+            data:function () {
+                return{
+                    str:"父组件",
+                    str1:''
+                }
+            },
+            methods:{
+              tip(){
+                  this.str1 = this.str;
+              }
+            },
+            mounted:function() {
+                this.str1 = this.str;
+            },
+           components:{
+                "v-child":{
+                    props:['name'],
+                    template:"#child",
+                    data:function () {
+                        return {
+                            str:"this is child infos"
+                        }
+                    },
+                    methods:{
+                        tap(){
+                            console.log(this.str);
+                        }
+                    }
+                }
+           }
+
+        }
+    }
+})
+</script>
+
+</body>
+</html>

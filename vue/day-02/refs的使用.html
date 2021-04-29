@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/js/vue.js"></script>
+</head>
+<body>
+<div id="out">
+<h2 ref="tit">组件操作</h2>
+    <button @click="tap()">操作dom</button>
+    <hr/>
+    <v-parent></v-parent>
+</div>
+<template id="parent">
+    <div>
+        <h3 >父组件</h3>
+        <button @click="tap()">操作子组件</button>
+        <hr>
+        <v-child ref="childs"></v-child>
+    </div>
+</template>
+<template id="a">
+    <div>
+        <h3>父组件</h3>
+        <button @click="tap()">操作fu组件</button>
+    </div>
+</template>
+<script>
+    // 数据传参
+    var  vm = new  Vue({
+        el:"#out",
+        data:{
+        },
+        methods:{
+            tap(){
+                console.log(this.$refs.tit.innerText);
+            }
+        },
+        components:{
+            "v-parent":{
+                template:"#parent",
+                data:function () {
+                    return{
+                        str : "this is 父 infos"
+                    }
+                },
+                methods:{
+                    tap(){
+                        console.log(this.$refs.childs.str);
+                         console.log(this.$refs.childs);
+                    }
+                },
+                components:{
+                    "v-child":{
+                        template:"#a",
+                        data:function () {
+                            return{
+                                str:"this is 子数据"
+                            }
+                        },
+                        methods:{
+                            tap(){
+                                console.log(this.$parent.str);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

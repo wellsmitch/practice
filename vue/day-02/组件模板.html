@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/js/vue.js"></script>
+</head>
+<body>
+<div id="out">
+
+    <v-con></v-con>
+    <v-footer></v-footer>
+</div>
+<!--<script type="x-template" id="con">
+    <div>
+        <h1>hello &#45;&#45;&#45;&#45;{{str}}</h1>
+    </div>
+
+</script>-->
+<template id="con">
+    <div>
+        <h2>hello</h2>
+        <div>另一个组件----{{str}}</div>
+    </div>
+</template>
+<template id="footer">
+    <div>
+        <h2>hello</h2>
+        <div>另一个组件----{{str1}}</div>
+    </div>
+</template>
+
+<script>
+    let  vm = new Vue({
+        el:"#out",
+        data:{
+
+        },
+        //平行组件
+        components:{
+            "v-con":{
+                template:"#con",
+                data:function () {
+                    return{
+                        str:"hi"
+                    }
+                }
+            },
+            "v-footer":{
+                template:"#footer",
+                data:function () {
+                    return {
+                        str1:"程真山"
+                    }
+                }
+            }
+        },
+
+    })
+</script>
+</body>
+</html>

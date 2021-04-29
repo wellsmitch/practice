@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/js/vue.js"></script>
+</head>
+<body>
+<div id="out">
+    <!--<div v-for="(item,index) in aDouble">{{item}}</div>-->
+    <!--<div>{{aDouble}}</div>-->
+    <div>{{obj}}</div>
+</div>
+<script type="text/javascript">
+    var  vm = new  Vue({
+        el: "#out",
+        data: {
+            obj:{
+                a:123,
+                r:{
+                    g:{
+                        a:123
+                    }
+                }
+            }
+        },
+        mounted() {
+            var that = this;
+            Object.freeze(that.obj)
+            console.log(that.obj);
+        },
+        computed:{
+            aDouble: function () {
+                return [111,222,333]
+            },
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--<script src="../lib/js/jquery-1.10.1.js"></script>
+    <link rel="stylesheet" href="../lib/js/css/animate.css">
+    <link rel="stylesheet" href="../lib/js/css/global.css">
+    <link rel="stylesheet" href="../lib/js/css/loading.css">-->
+    <script src="../lib/vue.js"></script>
+    <!--<script src="../lib/js/loading.js"></script>-->
+
+</head>
+<body>
+<div id="out">
+    <button @click="top()">点击事件</button>
+    <button @click="top1()">销毁</button>
+    <p>{{tit}}</p>
+</div>
+<script >
+    var  vm  = new  Vue({
+        el:"#out",
+        data:{
+            tit:"你好 世界"
+        },
+        methods:{
+            top(){
+                 console.log(1);
+                 this.tit="holle  word"
+            },
+            top1(){
+                this.$destroy()
+            }
+        },
+        beforeCreate(){
+            console.log('创建之初');
+            // console.log(this.tit);
+           /* $('body').loading({
+                loadingWidth:240,
+                title:'正在加载中!',
+                name:'test',
+                discription:'描述描述描述描述',
+                direction:'column',
+                type:'origin',
+                // originBg:'#71EA71',
+                originDivWidth:40,
+                originDivHeight:40,
+                originWidth:6,
+                originHeight:6,
+                smallLoading:false,
+                loadingMaskBg:'rgba(0,0,0,0.2)'
+            });*/
+        },
+        created(){
+            console.log(this.tit);
+             console.log(this.$el);
+
+        },
+        beforeMount(){
+           // console.log(this.$el);
+            console.log('beforemount');
+        },
+        mounted(){
+           // console.log(this.$el);
+            /*setTimeout(function(){
+                removeLoading('test');
+            },3000);*/
+
+        },
+        beforeUpdate(){
+            //前提 必须有事件的调用
+               //更新之前
+            console.log("更新之前");
+        },
+        updated(){
+            // 更新之候
+            console.log('更新之候');
+        },
+        beforeDestroy(){
+            //
+            console.log('销毁之前');
+        },
+        destroyed(){
+            console.log('销毁之后。。。。。。');
+
+        }
+
+    })
+
+
+</script>
+</body>
+</html>

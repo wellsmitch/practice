@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>filter</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="out">
+    <div v-for="(item, index) in dataAll">{{item}}</div>
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#out",
+        data: function () {
+            return {
+                dataAll: [111, 435, 56]
+            }
+        },
+        methods: {
+            arrayFilter: function (arr) {
+                var d = arr.slice().sort(function (a, b) {
+                    return a - b
+                });
+                return d;
+            }
+        },
+        watch: {
+            dataAll: function (a, b) {
+                console.log(a, b);
+                return this.arrayFilter(a)
+
+            }
+        },
+        mounted() {
+            var _this = this;
+            setTimeout(function () {
+                // _this.dataAll.push(34);
+                _this.dataAll.push(97)
+            }, 2000)
+        }
+    })
+</script>
+</body>
+</html>

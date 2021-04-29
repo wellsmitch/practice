@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/js/vue.js"></script>
+</head>
+<body>
+<div id="out">
+    <h2>平行组件</h2>
+    <v-a></v-a>
+    <v-b></v-b>
+    <v-c></v-c>
+</div>
+<template id="aa">
+    <div>
+        <h2>aaa的数据</h2>
+        <p>{{str}}</p>
+        <button @click="send()"> 发送给ccc的数据</button>
+    </div>
+</template>
+
+<template id="bb">
+    <div>
+        <h2>bbb的数据</h2>
+        <p>{{str}}</p>
+        <button @click="send()">发送给ccc的数据</button>
+    </div>
+</template>
+<template id="cc">
+    <div>
+        <h2>ccc的组件</h2>
+        <p>接收aaaa的数据------{{stra}}</p>
+        <p>接收bbbbbb的数据------{{strb}}</p>
+    </div>
+
+</template>
+
+<script>
+    var vm1 = new Vue({});
+    var vm = new Vue({
+        el: "#out",
+        components: {
+            "v-a": {
+                template: "#aa",
+                data: function () {
+                    return {
+                        str: "aaaa的数据"
+                    }
+                },
+                methods: {
+                    send() {
+                        vm1.$emit("isa", this.str)
+                    }
+                }
+            },
+            "v-b": {
+                template: "#bb",
+                data: function () {
+                    return {
+                        str: "bbb的数据"
+                    }
+                },
+                methods: {
+                    send() {
+                        vm1.$emit("isb", this.str)
+                    }
+                }
+
+            },
+            "v-c": {
+                template: "#cc",
+                data: function () {
+                    return {
+                        stra: "",
+                        strb: ""
+                    }
+                },
+                mounted() {
+                  //  console.log(111);
+                    var _this = this
+                   vm1.$on("isa",function (msg) {
+                     //  console.log(msg);
+                       _this.stra = msg;
+                   })
+                    vm1.$on("isb",function (msg) {
+                     //   console.log(msg);
+                        _this.strb = msg;
+                    })
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

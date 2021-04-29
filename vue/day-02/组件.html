@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/js/vue.js"></script>
+</head>
+<body>
+<div id="out">
+    <h2>全局组件</h2>
+    <v-header></v-header>
+    <v-footer></v-footer>
+    <v-con></v-con>
+</div>
+
+<div id="inter">
+    <!--<v-con></v-con>-->
+    <v-footer></v-footer>
+</div>
+</body>
+<script>
+    Vue.component('v-header', Vue.extend({
+        template: `<div>
+                    <div>hello：组件</div>
+                       <h2>{{str}}</h2>
+                       <button @click="top()">更改数据</button>
+                    </div>`,
+        data: function () {
+            return {
+                str: "数据"
+            }
+        },
+        methods:{
+            top(){
+                this.str = "你好"
+            }
+        },
+        mounted(){
+            console.log('组件加载完成');
+        }
+    }));
+    Vue.component("v-footer", {
+        template: "<div>另一个组件----{{str}}</div>",
+        data:function () {
+            return{
+                str:"hi hoakun"
+            }
+        }
+    })
+
+    let vm = new Vue({
+        el: "#out",
+        data: {},
+        methods: {},
+        components: {
+            "v-con": {
+                template: "<div>私有组件</div>"
+            }
+        }
+
+    });
+
+    let vm1 = new Vue({
+        el: "#inter"
+    })
+
+</script>
+</html>

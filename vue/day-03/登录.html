@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/vue.js"></script>
+    <link rel="stylesheet" href="a.css">
+</head>
+<body>
+<div id="out">
+    <button @click="tap()">totast提示框</button>
+</div>
+
+<script>
+    var Toast = Vue.component('Toast',{
+        template:`
+            <div class="toast" v-if="isshow">
+                {{text}}
+            </div>
+        `,
+        data:function () {
+            return{
+                text:"登录成功",
+                isshow:true,
+                time:2000
+            }
+        }
+    })
+    // 组件本身就是实例话对象
+    let toast = function () {
+        let ToastVue = new Toast({
+            el:document.createElement("div"),
+        })
+        document.body.appendChild(ToastVue.$el)
+        setTimeout(function () {
+            ToastVue.isshow= false
+        },ToastVue.time)
+    }
+
+    var vm = new  Vue({
+        el:"#out",
+        methods:{
+            tap(){
+                toast()
+            }
+        }
+    })
+</script>
+</body>
+</html>

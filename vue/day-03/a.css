@@ -1,0 +1,12 @@
+.toast{
+	position: fixed;
+	top: 45%;
+	left: 45%;
+	width: 200px;
+	height: 100px;
+	text-align: center;
+	line-height: 100px;
+	color: #fff;
+	background: #000;
+	opacity: 0.6;
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/vue.js"></script>
+    <script src="../lib/js/axios.min.js"></script>
+    <script src="../lib/vue-router.js"></script>
+    <link rel="stylesheet" href="animate/animate.css">
+
+</head>
+<body>
+<div id="out">
+    <h1>路由</h1>
+    <router-link :to="{name:'list'}">列表</router-link>
+    <router-link :to="{name:'other'}">其他</router-link>
+    <transition
+            enter-active-class="animated zoomIn"
+            leave-active-class="animated zoomOut"
+    >
+        <router-view></router-view>
+    </transition>
+</div>
+<template id="list">
+    <div>
+        <h1>list</h1>
+        <ul>
+            <li v-for="(item,i) in arr">
+                <router-link :to="{name:'detail',query:{id:item.pid}}" > {{item.pname}}</router-link>
+            </li>
+        </ul>
+        <hr>
+        <transition
+                    enter-active-class="animated zoomIn"
+                    leave-active-class="animated zoomOut"
+        >
+            <router-view></router-view>
+        </transition>
+
+    </div>
+</template>
+<template id="other">
+    <div>
+        <h1>other</h1>
+    </div>
+</template>
+<template id="detail">
+    <div>
+        <h1>详情</h1>
+        <transition
+                    enter-active-class="animated zoomIn"
+        >
+            <!--怎么给p给以动画-->
+            <p>{{detail}}</p>
+        </transition>
+    </div>
+</template>
+<script>
+    var list = {
+        template: "#list",
+        data: function () {
+            return {
+                arr: [],
+
+            }
+        },
+        mounted() {
+            var _this = this;
+            axios({
+                url: "http://jx.xuzhixiang.top/ap/api/productlist.php"
+            })
+                .then(function (data) {
+                    //   console.log(data);
+                    _this.arr = data.data.data
+                })
+        }
+
+    }
+    var other = {
+        template: "#other"
+    }
+    var Detail = {
+        template: "#detail",
+        data: function () {
+            return {
+                detail: "",
+                show:true
+            }
+        },
+        mounted() {
+            var _this = this;
+            axios({
+                url: "http://jx.xuzhixiang.top/ap/api/detail.php",
+                params: {id: _this.$route.query.id}
+            }).then(function (data) {
+                // console.log(data);
+                _this.detail = data.data.data.pdesc
+            })
+        },
+        watch: {
+            "$route"(a) {
+                var _this = this;
+                axios({
+                    url: "http://jx.xuzhixiang.top/ap/api/detail.php",
+                    params: {id: a.query.id}
+                }).then(function (data) {
+                    // console.log(data);
+                    _this.detail = data.data.data.pdesc
+                })
+            }
+        }
+    }
+    var routes = [
+        {
+            path: "/list", name: "list", component: list,
+            children: [
+                {path: "/detail", name: "detail", component: Detail}
+            ]
+        },
+
+        {path: "/other", name: "other", component: other},
+        {path: "*", redirect: "/list"}
+    ]
+    var router = new VueRouter({
+        routes: routes
+    })
+
+    let vm = new Vue({
+        el: "#out",
+        router: router,
+
+
+    })
+</script>
+</body>
+</html>

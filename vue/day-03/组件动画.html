@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/js/vue.js"></script>
+    <link rel="stylesheet" href="animate/animate.css">
+</head>
+<body>
+<div id="out">
+    <button @click="tap()">aaaa组件</button>
+    <button @click="tap1()">bbb组件</button>
+    <button @click="tap2()">ccc组件</button>
+    <transition
+            enter-active-class="animated lightSpeedIn"
+            leave-active-class="animated  rotateOut"
+    >
+        <component :is="view"></component>
+
+    </transition>
+</div>
+<template id="aa">
+    <div>
+        <h2>aaa组件吗</h2>
+    </div>
+</template>
+<template id="bb">
+    <div>
+        <h2>bbbb组件吗</h2>
+    </div>
+</template>
+<template id="cc">
+    <div>
+        <h2>cccc组件吗</h2>
+    </div>
+</template>
+<script>
+    Vue.component("v-a", {
+        template: "#aa",
+
+    })
+    Vue.component("v-b", {
+        template: "#bb",
+
+    })
+    Vue.component("v-c", {
+        template: "#cc",
+
+    })
+    let vm = new Vue({
+        el: "#out",
+        data: {
+            view: "v-a"
+        },
+        methods: {
+            tap() {
+                this.view = "v-a"
+            },
+            tap1() {
+                this.view = "v-b"
+            },
+            tap2() {
+                this.view = "v-c"
+            },
+
+        }
+    })
+</script>
+</body>
+</html>

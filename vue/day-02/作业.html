@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/js/vue.js"></script>
+</head>
+<body>
+<div id="out">
+    <button @click="top()"> 提示框</button>
+    <v-con ref="tit" v-show="t"></v-con>
+    <v-con ref="tit" v-if="t"></v-con>
+    <v-con></v-con>
+</div>
+<template id="con">
+    <div>
+        <!--<h2 >{{str}}</h2>-->
+        <slot name="aaa">
+            <h2>{{str}}</h2>
+        </slot>
+    </div>
+</template>
+<script>
+    var  vm  = new Vue({
+        el:"#out",
+        data:{
+    t:false
+        },
+        components:{
+            "v-con":{
+                template:"#con",
+                data:function () {
+                    return{
+                        str:"登陆成功"
+                    }
+                }
+            }
+        },
+        methods: {
+            top() {
+                // console.log(this.$refs.tit.$el);
+                this.t = true
+                setTimeout(function () {
+                    this.t =false
+                    console.log(this);
+                }.bind(this),2000)
+
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

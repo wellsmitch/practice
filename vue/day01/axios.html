@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>-->
+    <!--<script src="https://cdn.bootcss.com/fetch/2.0.4/fetch.min.js"></script>-->
+    <script src="../lib/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.4"></script>
+
+</head>
+<body>
+<div id="out">
+    <ul>
+        <li>
+            <input type="text" v-model="ipt">
+        </li>
+    </ul>
+    <button @click="top">获取数据</button>
+</div>
+<script>
+    var vm = new Vue({
+        el: "#out",
+        data: {
+            ipt:""
+        },
+        // 监听
+        watch:{
+          "ipt":function (a,b) {
+              console.log(a);
+              console.log(b);
+          }
+        },
+        methods: {
+            top() {
+               /* axios({
+                    method: "get",
+                    url: './data.json',
+                })
+                    .then(function (data) {
+                        console.log(data.data);
+                    })
+                    .catch(function () {
+                    })*/
+              /* fetch("data.json",{
+                   method:"post",
+
+                   }
+               ).then(function (data) {
+                   return data.json()
+               }).then(function (data) {
+                   console.log(data);
+               })
+*/
+                // https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=php
+                // jsonp的数据获取
+                this.$http.jsonp("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=php",{
+                    jsonp:'cb',
+                }).then(function(data){
+                    console.log(data.body)
+                },function(){
+
+                })
+            }
+        }
+
+    })
+   /* vm.$watch('ipt',function(a,b){
+    		console.log(a)
+    	    console.log(b)
+    	})*/
+</script>
+</body>
+</html>

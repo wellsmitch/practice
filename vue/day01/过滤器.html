@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/vue.js"></script>
+</head>
+<body>
+<div id="out">
+    <table>
+        <tr>
+            <td>序号</td>
+            <td>名称</td>
+            <td>状态</td>
+            <td>备注</td>
+        </tr>
+        <tr v-for="(item,i) in arr">
+            <td>{{i}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.status}}</td>
+            <td>{{item.status|fil}}</td>
+        </tr>
+
+    </table>
+
+    <!--<input type="text" value="">-->
+</div>
+<script>
+    // 过滤器
+    Vue.filter('fil',function (a) {
+        // return "hello++++----"+a
+        if (a ==0){
+            return "订单成功"
+        } else if (a ==1){
+            return "订单异常"
+        } else {
+            return "待支付"
+        }
+    })
+    var vm =  new Vue({
+        el:"#out",
+        data:{
+            ipt:"",
+            arr:[{name:"鞋子",status:"0"},{name:"帽子",status:"1"},{name:"裤子",status:"2"},
+                {name:"上衣",status:"0"}
+            ],
+
+        },
+    })
+</script>
+</body>
+</html>

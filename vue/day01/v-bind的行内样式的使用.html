@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/vue.js"></script>
+    <style>
+        .classA{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="out">
+    <h3>行内样式</h3>
+    <p :style="{color:col,background:bac}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia maxime
+        cumque aperiam cupiditate illo similique ad libero adipisci atque voluptas! Dignissimos animi aliquid debitis
+        ipsam perspiciatis autem odio rerum similique!</p>
+    <p v-bind:style="[styA,styB]">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia maxime cumque
+        aperiam cupiditate illo similique ad libero adipisci atque voluptas! Dignissimos animi aliquid debitis ipsam
+        perspiciatis autem odio rerum similique!</p>
+    <h2>行内样式</h2>
+    <p :class="classobj">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia maxime
+        cumque aperiam cupiditate illo similique ad libero adipisci atque voluptas! Dignissimos animi aliquid debitis
+        ipsam perspiciatis autem odio rerum similique!</p>
+    <p :class="{'cla':classa}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis enim libero, at lacinia diam fermentum
+        id. Pellentesque habitant morbi tristique senectus et netus.
+    </p>
+    <p v-bind:class="classobj">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia maxime cumque
+        aperiam cupiditate illo similique ad libero adipisci atque voluptas! Dignissimos animi aliquid debitis ipsam
+        perspiciatis autem odio rerum similique!</p>
+    <button @click="tap">李翔宇</button>
+</div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#out',
+        data: {
+            col: "red",
+            bac: "blue",
+            styA: {
+                color: 'blue'
+            },
+            styB: {
+                background: 'yellow'
+            },
+            classa:false,
+            classb:false,
+            classobj:{
+                "classA":false,
+                "classB":true,
+            },
+        },
+        methods:{
+            tap(){
+                console.log(this);
+                console.log(1);
+                this.classobj.classA=!this.classobj.classA
+
+            }
+        }
+
+    })
+</script>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="animate/animate.css">
+    <script src="../lib/vue.js"></script>
+</head>
+<body>
+<div id="out">
+    <button @click="isshow=!isshow">控制动画</button>
+    <transition
+            enter-active-class="animated rotateInDownLeft"
+            leave-active-class="animated zoomOutLeft"
+            @before-enter="beforeEnter"
+            @enter="enter"
+            @after-enter="afterEnter"
+
+            @before-leave="beforeLeave"
+            @leave="leave"
+            @after-leave="afterLeave"
+
+    >
+        <p v-if="isshow">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis enim libero, at lacinia diam
+            fermentum
+            id. Pellentesque habitant morbi tristique senectus et netus.</p>
+    </transition>
+</div>
+<script>
+    let vm = new Vue({
+        el: "#out",
+        data: {
+            isshow: true
+        },
+        methods: {
+            beforeEnter() {
+                console.log("进入之前");
+            },
+            enter() {
+                console.log('进入之中');
+            },
+            afterEnter() {
+                console.log('进入之后');
+            },
+            beforeLeave() {
+                console.log("离开之前");
+            },
+            leave() {
+                console.log('离开之中');
+            },
+            afterLeave() {
+                console.log('离开之后');
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

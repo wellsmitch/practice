@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="box">
+    <form>
+        <div class="form-group">
+            <label for="name">姓名</label>
+            <input v-model="ipt1" type="text" class="form-control" id="name" placeholder="姓名">
+        </div>
+        <div class="form-group">
+            <label for="detail">简介</label>
+            <input v-model="ipt2" type="text" class="form-control" id="detail" placeholder="简介">
+        </div>
+        <div class="form-group">
+            <input type="radio" name="sex" value="男" v-model="ipt3">男
+            <input type="radio" name="sex" value="女" v-model="ipt3">女
+        </div>
+
+        <a  class="btn btn-info" @click="add()">添加</a>
+    </form>
+    <table class="table">
+        <tr>
+            <td>名字</td>
+            <td>查看</td>
+            <td>删除</td>
+            <td>修改</td>
+        </tr>
+        <tr v-for="(item,i) in arr">
+            <td>{{item.name}}</td>
+            <td><button class="btn btn-success" @click="detail(item.name,item.detail,item.sex)">查看</button></td>
+            <td><button class="btn btn-danger" @click="remove(i)">删除</button></td>
+            <td><button class="btn btn-primary" @click="change(i)">修改</button></td>
+        </tr>
+    </table>
+    <div :style="styleA" v-if="xianShi">
+        <p>名字:{{name}}</p>
+        <p>简介:{{details}}</p>
+        <p>性别:{{sex}}</p>
+        <button class="btn btn-success" @click="out()">关闭</button>
+    </div>
+    <div :style="styleA" v-if="xiuGai">
+        <form>
+            <div class="form-group">
+                <label for="name1">姓名</label>
+                <input type="text" class="form-control" id="name1" placeholder="姓名" v-model="name">
+            </div>
+            <div class="form-group">
+                <label for="detail1">简介</label>
+                <input type="text" class="form-control" id="detail1" placeholder="简介" v-model="details">
+            </div>
+            <div class="form-group">
+                <input type="radio" name="sex" value="男" v-model="sex">男
+                <input type="radio" name="sex" value="女" v-model="sex">女
+            </div>
+            <a  class="btn btn-info" @click="change1()">修改</a>
+        </form>
+    </div>
+</div>
+<script>
+
+    var vm = new Vue({
+        el:"#box",
+        data:{
+            ipt1:'',
+            ipt2:'',
+            ipt3:'',
+            arr:[],
+            name:'',
+            details:'',
+            sex:'',
+            arr1:[],
+            index:0,
+            xianShi:false,
+            xiuGai:false,
+            styleA:{
+                width:'300px',
+                height:'250px',
+                background:'#eeeeee',
+                position:'absolute',
+                top:0,
+                bottom:0,
+                left:0,
+                right:0,
+                margin:'auto'
+            }
+        },
+        methods:{
+            add(){
+                var obj = {
+                    name:this.ipt1,
+                    detail:this.ipt2,
+                    sex:this.ipt3
+                };
+                this.arr.push(obj);
+                this.ipt1 = '';
+                this.ipt2 = ''
+            },
+            remove(i){
+               this.arr.splice(i,1)
+            },
+            detail(name,datail,sex){
+                this.xianShi = true;
+                this.name = name;
+                this.details = datail;
+                this.sex = sex;
+            },
+            out(){
+                this.xianShi = false
+            },
+            change(i){
+                this.index  = 0;
+                this.xiuGai = true;
+                this.index = i;
+                // arr1 = [];
+                /*var obj = {
+                    name:name,
+                    detail:detail,
+                    sex:sex
+                };
+                arr1.push(obj);*/
+            },
+            change1(){
+                //console.log(this.name,this.details,this.sex)
+                this.xiuGai = false;
+                this.arr[this.index].name = this.name;
+                this.arr[this.index].detail = this.details;
+                this.arr[this.index].sex = this.sex;
+            }
+        },
+        computed:{
+            list(){
+                return this.arr
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

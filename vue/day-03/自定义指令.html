@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/vue.js"></script>
+</head>
+<body>
+<div id="out">
+    <h1>自定义指令</h1>
+    <p v-color:aaaa>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis enim libero, at lacinia diam fermentum
+        id. Pellentesque habitant morbi tristique senectus et netus.
+    </p>
+    <p v-bac="str">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis enim libero, at lacinia diam fermentum
+        id. Pellentesque habitant morbi tristique senectus et netus.
+    </p>
+    <p v-col="str">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis enim libero, at lacinia diam
+        fermentum id. Pellentesque habitant morbi tristique senectus et netus.</p>
+    <p>{{str}}</p>
+    <button @click="tap()">改变颜色</button>
+    <!--//<p v-color.aaa></p>-->
+</div>
+<script type="text/javascript">
+    // 多个实例话都能使用，全局的特性
+    Vue.directive('color',{
+        inserted:function (e) {
+            // 谁绑定指向谁
+            e.style.color="blue"
+            // console.log(b);
+        }
+    })
+    // 简写模式 功能与 update功能一样
+    /*Vue.directive('col',function (a,b) {
+        a.style.color=b.value
+    })*/
+    let vm =new Vue({
+        el:"#out",
+        data:{
+          str:"green"
+        },
+      /* directives:{
+            "bac":{
+                inserted:function (a,b) {
+                    // a.style.background='yellow';
+                    //console.log(b);
+                    a.style.color=b.value
+                },
+                update:function(a,b){
+                    a.style.background=b.value
+                    console.log(b)
+                    console.log(1);
+                }
+            }},*/
+            directives:{'col':function (el,binding) {
+                el.style.color=binding.value
+            }},
+        // },
+
+        methods:{
+            tap(){
+                this.str="blue"
+            }
+        },
+
+    })
+</script>
+</body>
+</html>

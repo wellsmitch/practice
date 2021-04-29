@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/js/vue.js"></script>
+</head>
+<body>
+<div id="out">
+    <h2>嵌套组件</h2>
+    <v-parent></v-parent>
+</div>
+<template id="parent">
+    <div>
+        <h1>父组件</h1>
+        <p>{{str}}</p>
+        <hr>
+        <v-child @toparent="getdata"></v-child>
+    </div>
+
+</template>
+
+<template id="child">
+    <div>
+        <h1>子组件</h1>
+        <p>{{str}}</p>
+        <button @click="tap()">发送给父元素</button>
+        <hr>
+    </div>
+</template>
+<script>
+    let vm = new Vue({
+        el: "#out",
+        data: {},
+        components: {
+            "v-parent": {
+                template: "#parent",
+                data: function () {
+                    return {
+                        str: ''
+                    }
+                },
+                methods: {
+                    getdata(msg) {
+                        console.log(msg);
+                        this.str = msg
+                    }
+                },
+                components: {
+                    "v-child": {
+                        template: "#child",
+                        data: function () {
+                            return {
+                                str: "this is child infos"
+                            }
+                        },
+                        methods: {
+                            tap() {
+                                this.$emit("toparent", this.str)
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

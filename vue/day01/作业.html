@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.js"></script>
+    <script src="../lib/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
+    <script src="../lib/vue.js"></script>
+</head>
+<body>
+<div id="out">
+    <h1>信息管理系统</h1>
+    <div class="form-group">
+        <label for="exampleInputEmail1">姓名</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="请输入姓名" v-model="ipt1">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">年龄</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="请输入年龄" v-model="ipt2">
+    </div>
+    <div class="form-group" >
+        <label for="exampleInputPassword1">职位</label>
+        <select class="form-control" v-model="ipt3">
+            <option>iOS工程师</option>
+            <option>H5工程师</option>
+            <option>JAVA工程师</option>
+            <option>UI工程师</option>
+        </select>
+    </div>
+    <div class="form-group" >
+
+        <label class="radio-inline"> 男：</label>
+             <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" v-model="ipt4">
+        <label class="radio-inline">女：</label>
+          <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" v-model="ipt4">
+
+    </div>
+    <button type="button" class="btn btn-info" @click="add()">添加</button>
+    <button type="button" class="btn btn-warning" >重置</button>
+    <table class="table table-bordered">
+        <tr>
+            <td>序号</td>
+            <td>姓名</td>
+            <td>信息</td>
+            <td>操作</td>
+            <td>操作</td>
+        </tr>
+        <tr v-for="(item,i) in arr">
+            <td>{{i}}</td>
+            <td>{{item.name}}</td>
+            <td>
+                <button type="button" class="btn btn-danger" @click="tap(i)"  data-toggle="modal" data-target="#myModal">重置</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger" @click="del(i)">删除</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#regins">修改</button>
+            </td>
+        </tr>
+    </table>
+
+    <!--模态框-->
+    <!-- 信息 -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">个人信息</h4>
+                </div>
+                <div class="modal-body" >
+
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="exampleInputEmail1" value="{{name}}" placeholder="请输入姓名">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="exampleInputPassword1" value=`{{age}}` placeholder="年龄">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="exampleInputPassword1" value=`{{six}}` placeholder="性别">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--修改-->
+    <div class="modal fade" id="regins" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">个人信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="请输入姓名">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="年龄">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="性别">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script >
+    var vm = new Vue({
+        el:"#out",
+        data:{
+            ipt1:"",
+            ipt2:"",
+            ipt3:"",
+            ipt4:"",
+            arr:[],
+        },
+        methods:{
+            add(){
+                var dataobj = {name:this.ipt1,age:this.ipt2,job:this.ipt3,six:this.ipt4}
+                this.arr.unshift(dataobj)
+            },
+            del(i){
+                this.arr.splice(i,1)
+            },
+            tap(i){
+                name:this.arr[i].name;
+                age:this.arr[i].age;
+                job:this.arr[i].job;
+                six:this.arr[i].six;
+            }
+        },
+        components:{
+
+        },
+
+
+
+    })
+</script>
+
+</body>
+</html>

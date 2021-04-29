@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/axios.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    class Network {
+        constructor(option) {
+            Object.assign(this, option);
+            this.baseUrl = this.baseUrl || '';
+            this.method = this.method || 'get';
+            this.responseType = this.responseType || 'json';
+            this.headers = this.headers || {};
+            this.timeout = this.timeout || 1000;
+        }
+
+        build(url, params, data, success, fail, complete) {
+            let that = this;
+            this.headers = params.headers;
+            this.timeout = params.timeout;
+            axios({
+                method: that.method,
+                url: that.baseUrl + url,
+                headers: that.headers,
+                data: data,
+                timeout: that.timeout,
+                responseType: that.responseType,
+            })
+                .then(response => {
+                    success(response)
+                })
+                .catch(error => {
+                    fail(error)
+                })
+                .finally(finalInfo => {
+                    complete(finalInfo)
+                })
+        }
+
+        get(url, params, data, success, fail, complete) {
+            params.method = 'get';
+            this.build(url, params, data, success, fail, complete)
+        }
+
+        post(url, params, data, success, fail, complete) {
+            params.method = 'post';
+            this.build(url, params, data, success, fail, complete)
+        }
+    }
+
+    new Network().get('https://wellsmitch/bbb/getOuterData', {}, {}, function (resultData) {
+        console.log("resultData::", resultData);
+    }, function (errData) {
+        console.log("errData::", errData);
+    }, function (completeData) {
+        console.log("completeData::", completeData);
+    })
+</script>
+</body>
+</html>
