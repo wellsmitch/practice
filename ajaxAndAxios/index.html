@@ -30,28 +30,28 @@
         $.ajax({
             type: "post",
             // url: "http://47.111.113.130:8082/bbb/item/userLogin.action",
-            url: "http://localhost:8099/bbb/item/userLogin.action",
+            url: "http://localhost:8099/item/userLogin.action",
             data:
                 {
-                username: userName_,
-                password: password_
-            },
-                //"username=zhangsan&password=1",
+                    username: userName_,
+                    password: password_
+                },
+            //"username=zhangsan&password=1",
             /**
              * ajax 默认使用的contentType: 'application/x-www-form-urlencoded' 格式进行数据传输
              * */
             // contentType: 'application/x-www-form-urlencoded',
             //application/x-www-form-urlencoded; charset=UTF-8
             async: true,
-            xhr:function(){
+            xhr: function () {
                 myXhr = $.ajaxSettings.xhr();
-                if(myXhr.upload){ // check if upload property exists
-                    myXhr.upload.addEventListener('progress',function(e){
+                if (myXhr.upload) { // check if upload property exists
+                    myXhr.upload.addEventListener('progress', function (e) {
                         var loaded = e.loaded;                  //已经上传大小情况
                         var total = e.total;                      //附件总大小
-                        var percent = Math.floor(100*loaded/total)+"%";     //已经上传的百分比
-                        console.log("已经上传了："+percent);
-                        $("#processBar").css("width",percent);
+                        var percent = Math.floor(100 * loaded / total) + "%";     //已经上传的百分比
+                        console.log("已经上传了：" + percent);
+                        $("#processBar").css("width", percent);
                     }, false); // for handling the progress of the upload
                 }
                 return myXhr;
@@ -71,14 +71,14 @@
             type: "post",
             url: "http://localhost:8099/bbb/item/userLogin.action",
             data:
-			// {
-   //              username: userName_,
-   //              password: Number(password_)+2
-   //          },
-			JSON.stringify({
-                username: userName_,
-                password: password_
-            }),
+            // {
+            //              username: userName_,
+            //              password: Number(password_)+2
+            //          },
+                JSON.stringify({
+                    username: userName_,
+                    password: password_
+                }),
             contentType: 'application/json',
             async: true,
             success: function (data) {
@@ -93,25 +93,25 @@
         var fm = new FormData();
         fm.append("username", userName_);
         fm.append("password", password_);
-        fm.append("file",$("#fileInput")[0].files[0]);
+        fm.append("file", $("#fileInput")[0].files[0]);
 
         $.ajax({
             type: "post",
-            url: "http://localhost:8099/bbb/item/userLogin.action",
+            url: "http://localhost:8099/item/userLogin.action",
             data: fm,
             contentType: false,
             processData: false,
             async: true,
             cache: false,
-            xhr:function(){
+            xhr: function () {
                 myXhr = $.ajaxSettings.xhr();
-                if(myXhr.upload){ // check if upload property exists
-                    myXhr.upload.addEventListener('progress',function(e){
+                if (myXhr.upload) { // check if upload property exists
+                    myXhr.upload.addEventListener('progress', function (e) {
                         var loaded = e.loaded;                  //已经上传大小情况
                         var total = e.total;                      //附件总大小
-                        var percent = Math.floor(100*loaded/total)+"%";     //已经上传的百分比
-                        console.log("已经上传了："+percent);
-                        $("#processBar").css("width",percent);
+                        var percent = Math.floor(100 * loaded / total) + "%";     //已经上传的百分比
+                        console.log("已经上传了：" + percent);
+                        $("#processBar").css("width", percent);
                     }, false); // for handling the progress of the upload
                 }
                 return myXhr;
@@ -125,41 +125,56 @@
     $('#normalAxios').click(function () {
         var userName_ = $('#userName').val();
         var password_ = $('#password').val();
-
+        // 文件格式交互不能使用x-form-urlencoded 转换时候会把file处理掉
         var ajaxData = Qs.stringify(
             {
-                username: userName_,
-                password: password_
+                username: 11+userName_,
+                password: password_,
+                file: $("#fileInput")[0].files[0]
             }
         );
+        // ajaxData = JSON.stringify({
+        //     username: userName_,
+        //     password: password_
+        // });
         axios.defaults.baseURL = "http://localhost:8099";
-        axios({
-            // headers: {
-            //     "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-            // },
-            method: "post",
-            url: '/bbb/item/userLogin.action',
-            data: ajaxData
+        // axios({
+        //     headers: {
+        //         "Content-Type": "application/x-www-form-urlencoded"
+        //     },
+        //     method: "post",
+        //     url: '/item/userLogin.action',
+        //     data: ajaxData
+        // })
+        //     .then(function (res) {
+        //         console.log(res);
+        //     })
+        //     .catch(function (erres) {
+        //         console.error(erres)
+        //     })
+        axios.post('http://localhost:8099/item/userLogin.action', ajaxData, {
+            headers: {
+                // "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+            }
+        }).then(data => {
+            console.log(data);
         })
-            .then(function (res) {
-                console.log(res);
-            })
-            .catch(function (erres) {
-                console.error(erres)
-            })
     });
 
     $('#jsonAxios').click(function () {
-        /** 默认Content-Type: application/json;charset=UTF-8
-         * 只能使用@RequestBody User users_接受到数据*/
+        /**
+         默认 Content-Type: application/json;charset=UTF-8
+         只能使用@RequestBody User users_接受到数据
+         */
         var userName_ = $('#userName').val();
         var password_ = $('#password').val();
         axios({
             method: "post",
-            url: 'http://localhost:8099/bbb/item/userLogin.action',
-			headers: {
-			                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-			            },
+            url: 'http://localhost:8099/item/userLogin.action',
+            headers: {
+                // "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+                "Content-Type": "application/json;charset=UTF-8"
+            },
             data: {
                 username: userName_,
                 password: password_
@@ -172,6 +187,15 @@
             .catch(function (erres) {
                 console.error(erres)
             })
+
+        // axios.post('http://localhost:8099/item/userLogin.action', {
+        //     username: userName_,
+        //     password: password_
+        // }, {
+        //     "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+        // }).then(data => {
+        //     console.log(data);
+        // })
     });
 
     $('#formDateAxios').click(function () {
@@ -196,9 +220,9 @@
         //     .catch(function (erres) {
         //         console.error(erres)
         //     })
-        axios.post('http://localhost:8099/bbb/item/userLogin.action',fm1,{
+        axios.post('http://localhost:8099/item/userLogin.action', fm1, {
             // 'Content-Type':'multipart/form-data'
-        }).then(res=>{
+        }).then(res => {
             console.log(res);
         })
     });
