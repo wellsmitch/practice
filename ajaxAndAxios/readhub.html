@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <title>readhub</title>
     <script src="../js/jquery.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/dayjs@1.10.6/dayjs.min.js">
+
+    </script>
 </head>
 <body>
 <button id="getNews">获取信息</button>
 <script type="text/javascript">
     $("#getNews").click(function () {
         $.ajax({
-            url:"http://wellsmitch.top/readhub/topic?lastCursor=",
+            url:"http://47.111.113.130/readhub/topic?lastCursor=",
+            url:"http://127.0.0.1:8006/readhub/topic?lastCursor=&pageSize=20",
             type:"get",
             data: {
 

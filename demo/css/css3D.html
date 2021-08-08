@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        :root {
+            --img-3d-width: 300px
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+            background: url("../image/5564cc14e2b2e3ec7997e9336fc796a4.jpg");
+        }
+
+        .css-3d {
+            position: absolute;
+            top: 20%;
+            left: 35%;
+            width: var(--img-3d-width);
+            height: var(--img-3d-width);
+            transform-style: preserve-3d;
+            /*perspective: 5000px;*/
+            perspective-origin: center;
+            animation: rotateInfinate 5s infinite linear;
+        }
+
+        .img-3d {
+            position: absolute;
+            width: var(--img-3d-width);
+            height: var(--img-3d-width);
+        }
+
+        @keyframes rotateInfinate {
+            0% {
+                transform-origin: center;
+                transform: rotateX(0) rotateY(0);
+            }
+            100% {
+                transform-origin: center;
+                transform: rotateX(360deg) rotateZ(360deg);
+            }
+        }
+        .left {
+            background: url("../image/8a99a29c306b3de2715e0e3105d04e57.jpeg") center/cover;
+            transform: rotateY(90deg) translateZ(calc(var(--img-3d-width) / 2 *(-1)));
+        }
+        .right {
+            background: url("../image/02905fdee877ce8a03ff64207fd5c585.jpeg") center/cover;
+            transform: rotateY(90deg) translateZ(calc(var(--img-3d-width) / 2));
+        }
+        .top {
+            background: url("../image/48965bcba30eaea6edbef58f41489988.jpeg") center/cover;
+            transform: rotateX(90deg) translateZ(calc(var(--img-3d-width) / 2));
+        }
+        .bottom {
+            background: url("../image/930414c3ab3c629914fbc2edc025d5a1.jpeg") center/cover;
+            transform: rotateX(90deg) translateZ(calc(var(--img-3d-width) / 2*(-1)));
+        }
+        .inside {
+            background: url("../image/d70c3d41bc03f001fa2c7b3788ffa08b.jpeg") center/cover;
+            transform: translateZ(calc(var(--img-3d-width) / 2*(-1)));
+        }
+        .outside {
+            background: url("../image/e76eab2deb7f6a9e025d64453ae1ed3c.jpeg") center/cover;
+            transform: translateZ(calc(var(--img-3d-width) / 2));
+        }
+    </style>
+</head>
+<body>
+<div class="css-3d">
+    <div></div>
+    <div class="img-3d left"></div>
+    <div class="img-3d right"></div>
+    <div class="img-3d top"></div>
+    <div class="img-3d bottom"></div>
+    <div class="img-3d inside"></div>
+    <div class="img-3d outside"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li {
+            list-style: none;
+        }
+
+        .ulPanel {
+            padding-left: 10px;
+        }
+
+        .ulPanel > li > span {
+            margin-left: 110px;
+        }
+
+        .ulPanel > li > ul {
+            padding-left: 10px;
+        }
+
+        .ulPanel > li > ul > li > span {
+            margin-left: 90px;
+        }
+
+        .ulPanel > li > ul > li > ul {
+            padding-left: 10px;
+        }
+
+        .ulPanel > li > ul > li > ul > li > span {
+            margin-left: 80px
+        }
+
+    </style>
+</head>
+<body>
+<ul class="ulPanel">
+    <li>1- <span>span1</span></li>
+    <li>1- <span>span1</span></li>
+    <li>
+        <ul>
+            <li>2-- <span>span2</span></li>
+            <li>2-- <span>span2</span></li>
+            <li>
+                <ul>
+                    <li>3-- <span>span3</span></li>
+                    <li>3-- <span>span3</span></li>
+                    <li>3-- <span>span3</span></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>

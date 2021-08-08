@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        :root {
+            --background: #00A8B3;
+        }
+        .keyframe {
+            width: 200px;
+            height: 200px;
+            background: var(--background);
+            color: #fff;
+        }
+        .scale {
+            animation: scaleIn 1s cubic-bezier(0.42,0,1,1) infinite;
+        }
+
+        @keyframes scaleIn {
+            0% {
+                width: 0;
+                height: 0;
+            }
+            100% {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="keyframe scale">scale</div>
+<script type="text/javascript">
+    (()=> {
+        console.log(123)
+    })()
+</script>
+</body>
+</html>
