@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        @keyframes move {
+            0% {
+                transform: translateZ(0.1px);
+            }
+            100% {
+                transform: translateZ(500px);
+            }
+        }
+        .out {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            background: darkorange;
+        }
+        .child {
+            width: 100%;
+            height: 100%;
+            perspective: 500px;
+        }
+        :root {
+            --pos: 20%;
+            --size: 5px
+        }
+        .circleBlock {
+            position: absolute;
+            left: var(--pos);
+            top: var(--pos);
+            width: var(--size);
+            height: var(--size);
+            border-radius: 50%;
+            transform: translateZ(10px);
+            background: radial-gradient(circle at center, #fff, transparent);
+            animation: move 5s infinite linear;
+        }
+    </style>
+</head>
+<body>
+<div class="out">
+    <div class="child">
+        <div class="circleBlock"></div>
+    </div>
+</div>
+</body>
+</html>

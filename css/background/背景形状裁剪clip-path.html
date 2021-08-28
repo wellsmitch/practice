@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--https://www.cnblogs.com/moqiutao/p/10547330.html-->
+    <title>Title</title>
+    <style>
+        .shape {
+            width: 200px;
+            height: 200px;
+            background: salmon;
+            margin: 6px;
+            border: 1px solid #00A8B3;
+        }
+        .sanjiaoxing {
+            clip-path:  inset(10px 5px);
+        }
+        .sanjiaoxing1 {
+            clip-path:  polygon(50% 50%, 100% 100%, 0 100%);
+        }
+        .sanjiaoxing2 {
+            clip-path:  circle(50px at 50% 100px);
+        }
+        .sanjiaoxing3 {
+            clip-path:  path('M0.5,1 C0.5,1,0,0.7,0,0.3 A0.25,0.25,1,1,1,0.5,0.3 A0.25,0.25,1,1,1,1,0.3 C1,0.7,0.5,1,0.5,1 Z');
+        }
+        .sanjiaoxing4 {
+            clip-path:  padding-box circle(50px at 0 100px)
+        }
+        .sanjiaoxing5 {
+            clip-path:  margin-box;
+        }
+    </style>
+</head>
+<body>
+<div class="shape sanjiaoxing"></div>
+<div class="shape sanjiaoxing1"></div>
+<div class="shape sanjiaoxing2"></div>
+<div class="shape sanjiaoxing3"></div>
+<div class="shape sanjiaoxing4"></div>
+<div class="shape sanjiaoxing5"></div>
+</body>
+</html>

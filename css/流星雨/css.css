@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+:root {
+    --color: #f0f
+}
+html,body,.container {
+    height: 100%;
+}
+.container {
+    position: relative;
+    perspective: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+}
+.line {
+    position: absolute;
+    width: 200px;
+    height: 3px;
+    border-radius: 3px;
+    /* background-color: #fff; */
+    background-image: linear-gradient(to right, var(--color), #ffffff50, transparent);
+}
+
+.line::before,
+.line::after {
+    position: absolute;
+    content: "";
+    width: inherit;
+    height: inherit;
+    background-image: inherit;
+}
+
+.line::before {
+    filter: blur(5px);
+}
+
+.line::after {
+    filter: blur(10px);
+}
