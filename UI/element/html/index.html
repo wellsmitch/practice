@@ -7,20 +7,41 @@
     <script src="../../js/vue.js"></script>
     <link rel="stylesheet" href="../css/element.css">
     <script src="../js/element.js"></script>
+    <script src="../../../js/vue-resource.js"></script>
 </head>
 <body>
 <div id="box">
     <el-button :plain="true" @click="open">打开消息提示</el-button>
     <el-button :plain="true" @click="openVn">VNode</el-button>
+    <input type="file" @change="changeFile">
 </div>
 
 
 <script type="text/javascript">
+    var fm = new FormData();
+    fm.append("username", "zhangsheng");
+    fm.append("password", "1");
+    // fm.append("file", $("#fileInput")[0].files[0]);
 	var vm = new Vue({
         el: "#box",
+        data() {
+            return {
+                params1: {
+                    "username": "zhangsheng",
+                    "password": "1",
+                    file: ""
+                }
+            }
+        },
         methods: {
+            changeFile(value) {
+                this.params1.file = value.target.files[0];
+                fm.append("file", this.params1.file);
+
+            },
             open() {
                 this.$message('这是一条消息提示');
+                this.$http.post("http://localhost:8099/bba/item/userLogin.action",fm);
             },
 
             openVn() {

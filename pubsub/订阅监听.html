@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../js/pubsub.js"></script>
+
+<iframe src="./a页面.html" frameborder="0"></iframe>
+<iframe src="./b页面.html" frameborder="0"></iframe>
+<script type="text/javascript">
+    var s = {a: 123, b:12312}
+    for (let value1 in s) {
+        console.log(value1);
+    }
+</script>
+</body>
+</html>

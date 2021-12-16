@@ -9,7 +9,7 @@
 </head>
 <body>
 <div id="box">
-    <Tree :data="baseData"></Tree>
+    <Tree :data="baseData" :render="renderContent"></Tree>
     <button @click="moveTreeNode">移动位置</button>
 </div>
 
@@ -27,10 +27,10 @@
                         expand: true,
                         disabled: true,
                         children: [{
-                            title: 'leaf',
+                            title: 'leaf1',
                             disableCheckbox: true
                         }, {
-                            title: 'leaf',
+                            title: 'leaf2',
                         }]
                     },
                     {
@@ -42,14 +42,64 @@
                         }]
                     }
                 ]
-            }]
+            },
+                {
+                    title: 123,
+                    children: [
+                        {
+                            title: 345
+                        }
+                    ]
+                }
+            ]
 
         },
         methods: {
+            getcurrentData() {
+
+            },
+            getParentData(tableData, queryString, cb) {
+                var that = this;
+                tableData.forEach(function (ele) {
+                    if (ele.title === queryString) {
+                        cb(ele);
+                    } else if (ele.children) {
+                        that.getParentData(ele.children, queryString, cb)
+                    }
+                });
+            },
             moveTreeNode() {
                 let tartgetArr = this.baseData[0].children;
                 let spliceEl = tartgetArr.splice(0, 1)[0];
                 this.$set(tartgetArr, 1, spliceEl);
+            },
+            renderContent(h, ctx) {
+                return h("span", {
+                    on: {
+                        click() {
+                            console.log(ctx);
+                            var p = vm.getParentData(vm.baseData, "parent 1-0", function (res) {
+                                console.log(res);
+                                var index1 = "";
+                                res.children.map((el, index) => {
+                                    if (el.title === ctx.data.title) {
+                                        index1 = index
+                                    }
+                                });
+                                var currentNode = res.children.splice(index1, 1);
+                                if (currentNode.length > 0) {
+                                    res.children.splice(0, 0, {
+                                        title: "组" + Math.ceil(Math.random() * 1000),
+                                        children: [
+                                            currentNode[0]
+                                        ]
+                                    });
+                                }
+                            });
+                            console.log(p);
+                        }
+                    }
+                }, ctx.data.title)
             }
         }
     })
