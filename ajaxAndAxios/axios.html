@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/axios.js"></script>
+
+</head>
+<body>
+<script type="text/javascript">
+    var getUrl = "http://localhost:8099/bba/getOuterDataByJson";
+    axios.post(getUrl, {
+        a: 123
+    }, {
+        headers: {
+            "Content-Type": "application/json;charset=UTF-8"
+        }
+    }).then(function (res) {
+        console.log(res);
+    })
+</script>
+</body>
+</html>
