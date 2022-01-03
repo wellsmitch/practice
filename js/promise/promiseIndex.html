@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promiseIndex</title>
+</head>
+<body>
+<script type="text/javascript" src="./promiseEs5.js"></script>
+<script type="text/javascript">
+    // console.log(Promise);
+    new Promise(function (resolve) {
+        setTimeout(function () {
+            console.log(111);
+            resolve(213)
+        }, 2000)
+    }).then(function (resolve) {
+        var d = "123";
+        setTimeout(function () {
+            d = '第一个 then'
+        }, 1000);
+        return d;
+    }).then(function (res) {
+        setTimeout(function () {
+            console.log(res);
+        }, 1000);
+    });
+</script>
+</body>
+</html>
