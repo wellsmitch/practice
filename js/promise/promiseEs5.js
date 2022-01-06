@@ -256,9 +256,21 @@
                 });
             });
         };
+
         Promise.prototype["catch"] = function(onRejected) {
             return this.then(null, onRejected);
         };
+        // Promise.prototype["finally"] = function(f) {
+        //     return this.then(function (value) {
+        //         return Promise.resolve(f()).then(function () {
+        //             return value;
+        //         });
+        //     }, function (err) {
+        //         return Promise.resolve(f()).then(function () {
+        //             throw err;
+        //         });
+        //     });
+        // };
     }, {
         "./core.js": 2,
         asap: 4

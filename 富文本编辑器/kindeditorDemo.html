@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue/vue.js"></script>
+</head>
+<body>
+<div id="out">
+    <h1 @click="tap">1232312</h1>
+    <div v-html="str"></div>
+    <div id="conts" name="content" style="width:700px;height:200px;visibility:hidden;">KindEditor</div>
+</div>
+<script src="lib/kindeditor-all.js"></script>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#out",
+        data() {
+            return {
+                editor: "",
+                str: ""
+            }
+        },
+        methods: {
+            tap() {
+               this.str = this.editor.html()
+            }
+        },
+        mounted() {
+            var that = this;
+            KindEditor.ready(function (K) {
+                that.editor = K.create('#conts', {
+                    resizeType: 1,
+                    allowPreviewEmoticons: false,
+                    allowImageUpload: false,
+                    items: [
+                        'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                        'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                        'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+                });
+            });
+        }
+    })
+
+</script>
+</body>
+</html>
