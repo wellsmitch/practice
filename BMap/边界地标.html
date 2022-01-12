@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>边界地标</title>
+    <style>
+        #allmap {
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+    <script src="../js/jquery.js"></script>
+</head>
+<!--<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=sno6fwtNN4jDXZOiUhzSM25eSugNQKIQ"></script>-->
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=RpbURtZvaGGXVeMG1Fs6LEg8dtamnQfM"></script>
+<script type="text/javascript"
+        src="https://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js"></script>
+<script type="text/javascript"
+        src="https://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+<body>
+<div id="allmap"></div>
+<script type="text/javascript">
+    var newAreaName1 = "平顶山市";
+    var newAreaName2 = "鲁山县";
+    var lngLatAndName = [];
+    map = new BMap.Map("allmap");
+    map.centerAndZoom(newAreaName2, 5);
+    map.enableScrollWheelZoom();
+    $.get("./json/china不包含轮廓.json", function (res) {
+        var list = res.filter(function (ele) {
+            return ele.name == "河南省"
+        })[0].districts.filter(function (ele) {
+            return ele.name == "郑州市"
+        })[0].districts.filter(function (ele) {
+            return ele.name == "金水区"
+        })[0].districts.forEach(function (ele) {
+            var t = ele.center.split(",");
+            lngLatAndName.push({
+                lng: t[0],
+                lat: t[1],
+                name: ele.name,
+            })
+        })
+        lngLatAndName = JSON.stringify(lngLatAndName);
+        getBoundary("金水区", lngLatAndName);
+        console.log(list);
+    })
+
+    function getBoundary(newAreaNameAll, lngLatAndName) {
+        var bdary = new BMap.Boundary();
+        bdary.get(newAreaNameAll, function (rs) {       //获取行政区域
+            map.clearOverlays();        //清除地图覆盖物
+            var count = rs.boundaries.length; //行政区域的点有多少个
+            if (count === 0) {
+                // reserveMap();
+                return;
+            }
+            var pointArray = [];
+            for (var i = 0; i < count; i++) {
+                var ply = new BMap.Polygon(rs.boundaries[i], {
+                    strokeWeight: 5,
+                    strokeStyle: "solid",
+                    strokeColor: "#1684DD"
+                }); //建立多边形覆盖物
+                map.addOverlay(ply);  //添加覆盖物
+                pointArray = pointArray.concat(ply.getPath());
+            }
+            map.setViewport(pointArray);    //调整视野
+            //添加地图覆盖物
+            addlabel(lngLatAndName);
+        });
+    }
+
+
+    //添加覆盖物
+    function addlabel(lngLatAndName) {
+        if (null != lngLatAndName && undefined != lngLatAndName) {
+            var lngLatAndNameJson = JSON.parse(lngLatAndName);
+            for (var i = 0; i < lngLatAndNameJson.length; i++) {
+                var point = new BMap.Point(lngLatAndNameJson[i].lng, lngLatAndNameJson[i].lat);
+                addMarker(point, lngLatAndNameJson[i].name, lngLatAndNameJson[i].areaId);
+            }
+        }
+    }
+
+    // 编写自定义函数,创建标注
+    function addMarker(point, name, areaId) {
+        var marker = new BMap.Marker(point);
+        map.addOverlay(marker);
+        var label = new BMap.Label(name, {offset: new BMap.Size(-15, -20)});
+        marker.setLabel(label);
+        addClickHandler(name, marker, areaId);
+    }
+
+    //点击之后，mark的信息
+    function addClickHandler(name, marker, areaId) {
+        marker.addEventListener("click", function (e) {
+                console.log(name, marker, areaId);
+                // window.location.href = '/sp/zjcx/area4?oldAreaId={0}&newAreaId={1}&newAreaId2={2}&newAreaId3={3}'
+                //     .format(oldAreaId, newAreaId, newAreaId2, areaId);
+            }
+        );
+    }
+
+</script>
+</body>
+</html>
